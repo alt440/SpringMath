@@ -1,0 +1,46 @@
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<Title>Random Math</Title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="randomEquationGenerator.js"></script>
+	<script src="divisionPageMgmt.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="css/randomMath.css">
+</head>
+
+<body>
+	<table id="scoreHandling">
+		<tr>
+			<td><label id="correctAnswers" class="scoreDisplay"></label></td>
+		</tr>
+		<tr>
+			<td><label id="over" class="scoreDisplay">_____</label></td>
+		</tr>
+		<tr>
+			<td><label id="allQuestions" class="scoreDisplay"></label></td>
+		</tr>
+	</table>
+	
+	
+	
+	<table id="tableHBox">
+		<tr>
+			<td><label id="var1" class="vars"></label></td>
+			<!--  don't set the source so I do not have a wrong operator displayed first -->
+			<td><img id="operator"></td>
+			<td><label id="var2" class="vars"></label></td>
+			<td><img id="equalSign" src="img/equalSign.PNG" alt="Equal sign"></td>
+			<td><input type="text" id="answerText"></td>
+			<td><input type="submit" value="Submit" id="submitAnswer"></td>
+		</tr>
+		<tr>
+			<td></td>
+		</tr>
+	</table>
+	
+	<label id="feedback"></label>
+	
+</body>
+</html>

@@ -1,0 +1,32 @@
+#tableHBox{
+	border-spacing: 10px;
+}
+
+#operator, #equalSign{
+	height: 100px;
+	width: 100px;
+}
+
+.vars{
+	font-size: 50px;
+}
+
+#answerText{
+	height: 50px;
+	font-size: 50px;
+	width: 150px;
+}
+
+.scoreDisplay{
+	font-size: 75px;
+}
+
+#over{
+	position: relative;
+	top: -20px;
+}
+
+#scoreHandling{
+	text-align: right;
+	
+}
