@@ -1,0 +1,167 @@
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<Title>Random Math</Title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="subtractionAjaxCalls.js"></script>
+	<script src="../getImageOperator.js"></script>
+	<script src="../operationSimulator.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/randomMath.css">
+</head>
+
+<body>
+	
+	<div id="scoreHandling">
+		<label id="correctAnswers" class="scoreDisplay"></label><br/>
+		<label id="over" class="scoreDisplay">___</label><br/>
+		<label id="allQuestions" class="scoreDisplay"></label><br/>
+	</div>
+	
+	<table id="tableHBox">
+		<tr>
+			<td><label id="var1" class="vars"></label></td>
+			<!--  don't set the source so I do not have a wrong operator displayed first -->
+			<td><img id="operator"></td>
+			<td><label id="var2" class="vars"></label></td>
+			<td><img id="equalSign" src="../img/equalSign.PNG" alt="Equal sign"></td>
+			<td><input type="text" id="answerText"></td>
+			<td><input type="submit" value="Submit" id="submitAnswer"></td>
+		</tr>
+		<tr>
+			<td></td>
+		</tr>
+	</table>
+	
+	<label id="feedback"></label>
+	
+	<br/>
+	
+	<!-- Comments explaining the steps -->
+	<label id="commentSimulation"></label>
+	<input type="button" id="restartSimulation" value="Restart Subtraction Simulation"/>
+	<!-- Shows the formal way of doing the addition -->
+	<table id="simulationTable">
+		<!-- This row handles when a certain column of digits surpasses nine -->
+		<tr>
+			<!-- Intentionally left blank -->
+			<td></td>
+			<!-- Trailing value from decades -->
+			<td id="trailingDecades"></td>
+			<!-- Trailing value from units -->
+			<td id="trailingUnits"></td>
+		</tr>
+		<tr>
+			<!-- Intentionally left empty -->
+			<td></td>
+			<!-- These two are for the first operand -->
+			<td id="operand1DecadeDigit"></td>
+			<td id="operand1UnitDigit"></td>
+		</tr>
+		<tr>
+			<!-- This one is for the operator -->
+			<td><img id="operatorSignVal"></td>
+			<!-- These are for the second operand -->
+			<td id="operand2DecadeDigit"></td>
+			<td id="operand2UnitDigit"></td>
+		</tr>
+		<tr>
+			<!-- This will be the equal bar -->
+			<td id="equalBar"></td>
+			<td class="equalBarExtension"></td>
+			<td class="equalBarExtension"></td>
+		</tr>
+		<tr>
+			<!-- Intentionally left empty -->
+			<td></td>
+			<!-- This will be the answer -->
+			<td id="answerDecadeDigit"></td>
+			<td id="answerUnitDigit"></td>
+		</tr>
+	</table>
+	
+	<script>
+	//to handle the answer response so it does not get modified, you can 
+	//simply give the response ("Nice job!" or "Sorry, wrong answer.")
+	//thus, the answer response has no way of being modified
+		var operator = -1;
+		var var2 = -1;
+		var var1 = -1;
+		var totalAnswers = 0;
+		var correctAnswers = 0;
+		var output = "";
+		const answerX = false;
+		$(document).ready(function(){
+			//tells simulator what to operate on click
+			$("#restartSimulation").click(function(){
+				simulateSubtraction(var1, var2);
+			});
+			
+			//get the operator and second operand
+			$.when(getOperator(), getOperand2()).done(function(){
+				//get the first operand next, because we want a whole number as response
+				$.when(getOperand1(var2), getCorrectAnswersValue(), getTotalAnswersValue()).done(function(){
+					$('#operator').attr('src', srcOperatorImage(operator));
+					//setting values of labels
+					$('#var1').html(var1);
+					$('#var2').html(var2);
+					
+					//setting values for score
+					$('#correctAnswers').html(correctAnswers);
+					$('#allQuestions').html(totalAnswers);
+				});
+			});
+			
+			//same thing as above, but this time this is generated from a click
+			$('#submitAnswer').click(function(){
+				$.when(getAnswer($("#answerText").val())).done(function(){
+						$('#feedback').html(output);
+						
+						if(output.localeCompare("Nice Job!") == 0){
+							//change equation
+							setTimeout(function(){
+								$.when(getOperator(), getOperand2()).done(function(){
+									//get the first operand next, because we want a whole number as response
+									$.when(getOperand1(), getCorrectAnswersValue(), getTotalAnswersValue()).done(function(){
+										$('#operator').attr('src', srcOperatorImage(operator));
+										//setting values of labels
+										$('#var1').html(var1);
+										$('#var2').html(var2);
+										
+										output = "";
+										$('#feedback').html(output);
+										//setting values for score
+										$('#correctAnswers').html(correctAnswers);
+										$('#allQuestions').html(totalAnswers);
+									});
+								});
+							}, 1000);
+						}
+						else {
+							//show subtraction simulation
+							setTimeout(function(){
+								$('#feedback').html("Oops! You got the wrong answer. Look below to know how to do this operation correctly.");
+								
+								//show the tables
+								setTimeout(function(){
+									//$("#ballElements").show();
+									//show the button for the balls with animation
+									//$("#explanationAddition").show();
+									
+									$("#simulationTable").show();
+									$("#commentSimulation").show();
+									simulateSubtraction(var1, var2);
+									$("#restartSimulation").show();
+								}, 1000);
+							}, 1000);
+						}
+				})
+				
+			});
+			
+		});
+		
+		
+	</script>
+</body>
+</html>

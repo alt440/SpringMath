@@ -4,7 +4,9 @@
 	<meta charset="utf-8">
 	<Title>Random Math</Title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="divisionAjaxCalls.js"></script>
+	<script src="additionAjaxCalls.js"></script>
+	<!-- ball handling -->
+	<script src="../ballHandling.js"></script>
 	<script src="../getImageOperator.js"></script>
 	<link rel="stylesheet" type="text/css" href="../css/randomMath.css">
 </head>
@@ -32,6 +34,7 @@
 		</tr>
 	</table>
 	
+	<!-- Shows the feedback message. Says Nice Job! or Sorry, wrong answer -->
 	<label id="feedback"></label>
 	
 	<script>
@@ -46,6 +49,11 @@
 		var output = "";
 		const answerX = false;
 		$(document).ready(function(){
+			//initialize the ball images to blank. removes the borders set by an untouched image object.
+			initBallImgsBlank();
+			//hide the ball tables at first
+			$("#ballElements").hide();
+			
 			//get the operator and second operand
 			$.when(getOperator(), getOperand2()).done(function(){
 				//get the first operand next, because we want a whole number as response
@@ -65,7 +73,7 @@
 			$('#submitAnswer').click(function(){
 				$.when(getAnswer($("#answerText").val())).done(function(){
 						$('#feedback').html(output);
-						
+
 						//change equation
 						setTimeout(function(){
 							$.when(getOperator(), getOperand2()).done(function(){
@@ -81,9 +89,13 @@
 									//setting values for score
 									$('#correctAnswers').html(correctAnswers);
 									$('#allQuestions').html(totalAnswers);
+									
+									//hide the ball tables at first
+									$("#ballElements").hide();
 								});
 							});
 						}, 1000);
+						
 				})
 				
 			});

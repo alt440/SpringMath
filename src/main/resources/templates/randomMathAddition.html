@@ -1,0 +1,322 @@
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<Title>Random Math</Title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="additionAjaxCalls.js"></script>
+	<!-- ball handling -->
+	<script src="../ballHandling.js"></script>
+	<script src="../getImageOperator.js"></script>
+	<script src="../operationSimulator.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/randomMath.css">
+</head>
+
+<body>
+	
+	<div id="scoreHandling">
+		<label id="correctAnswers" class="scoreDisplay"></label><br/>
+		<label id="over" class="scoreDisplay">___</label><br/>
+		<label id="allQuestions" class="scoreDisplay"></label><br/>
+	</div>
+	
+	<table id="tableHBox">
+		<tr>
+			<td><label id="var1" class="vars"></label></td>
+			<!--  don't set the source so I do not have a wrong operator displayed first -->
+			<td><img id="operator"></td>
+			<td><label id="var2" class="vars"></label></td>
+			<td><img id="equalSign" src="../img/equalSign.PNG" alt="Equal sign"></td>
+			<td><input type="text" id="answerText"></td>
+			<td><input type="submit" value="Submit" id="submitAnswer"></td>
+		</tr>
+		<tr>
+			<td></td>
+		</tr>
+	</table>
+	
+	<!-- Shows the feedback message. Says Nice Job! or Sorry, wrong answer -->
+	<label id="feedback"></label>
+	
+	
+	<input type="button" id="explanationAddition" value="Visual explanation of the addition"/>
+	<!-- This makes a straight line out of the ball elements -->
+	<!-- This section gives an animation that will explain how the addition works visually -->
+	<!-- Max 5 balls per row -->
+	<table id="ballElements">
+		<tr>
+			<td>
+				<!-- Stores nb of operand1 in terms of balls -->
+				<table id="operand1Balls">
+					<tr>
+						<td><img class="ballImg" id="op1ball00"></td>
+						<td><img class="ballImg" id="op1ball01"></td>
+						<td><img class="ballImg" id="op1ball02"></td>
+						<td><img class="ballImg" id="op1ball03"></td>
+						<td><img class="ballImg" id="op1ball04"></td>
+					</tr>
+					<tr>
+						<td><img class="ballImg" id="op1ball10"></td>
+						<td><img class="ballImg" id="op1ball11"></td>
+						<td><img class="ballImg" id="op1ball12"></td>
+						<td><img class="ballImg" id="op1ball13"></td>
+						<td><img class="ballImg" id="op1ball14"></td>
+					</tr>
+					<tr>
+						<td><img class="ballImg" id="op1ball20"></td>
+						<td><img class="ballImg" id="op1ball21"></td>
+						<td><img class="ballImg" id="op1ball22"></td>
+						<td><img class="ballImg" id="op1ball23"></td>
+						<td><img class="ballImg" id="op1ball24"></td>
+					</tr>
+				</table>
+			</td>
+			
+			<td>
+				<!-- This is the balls for operand2 -->
+				<table id="operand2Balls">
+					<tr>
+						<td><img class="ballImg" id="op2ball00"></td>
+						<td><img class="ballImg" id="op2ball01"></td>
+						<td><img class="ballImg" id="op2ball02"></td>
+						<td><img class="ballImg" id="op2ball03"></td>
+						<td><img class="ballImg" id="op2ball04"></td>
+					</tr>
+					<tr>
+						<td><img class="ballImg" id="op2ball10"></td>
+						<td><img class="ballImg" id="op2ball11"></td>
+						<td><img class="ballImg" id="op2ball12"></td>
+						<td><img class="ballImg" id="op2ball13"></td>
+						<td><img class="ballImg" id="op2ball14"></td>
+					</tr>
+					<tr>
+						<td><img class="ballImg" id="op2ball20"></td>
+						<td><img class="ballImg" id="op2ball21"></td>
+						<td><img class="ballImg" id="op2ball22"></td>
+						<td><img class="ballImg" id="op2ball23"></td>
+						<td><img class="ballImg" id="op2ball24"></td>
+					</tr>
+				</table>
+			</td>
+			
+			<td>
+				<!-- This is the balls for the answer. Max is 12+12, so table has 5 rows -->
+				<table id="answerBalls">
+					<tr>
+						<td><img class="ballImg" id="ansball00"></td>
+						<td><img class="ballImg" id="ansball01"></td>
+						<td><img class="ballImg" id="ansball02"></td>
+						<td><img class="ballImg" id="ansball03"></td>
+						<td><img class="ballImg" id="ansball04"></td>
+					</tr>
+					<tr>
+						<td><img class="ballImg" id="ansball10"></td>
+						<td><img class="ballImg" id="ansball11"></td>
+						<td><img class="ballImg" id="ansball12"></td>
+						<td><img class="ballImg" id="ansball13"></td>
+						<td><img class="ballImg" id="ansball14"></td>
+					</tr>
+					<tr>
+						<td><img class="ballImg" id="ansball20"></td>
+						<td><img class="ballImg" id="ansball21"></td>
+						<td><img class="ballImg" id="ansball22"></td>
+						<td><img class="ballImg" id="ansball23"></td>
+						<td><img class="ballImg" id="ansball24"></td>
+					</tr>
+					<tr>
+						<td><img class="ballImg" id="ansball30"></td>
+						<td><img class="ballImg" id="ansball31"></td>
+						<td><img class="ballImg" id="ansball32"></td>
+						<td><img class="ballImg" id="ansball33"></td>
+						<td><img class="ballImg" id="ansball34"></td>
+					</tr>
+					<tr>
+						<td><img class="ballImg" id="ansball40"></td>
+						<td><img class="ballImg" id="ansball41"></td>
+						<td><img class="ballImg" id="ansball42"></td>
+						<td><img class="ballImg" id="ansball43"></td>
+						<td><img class="ballImg" id="ansball44"></td>
+					</tr>
+				</table>
+			</td>
+		</tr>		
+	</table>
+	
+	<!-- Comments explaining the steps -->
+	<label id="commentSimulation"></label>
+	<input type="button" id="restartSimulation" value="Restart Addition Simulation"/>
+	<!-- Shows the formal way of doing the addition -->
+	<table id="simulationTable">
+		<!-- This row handles when a certain column of digits surpasses nine -->
+		<tr>
+			<!-- Intentionally left blank -->
+			<td></td>
+			<!-- Trailing value from decades -->
+			<td id="trailingDecades"></td>
+			<!-- Trailing value from units -->
+			<td id="trailingUnits"></td>
+		</tr>
+		<tr>
+			<!-- Intentionally left empty -->
+			<td></td>
+			<!-- These two are for the first operand -->
+			<td id="operand1DecadeDigit"></td>
+			<td id="operand1UnitDigit"></td>
+		</tr>
+		<tr>
+			<!-- This one is for the operator -->
+			<td><img id="operatorSignVal"></td>
+			<!-- These are for the second operand -->
+			<td id="operand2DecadeDigit"></td>
+			<td id="operand2UnitDigit"></td>
+		</tr>
+		<tr>
+			<!-- This will be the equal bar -->
+			<td id="equalBar"></td>
+			<td class="equalBarExtension"></td>
+			<td class="equalBarExtension"></td>
+		</tr>
+		<tr>
+			<!-- Intentionally left empty -->
+			<td></td>
+			<!-- This will be the answer -->
+			<td id="answerDecadeDigit"></td>
+			<td id="answerUnitDigit"></td>
+		</tr>
+	</table>
+	
+	<script>
+	//to handle the answer response so it does not get modified, you can 
+	//simply give the response ("Nice job!" or "Sorry, wrong answer.")
+	//thus, the answer response has no way of being modified
+		var operator = -1;
+		var var2 = -1;
+		var var1 = -1;
+		var totalAnswers = 0;
+		var correctAnswers = 0;
+		var output = "";
+		var counterTries = 0;
+		const answerX = false;
+		$(document).ready(function(){
+			//tells simulator what to operate on click
+			$("#restartSimulation").click(function(){
+				simulateAddition(var1, var2);
+			});
+			
+			//this hides the whole table handling the addition explanation until first try
+			$("#ballElements").hide();
+			//this hides the explanation button until second try
+			$("#explanationAddition").hide();
+			//set the click function for that button
+			$("#explanationAddition").click(function(){
+				ansBallHandling(var1, var2);
+			});
+			
+			//initialize the ball images to blank. removes the borders set by an untouched image object.
+			initBallImgsBlank();
+			
+			//hide the ball tables at first
+			$("#ballElements").hide();
+			
+			//get the operator and second operand
+			$.when(getOperator(), getOperand2()).done(function(){
+				//get the first operand next, because we want a whole number as response
+				$.when(getOperand1(var2), getCorrectAnswersValue(), getTotalAnswersValue()).done(function(){
+					$('#operator').attr('src', srcOperatorImage(operator));
+					//setting values of labels
+					$('#var1').html(var1);
+					$('#var2').html(var2);
+					
+					//setting values for score
+					$('#correctAnswers').html(correctAnswers);
+					$('#allQuestions').html(totalAnswers);
+				});
+			});
+			
+			//same thing as above, but this time this is generated from a click
+			$('#submitAnswer').click(function(){
+				$.when(getAnswer($("#answerText").val())).done(function(){
+					
+					//hide the ball elements if counterTries is 0
+					if(counterTries === 0){
+						$("#ballElements").hide();
+						$("#explanationAddition").hide();
+					}
+					
+					
+					$('#feedback').html(output);
+					//increments the tries to the question
+					counterTries++;
+					if(output.localeCompare("Nice Job!") == 0){
+						//change equation
+						setTimeout(function(){
+							$.when(getOperator(), getOperand2()).done(function(){
+								//get the first operand next, because we want a whole number as response
+								$.when(getOperand1(var2), getCorrectAnswersValue(), getTotalAnswersValue()).done(function(){
+									$('#operator').attr('src', srcOperatorImage(operator));
+									//setting values of labels
+									$('#var1').html(var1);
+									$('#var2').html(var2);
+									
+									output = "";
+									$('#feedback').html(output);
+									//setting values for score
+									$('#correctAnswers').html(correctAnswers);
+									$('#allQuestions').html(totalAnswers);
+									
+									//hide the ball tables at first
+									$("#ballElements").hide();
+								});
+							});
+						}, 1000);
+						counterTries = 0;
+					}
+					else if(counterTries == 1){
+						//redo the question with the balls showing up to explain how it is done.
+						
+						setTimeout(function(){
+							$('#feedback').html("Let us try this again");
+							
+							//show the tables
+							setTimeout(function(){
+								$("#ballElements").show();
+								//show the balls with animation
+								ballHandling(var1, var2);
+							}, 1000);
+						}, 1000);
+						
+					}
+					else if(counterTries == 2){
+						//redo the question with the balls showing up to explain how it is done (with answer).
+						
+						setTimeout(function(){
+							$('#feedback').html("Oops! You got the wrong answer. Look below to know how to do this operation correctly.");
+							
+							//show the tables
+							setTimeout(function(){
+								$("#ballElements").show();
+								//show the button for the balls with animation
+								$("#explanationAddition").show();
+								
+								$("#commentSimulation").show();
+								$("#simulationTable").show();
+								simulateAddition(var1, var2);
+								$("#restartSimulation").show();
+							}, 1000);
+						}, 1000);
+						
+						
+						//to reset the tries and go to the next question. Good or not?
+						counterTries = 0;
+					}
+						
+				})
+				
+			});
+			
+		});
+		
+		
+	</script>
+</body>
+</html>

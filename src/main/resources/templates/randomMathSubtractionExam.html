@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<Title>Random Math</Title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="divisionAjaxCalls.js"></script>
+	<script src="subtractionAjaxCalls.js"></script>
 	<script src="../getImageOperator.js"></script>
 	<link rel="stylesheet" type="text/css" href="../css/randomMath.css">
 </head>
@@ -70,7 +70,7 @@
 						setTimeout(function(){
 							$.when(getOperator(), getOperand2()).done(function(){
 								//get the first operand next, because we want a whole number as response
-								$.when(getOperand1(var2), getCorrectAnswersValue(), getTotalAnswersValue()).done(function(){
+								$.when(getOperand1(), getCorrectAnswersValue(), getTotalAnswersValue()).done(function(){
 									$('#operator').attr('src', srcOperatorImage(operator));
 									//setting values of labels
 									$('#var1').html(var1);
