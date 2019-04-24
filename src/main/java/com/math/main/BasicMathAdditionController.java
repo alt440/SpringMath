@@ -24,8 +24,14 @@ public class BasicMathAdditionController {
 	
     @GetMapping("/math")
     public String math() {
-    	//returns the html file named randomMath. Found in src/main/resources/templates
+    	//returns the html file named randomMathAddition. Found in src/main/resources/templates
     	return "randomMathAddition";
+    }
+    
+    @GetMapping("/exam")
+    public String exam() {
+    	//returns html file named randomMathAdditionExam
+    	return "randomMathAdditionExam";
     }
     
   //those are all returning the operator values for a certain equation

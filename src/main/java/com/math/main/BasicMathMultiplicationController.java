@@ -29,6 +29,12 @@ public class BasicMathMultiplicationController {
 		    	return "randomMathMultiplication";
 		    }
 		    
+		    @GetMapping("/exam")
+		    public String exam() {
+		    	//returns html file named randomMathMultiplicationExam
+		    	return "randomMathMultiplicationExam";
+		    }
+		    
 		  //those are all returning the operator values for a certain equation
 		    @GetMapping("/operator")
 		    @ResponseBody

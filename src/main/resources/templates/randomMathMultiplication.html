@@ -6,6 +6,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="multiplicationAjaxCalls.js"></script>
 	<script src="../getImageOperator.js"></script>
+	<script src="../operationSimulator.js"></script>
 	<link rel="stylesheet" type="text/css" href="../css/randomMath.css">
 </head>
 
@@ -34,6 +35,84 @@
 	
 	<label id="feedback"></label>
 	
+	<br/>
+	
+	<!-- Comments explaining the steps -->
+	<label id="commentSimulation" class="simVal"></label>
+	<input type="button" id="restartSimulation" value="Restart Multiplication Simulation"/>
+	<!-- Shows the formal way of doing the addition -->
+	<table id="simulationTable">
+		<tr>
+			<!-- Intentionally left empty -->
+			<td></td>
+			<td></td>
+			<!-- These two are for the first operand -->
+			<td class="simVal" id="operand10DecadeDigit"></td>
+			<td class="simVal" id="operand10UnitDigit"></td>
+		</tr>
+		<tr>
+			<!-- This one is for the operator -->
+			<td><img id="operator0SignVal" src="../img/blank.png"></td>
+			<!-- Intentionally left blank -->
+			<td></td>
+			<!-- These are for the second operand -->
+			<td class="simVal" id="operand20DecadeDigit"></td>
+			<td class="simVal" id="operand20UnitDigit"></td>
+		</tr>
+		<tr>
+			<!-- This will be the equal bar -->
+			<td class="simVal equalBarExtension"></td>
+			<td class="simVal" id="equalBar"></td>
+			<td class="simVal equalBarExtension"></td>
+			<td class="simVal equalBarExtension"></td>
+		</tr>
+		<!-- This row handles when a certain column of digits surpasses nine -->
+		<tr>
+			<!-- Intentionally left blank -->
+			<td></td>
+			<!-- Trailing value from hundreds -->
+			<td class="simVal" id="trailingHundreds"></td>
+			<!-- Trailing value from decades -->
+			<td class="simVal" id="trailingDecades"></td>
+			<!-- Trailing value from units -->
+			<td class="simVal" id="trailingUnits"></td>
+		</tr>
+		<!-- This row gives the result of the multiplication with the last digit of the second operand -->
+		<tr>
+			<!-- Intentionally left empty -->
+			<td></td>
+			<!-- These are for the first operand -->
+			<td class="simVal" id="operand1HundredDigit"></td>
+			<td class="simVal" id="operand1DecadeDigit"></td>
+			<td class="simVal" id="operand1UnitDigit"></td>
+		</tr>
+		<tr>
+			<!-- This one is for the operator -->
+			<td><img id="operatorSignVal"></td>
+
+			<!-- These are for the second operand -->
+			<td class="simVal" id="operand2HundredDigit"></td>
+			<td class="simVal" id="operand2DecadeDigit"></td>
+			<td class="simVal" id="operand2UnitDigit"></td>
+		</tr>
+		<tr>
+			<!-- This will be the equal bar -->
+			<td class="simVal equalBarExtension0"></td>
+			<td class="simVal" id="equalBar0"></td>
+			<td class="simVal equalBarExtension0"></td>
+			<td class="simVal equalBarExtension0"></td>
+		</tr>
+		
+		<tr>
+			<!-- Intentionally left empty -->
+			<td></td>
+			<!-- This will be the answer -->
+			<td class="simVal" id="answerHundredDigit"></td>
+			<td class="simVal" id="answerDecadeDigit"></td>
+			<td class="simVal" id="answerUnitDigit"></td>
+		</tr>
+	</table>
+	
 	<script>
 	//to handle the answer response so it does not get modified, you can 
 	//simply give the response ("Nice job!" or "Sorry, wrong answer.")
@@ -46,6 +125,15 @@
 		var output = "";
 		const answerX = false;
 		$(document).ready(function(){
+			//define the operation done by the restart simulation button
+			//tells simulator what to operate on click
+			$("#restartSimulation").click(function(){
+				//Resetting the + operator because not handled from simulation code.
+				$("#operatorSignVal").attr("src","../img/blank.png");
+				//simulates multiplication.
+				simulateMultiplication(var1, var2);
+			});
+			
 			//get the operator and second operand
 			$.when(getOperator(), getOperand2()).done(function(){
 				//get the first operand next, because we want a whole number as response
@@ -66,24 +154,44 @@
 				$.when(getAnswer($("#answerText").val())).done(function(){
 						$('#feedback').html(output);
 						
-						//change equation
-						setTimeout(function(){
-							$.when(getOperator(), getOperand2()).done(function(){
-								//get the first operand next, because we want a whole number as response
-								$.when(getOperand1(var2), getCorrectAnswersValue(), getTotalAnswersValue()).done(function(){
-									$('#operator').attr('src', srcOperatorImage(operator));
-									//setting values of labels
-									$('#var1').html(var1);
-									$('#var2').html(var2);
-									
-									output = "";
-									$('#feedback').html(output);
-									//setting values for score
-									$('#correctAnswers').html(correctAnswers);
-									$('#allQuestions').html(totalAnswers);
+						if(output.localeCompare("Nice Job!") == 0){
+							//change equation
+							setTimeout(function(){
+								$.when(getOperator(), getOperand2()).done(function(){
+									//get the first operand next, because we want a whole number as response
+									$.when(getOperand1(var2), getCorrectAnswersValue(), getTotalAnswersValue()).done(function(){
+										$('#operator').attr('src', srcOperatorImage(operator));
+										//setting values of labels
+										$('#var1').html(var1);
+										$('#var2').html(var2);
+										
+										output = "";
+										$('#feedback').html(output);
+										//setting values for score
+										$('#correctAnswers').html(correctAnswers);
+										$('#allQuestions').html(totalAnswers);
+									});
 								});
-							});
-						}, 1000);
+							}, 1000);
+						}
+						else{
+							//show subtraction simulation
+							setTimeout(function(){
+								$('#feedback').html("Oops! You got the wrong answer. Look below to know how to do this operation correctly.");
+								
+								//show the tables
+								setTimeout(function(){
+									//$("#ballElements").show();
+									//show the button for the balls with animation
+									//$("#explanationAddition").show();
+									
+									$("#simulationTable").show();
+									$("#commentSimulation").show();
+									simulateMultiplication(var1, var2);
+									$("#restartSimulation").show();
+								}, 1000);
+							}, 1000);
+						}
 				})
 				
 			});

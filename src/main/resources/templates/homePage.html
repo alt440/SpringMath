@@ -1,0 +1,50 @@
+<html>
+
+<head>
+	<title>Welcome to Math Rush</title>
+	<link rel="stylesheet" type="text/css" href="css/homePage.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+	<div id="testDiv" class="movingObj animation-target">
+		Hey
+	</div>
+	
+	<script>
+		//stack overflow code
+		function reset_animation() {
+		  var el = document.getElementById('testDiv');
+		  el.style.animation = 'none';
+		  el.offsetHeight; /* trigger reflow */
+		  el.style.animation = null; 
+		}
+	
+		var nextTimeout = 7000;
+		//stop the animation after 2 and 1/2 times. Want to see animation
+		$(document).ready(function(){
+			//create five events of the animation.
+			for(var i=0;i<5;i++){
+				setTimeout(function(){
+					$("#testDiv").css("-webkit-animation-play-state", "paused");
+				}, nextTimeout);
+				
+				nextTimeout+=5000;
+				
+				setTimeout(function(){
+					reset_animation();
+				}, nextTimeout);
+				nextTimeout+=7000;
+			}
+			//pauses it indefinitely. This is because the animation can become tiring.
+			setTimeout(function(){
+				$("#testDiv").css("-webkit-animation-play-state", "paused");
+			}, nextTimeout);
+			
+		});
+	
+	</script>
+</body>
+
+</html>

@@ -2,7 +2,7 @@
 /*
  * Here is the code you need to copy:
  * <!-- Comments explaining the steps -->
-	<label id="commentSimulation"></label>
+	<label id="commentSimulation" class="simVal"></label>
 	<input type="button" id="restartSimulation" value="Restart Addition Simulation"/>
 	<!-- Shows the formal way of doing the addition -->
 	<table id="simulationTable">
@@ -11,36 +11,36 @@
 			<!-- Intentionally left blank -->
 			<td></td>
 			<!-- Trailing value from decades -->
-			<td id="trailingDecades"></td>
+			<td class="simVal" id="trailingDecades"></td>
 			<!-- Trailing value from units -->
-			<td id="trailingUnits"></td>
+			<td class="simVal" id="trailingUnits"></td>
 		</tr>
 		<tr>
 			<!-- Intentionally left empty -->
 			<td></td>
 			<!-- These two are for the first operand -->
-			<td id="operand1DecadeDigit"></td>
-			<td id="operand1UnitDigit"></td>
+			<td class="simVal" id="operand1DecadeDigit"></td>
+			<td class="simVal" id="operand1UnitDigit"></td>
 		</tr>
 		<tr>
 			<!-- This one is for the operator -->
 			<td><img id="operatorSignVal"></td>
 			<!-- These are for the second operand -->
-			<td id="operand2DecadeDigit"></td>
-			<td id="operand2UnitDigit"></td>
+			<td class="simVal" id="operand2DecadeDigit"></td>
+			<td class="simVal" id="operand2UnitDigit"></td>
 		</tr>
 		<tr>
 			<!-- This will be the equal bar -->
-			<td id="equalBar"></td>
-			<td class="equalBarExtension"></td>
-			<td class="equalBarExtension"></td>
+			<td class="simVal" id="equalBar"></td>
+			<td class="equalBarExtension simVal"></td>
+			<td class="equalBarExtension simVal"></td>
 		</tr>
 		<tr>
 			<!-- Intentionally left empty -->
 			<td></td>
 			<!-- This will be the answer -->
-			<td id="answerDecadeDigit"></td>
-			<td id="answerUnitDigit"></td>
+			<td class="simVal" id="answerDecadeDigit"></td>
+			<td class="simVal" id="answerUnitDigit"></td>
 		</tr>
 	</table>
  * 
@@ -51,7 +51,7 @@
  * You also need to set the 
  */
 
-var timeout = undefined;
+var timeouts = [];
 
 $(document).ready(function(){
 	//removes the button that allows the simulation of the addition operation to take place
@@ -74,50 +74,69 @@ $(document).ready(function(){
 		$("#commentSimulation").hide();
 		
 		//this clears the setTimeout operations that were running. Useful in case someone interrupts the animation by submitting.
-		if(timeout!== undefined)
-			window.clearTimeout(timeout);
+		if(timeouts!== undefined && timeouts.length !== 0){
+			for(var i=0;i<timeouts.length;i++){
+				window.clearTimeout(timeouts[i]);
+			}
+			
+			timeouts = [];
+		}
+			
+	});
+	
+	$("#restartSimulation").click(function(){
+		//this clears the setTimeout operations that were running. Useful in case someone interrupts the animation by restarting the animation.
+		if(timeouts!== undefined && timeouts.length !== 0){
+			for(var i=0;i<timeouts.length;i++){
+				window.clearTimeout(timeouts[i]);
+			}
+			
+			timeouts = [];
+		}
 	});
 });
 
-function simulateAddition(operand1, operand2){
+function simulateAddition(operand1, operand2, isReset){
 	
 	var timeoutDelay = 5000;
 	
-	//sets all values back to empty string
-	initSetup(operand1, operand2);
+	//sets all values back to empty string. Only if isReset !== 0. This is set from simulateMultiplication method.
+	if(isReset !== 0)
+		initSetup(operand1, operand2);
 	$("#operatorSignVal").attr("src", "../img/add.png");
 	
-	timeout = setTimeout(function(){
+	//this pushes the timeout in the list timeouts so I can cancel it if the user presses on another button.
+	timeouts.push(setTimeout(function(){
 		var rightMostDigitsAddition = operand1%10 + operand2%10;
 		$("#commentSimulation").html("Next, sum the right most digits. The result gives "+rightMostDigitsAddition+". Put the result under the equal bar.");
 		$("#answerUnitDigit").html(rightMostDigitsAddition%10);
 		if(rightMostDigitsAddition > 9){
-			setTimeout(function(){
+			timeouts.push(setTimeout(function(){
 				$("#commentSimulation").html("Because the sum of the right most digits is greater than 9, we need to transfer the decade digit to the decade digits' column.");
 				$("#trailingDecades").html(parseInt(rightMostDigitsAddition/10));
 				
-				setTimeout(function(){
+				timeouts.push(setTimeout(function(){
 					$("#commentSimulation").html("Now, we need to calculate the decades of each number. Do not forget the extra decade value you added!");
 					$("#answerDecadeDigit").html(parseInt(operand1/10) + parseInt(operand2/10) + parseInt(rightMostDigitsAddition/10));
 					
-					setTimeout(function(){
+					timeouts.push(setTimeout(function(){
 						$("#commentSimulation").html("Finally, we have the answer of the equation under the equal bar.");
-					}, timeoutDelay);
-				}, timeoutDelay);
-			}, timeoutDelay);
+					}, timeoutDelay));
+				}, timeoutDelay));
+			}, timeoutDelay));
 		}
 		else{
-			setTimeout(function(){
+			timeouts.push(setTimeout(function(){
 				//get the result
 				$("#commentSimulation").html("Now, we need to calculate the decades of each number.");
 				$("#answerDecadeDigit").html(parseInt(operand1/10) + parseInt(operand2/10));
 				
-				setTimeout(function(){
+				timeouts.push(setTimeout(function(){
 					$("#commentSimulation").html("Finally, we have the answer of the equation under the equal bar.");
-				}, timeoutDelay);
-			}, timeoutDelay);
+				}, timeoutDelay));
+			}, timeoutDelay));
 		}
-	}, timeoutDelay);
+	}, timeoutDelay));
 }
 
 function simulateSubtraction(operand1, operand2){
@@ -128,29 +147,30 @@ function simulateSubtraction(operand1, operand2){
 	initSetup(operand1, operand2);
 	$("#operatorSignVal").attr("src", "../img/subtract.png");
 	
-	timeout = setTimeout(function(){
+	timeouts.push(setTimeout(function(){
 		var rightMostDigitsSubtraction = (operand1%10) - (operand2%10);
 		$("#commentSimulation").html("Next, subtract the right most digits. The result gives "+rightMostDigitsSubtraction+".");
 		if(rightMostDigitsSubtraction < 0){
-			setTimeout(function(){
+			timeouts.push(setTimeout(function(){
 				$("#commentSimulation").html("Because the subtraction of the right most digits gives a result lower than 0, we must borrow a unit from the higher position.");
 				$("#trailingUnits").html("10");
 				operand1-=10;
 				$("#operand1DecadeDigit").html(parseInt(operand1/10));
 				
-				setTimeout(function(){
+				timeouts.push(setTimeout(function(){
 					$("#commentSimulation").html("Now, do the subtraction of the units by adding the value you took from the decades.");
 					
 					var answer = (10+(operand1%10)) - (operand2%10);
 					$("#answerUnitDigit").html(answer);
 					
-					setTimeout(function(){
+					timeouts.push(setTimeout(function(){
 						//do the decades units here
 						$("#commentSimulation").html("Once we are done with the subtraction of the units, we do the subtraction of the decades. Below the equal bar is the answer.");
 						//no need for putting an additional unit from the higher position because max val is 24 right now
 						$("#answerDecadeDigit").html(parseInt(operand1/10) - parseInt(operand2/10));
-					}, timeoutDelay);
+					}, timeoutDelay));
 					
+					//adds animation removing one by one from the number.
 					/*var operand1UnitDigit = 10+operand1%10;
 					var operand2UnitDigit = operand2%10; 
 					var operand2UnitDigitCopy = operand2UnitDigit;
@@ -188,12 +208,13 @@ function simulateSubtraction(operand1, operand2){
 					}*/
 					
 					
-				}, timeoutDelay);
-			}, timeoutDelay);
+				}, timeoutDelay));
+			}, timeoutDelay));
 		}
 		
 		else{
 			//Did not set unit digit before because would give a negative number in above scenario (if condition)
+			//adds animation removing one by one from the number.
 			/*var operand2UnitDigit = operand2%10;
 			var operand2UnitDigitCopy = operand2UnitDigit;
 			var operand1UnitDigit = operand1%10;
@@ -223,28 +244,127 @@ function simulateSubtraction(operand1, operand2){
 			}*/
 			
 			$("#answerUnitDigit").html(rightMostDigitsSubtraction);
-			setTimeout(function(){
+			timeouts.push(setTimeout(function(){
 				$("#commentSimulation").html("We complete the operation by subtracting the decades unit together.");
 				$("#answerDecadeDigit").html(parseInt(operand1/10) - parseInt(operand2/10));
-			}, timeoutDelay);
+			}, timeoutDelay));
 		}
-	}, timeoutDelay);
+	}, timeoutDelay));
+}
+
+function simulateMultiplication(operand1, operand2){
+	//blanks the slate. Uses class simVal to do it
+	//show the table
+	$("#simulationTable").show();
+	//reset values to replay the scenario (all values in class simVal)
+	$(".simVal").html("");
+	
+	$("#commentSimulation").html("First, set the values to be vertically aligned.");
+	
+	$("#operand10DecadeDigit").html(parseInt(operand1/10));
+	$("#operand10UnitDigit").html(operand1%10);
+	
+	$("#operand20DecadeDigit").html(parseInt(operand2/10));
+	$("#operand20UnitDigit").html(operand2%10);
+	$("#equalBar").html("--------------");
+	$(".equalBarExtension").html("--");
+	
+	var timeoutDelay = 5000;
+	
+	$("#operator0SignVal").attr("src", "../img/multiply.png");
+	
+	//attribute to timeout variable so we can cancel this process later
+	timeouts.push(setTimeout(function(){
+		//start multiplying the operand1 last digit with second number. Then, operand1 first digit with second number.
+		$("#commentSimulation").html("First, we multiply the last digit of the first number by the last digit of the second number.");
+		
+		
+		timeouts.push(setTimeout(function(){
+			var answer = (operand1%10) * (operand2%10);
+			$("#commentSimulation").html("We need to do "+(operand1%10)+" x "+(operand2%10)+". This gives us a result of "+answer+". The answer is placed below the equal bar.");
+			$("#operand1UnitDigit").html(answer%10);
+			$("#operand1DecadeDigit").html(parseInt(answer/10));
+			
+			timeouts.push(setTimeout(function(){
+				$("#commentSimulation").html("We now multiply the last digit of the first number by the first digit of the second number.");
+				
+				timeouts.push(setTimeout(function(){
+					var answer2 = (operand1%10) * (parseInt(operand2/10));
+					$("#commentSimulation").html("We need to do "+(operand1%10)+" x "+(parseInt(operand2/10))+". This gives us a result of "+answer2+".");
+					
+					timeouts.push(setTimeout(function(){
+						$("#commentSimulation").html("However, because we are multiplicating by the decade unit of the second operand, we need to multiply our result by 10, and add that to our current result under the equal bar.");
+						//decade unit of answer
+						$("#operand1DecadeDigit").html(parseInt(answer/10)+answer2%10);
+						
+						if(answer2 >=10){
+							$("#operand1HundredDigit").html(parseInt(answer2/10));
+						}
+						
+						if(parseInt(operand1/10) > 0){
+							//if the first operand has two digits
+							timeouts.push(setTimeout(function(){
+								$("#commentSimulation").html("Now, we have to do multiplications with the decade unit of the first operand. Our results thereon will be multiplied by 10 because of that.");
+								
+								timeouts.push(setTimeout(function(){
+									$("#commentSimulation").html("We now multiply the first digit of the first operand with the last digit of the second operand.");
+									
+									timeouts.push(setTimeout(function(){
+										var answer3 = parseInt(operand1/10) * operand2%10;
+										$("#commentSimulation").html("We need to do "+parseInt(operand1/10)+" x "+operand2%10+". This gives us a result of "+answer3+". We multiply that answer by 10 and put it under the equal bar.");
+										$("#operand2UnitDigit").html("0");
+										$("#operand2DecadeDigit").html(answer3%10);
+										if(parseInt(answer3/10) !== 0)
+											$("#operand2HundredDigit").html(parseInt(answer3/10));
+										
+										timeouts.push(setTimeout(function(){
+											$("#commentSimulation").html("We now multiply the first digit of the first operand with the last digit of the second operand.");
+											
+											timeouts.push(setTimeout(function(){
+												var answer4 = parseInt(operand1/10) * parseInt(operand2/10);
+												$("#commentSimulation").html("We need to do "+parseInt(operand1/10)+" x "+parseInt(operand2/10)+". This gives us a result of "+answer4+". We multiply that answer by 10*10 because we are using the decade unit of the first operand and the second operand.");
+												
+												//no need for remainder here
+												$("#operand2HundredDigit").html(answer4);
+												timeouts.push(setTimeout(function(){
+													$("#commentSimulation").html("We now have our second value under the equal bar. Now we must do the addition.");
+													
+													timeouts.push(setTimeout(function(){
+														var operand1After = (operand1%10)*operand2;
+														var operand2After = (parseInt(operand1/10))*operand2*10;//multiply by 10 bc decade value
+														//setting the equal bars
+														$("#equalBar0").html("--------------");
+														$(".equalBarExtension0").html("--");
+														simulateAddition(operand1After, operand2After,0);
+													}, timeoutDelay));
+												}, timeoutDelay));
+											}, timeoutDelay));
+										}, timeoutDelay));
+									}, timeoutDelay));
+								}, timeoutDelay));
+							}, timeoutDelay));
+						}
+						else{
+							timeouts.push(setTimeout(function(){
+								$("#commentSimulation").html("Remember that multiplications by 0 gives 0. That is why we are not stepping through the decade unit multiplication of the first operand. We now have the answer under the equal bar.");
+							}, timeoutDelay));
+						}
+					}, timeoutDelay));
+				}, timeoutDelay));
+			}, timeoutDelay));
+		}, timeoutDelay));
+	}, timeoutDelay));
+}
+
+function simulateDivision(operand1, operand2){
+	//To Do Eventually...
 }
 
 function initSetup(operand1, operand2){
 	//show the table
-	$("#additionSimulation").show();
-	//reset values to replay the scenario
-	$("#commentSimulation").html("");
-	$("#operand1DecadeDigit").html("");
-	$("#operand1UnitDigit").html("");
-	
-	$("#operand2DecadeDigit").html("");
-	$("#operand2UnitDigit").html("");
-	$("#trailingDecades").html("");
-	$("#trailingUnits").html("");
-	$("#answerUnitDigit").html("");
-	$("#answerDecadeDigit").html("");
+	$("#simulationTable").show();
+	//reset values to replay the scenario (all values in class simVal)
+	$(".simVal").html("");
 	
 	$("#commentSimulation").html("First, set the values to be vertically aligned.");
 	

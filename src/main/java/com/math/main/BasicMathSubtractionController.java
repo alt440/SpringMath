@@ -28,6 +28,12 @@ public class BasicMathSubtractionController {
     	return "randomMathSubtraction";
     }
     
+    @GetMapping("/exam")
+    public String exam() {
+    	//returns html file named randomMathSubtractionExam
+    	return "randomMathSubtractionExam";
+    }
+    
   //those are all returning the operator values for a certain equation
     @GetMapping("/operator")
     @ResponseBody

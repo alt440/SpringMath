@@ -35,6 +35,12 @@ public class BasicMathDivisionController {
 	    	return "randomMathDivision";
 	    }
 	    
+	    @GetMapping("/exam")
+	    public String exam() {
+	    	//returns html file named randomMathDivisionExam
+	    	return "randomMathDivisionExam";
+	    }
+	    
 	  //those are all returning the operator values for a certain equation
 	    @GetMapping("/operator")
 	    @ResponseBody
