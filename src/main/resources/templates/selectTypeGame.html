@@ -1,0 +1,151 @@
+<html>
+
+<head>
+	<title>Choose your Math</title>
+	<link rel="stylesheet" type="text/css" href="css/homePage.css">
+	<link rel="stylesheet" type="text/css" href="css/selectTypeGame.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="animationHandling.js"></script>
+</head>
+
+<body>
+	<h2 id="pageTitle">Math Rush</h2>
+	
+	<table id="typeGames">
+		<tr>
+			<td id="practiceTitle">Practice</td>
+			<td id="examTitle">Exam</td>
+		</tr>
+		
+		<tr>
+			<td><input id="additionPractice" class="addition" type="button" value="Addition"/></td>
+			<td><input id="additionExam" class="addition" type="button" value="Addition"/></td>
+		</tr>
+			
+		<tr>
+			<td><input id="subtractionPractice" class="subtraction" type="button" value="Subtraction"/></td>
+			<td><input id="subtractionExam" class="subtraction" type="button" value="Subtraction"/></td>
+		</tr>
+		
+		<tr>
+			<td><input id="multiplicationPractice" class="multiplication" type="button" value="Multiplication"/></td>
+			<td><input id="multiplicationExam" class="multiplication" type="button" value="Multiplication"/></td>
+		</tr>
+		
+		<tr>
+			<td><input id="divisionPractice" class="division" type="button" value="Division"/></td>
+			<td><input id="divisionExam" class="division" type="button" value="Division"/></td>
+		</tr>
+	
+	</table>
+	
+	<script>
+		$(document).ready(function(){
+			//pause it at start of program
+			$(".addition").css("-webkit-animation-play-state", "paused");
+			$(".subtraction").css("-webkit-animation-play-state", "paused");
+			$(".multiplication").css("-webkit-animation-play-state", "paused");
+			$(".division").css("-webkit-animation-play-state", "paused");
+			//adding animation on mouse hover over button
+			$("#additionPractice").mouseover(function(){
+				$("#additionPractice").css("-webkit-animation-play-state", "running");	
+			});
+			$("#additionPractice").mouseout(function(){
+				reset_animation('additionPractice');
+				$("#additionPractice").css("-webkit-animation-play-state", "paused");				
+			});
+			
+			$("#additionExam").mouseover(function(){
+				$("#additionExam").css("-webkit-animation-play-state", "running");	
+			});
+			$("#additionExam").mouseout(function(){
+				reset_animation('additionExam');
+				$("#additionExam").css("-webkit-animation-play-state", "paused");				
+			});
+			
+			$("#subtractionPractice").mouseover(function(){
+				$("#subtractionPractice").css("-webkit-animation-play-state", "running");	
+			});
+			$("#subtractionPractice").mouseout(function(){
+				reset_animation('subtractionPractice');
+				$("#subtractionPractice").css("-webkit-animation-play-state", "paused");				
+			});
+			
+			$("#subtractionExam").mouseover(function(){
+				$("#subtractionExam").css("-webkit-animation-play-state", "running");	
+			});
+			$("#subtractionExam").mouseout(function(){
+				reset_animation('subtractionExam');
+				$("#subtractionExam").css("-webkit-animation-play-state", "paused");				
+			});
+			
+			$("#multiplicationPractice").mouseover(function(){
+				$("#multiplicationPractice").css("-webkit-animation-play-state", "running");	
+			});
+			$("#multiplicationPractice").mouseout(function(){
+				reset_animation('multiplicationPractice');
+				$("#multiplicationPractice").css("-webkit-animation-play-state", "paused");				
+			});
+			
+			$("#multiplicationExam").mouseover(function(){
+				$("#multiplicationExam").css("-webkit-animation-play-state", "running");	
+			});
+			$("#multiplicationExam").mouseout(function(){
+				reset_animation('multiplicationExam');
+				$("#multiplicationExam").css("-webkit-animation-play-state", "paused");				
+			});
+			
+			$("#divisionPractice").mouseover(function(){
+				$("#divisionPractice").css("-webkit-animation-play-state", "running");	
+			});
+			$("#divisionPractice").mouseout(function(){
+				reset_animation('divisionPractice');
+				$("#divisionPractice").css("-webkit-animation-play-state", "paused");				
+			});
+			
+			$("#divisionExam").mouseover(function(){
+				$("#divisionExam").css("-webkit-animation-play-state", "running");	
+			});
+			$("#divisionExam").mouseout(function(){
+				reset_animation('divisionExam');
+				$("#divisionExam").css("-webkit-animation-play-state", "paused");				
+			});
+			
+			//adding click actions on the buttons
+			$("#additionPractice").click(function(){
+				window.location.href="/addition/math";
+			});
+			
+			$("#additionExam").click(function(){
+				window.location.href="/addition/exam";
+			});
+			
+			$("#subtractionPractice").click(function(){
+				window.location.href="/subtraction/math";
+			});
+			
+			$("#subtractionExam").click(function(){
+				window.location.href="/subtraction/exam";
+			});
+			
+			$("#multiplicationPractice").click(function(){
+				window.location.href="/multiplication/math";
+			});
+			
+			$("#multiplicationExam").click(function(){
+				window.location.href="/multiplication/exam";
+			});
+			
+			$("#divisionPractice").click(function(){
+				window.location.href="/division/math";
+			});
+			
+			$("#divisionExam").click(function(){
+				window.location.href="/division/exam";
+			});
+		});
+	
+	</script>
+	
+</body>
+</html>

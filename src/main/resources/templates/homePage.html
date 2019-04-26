@@ -4,43 +4,75 @@
 	<title>Welcome to Math Rush</title>
 	<link rel="stylesheet" type="text/css" href="css/homePage.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="animationHandling.js"></script>
 </head>
 
 <body>
-
-	<div id="testDiv" class="movingObj animation-target">
-		Hey
+	<h2 id="pageTitle">Math Rush</h2>
+	<div id="buttonAndDiv">
+		<div id="testDiv" class="movingObj animation-target">
+			<label id="testDivText"></label>
+		</div>
+		<input id="playNow" type="button" value="Play Now"/>
 	</div>
 	
 	<script>
 		//stack overflow code
-		function reset_animation() {
+		/*function reset_animation() {
 		  var el = document.getElementById('testDiv');
 		  el.style.animation = 'none';
-		  el.offsetHeight; /* trigger reflow */
+		  el.offsetHeight; /* trigger reflow /
 		  el.style.animation = null; 
-		}
+		}*/
 	
-		var nextTimeout = 7000;
+		var nextTimeout = 0;
 		//stop the animation after 2 and 1/2 times. Want to see animation
 		$(document).ready(function(){
+			
+			//change color of button when hover
+			$("#playNow").mouseover(function(){
+				$("#playNow").css("background-color", "#ea6831");
+				$("#playNow").css("color", "#302f2f");
+			});
+			$("#playNow").mouseout(function(){
+				$("#playNow").css("background-color", "#ef5d1e");
+				$("#playNow").css("color", "black");
+			});
+			
+			//put action on button
+			$("#playNow").click(function(){
+				window.location.href = "selectTypeGame";
+			});
+			
+			//duration of animation
+			var durationAnimation = 2800;
 			//create five events of the animation.
-			for(var i=0;i<5;i++){
+			for(var i=0;i<3;i++){
+				setTimeout(function(){
+					$("#testDivText").html("FUN");
+				}, nextTimeout);
+				
+				setTimeout(function(){
+					$("#testDivText").html("EASY");
+				}, nextTimeout+durationAnimation);
+				
+				setTimeout(function(){
+					$("#testDivText").html("EFFECTIVE");
+				}, nextTimeout+ (2*durationAnimation));
+				
+				nextTimeout+=7000;
 				setTimeout(function(){
 					$("#testDiv").css("-webkit-animation-play-state", "paused");
 				}, nextTimeout);
 				
 				nextTimeout+=5000;
-				
-				setTimeout(function(){
-					reset_animation();
-				}, nextTimeout);
-				nextTimeout+=7000;
+				if(i !== 2){
+					setTimeout(function(){
+						reset_animation('testDiv');
+					}, nextTimeout);
+				}
+					
 			}
-			//pauses it indefinitely. This is because the animation can become tiring.
-			setTimeout(function(){
-				$("#testDiv").css("-webkit-animation-play-state", "paused");
-			}, nextTimeout);
 			
 		});
 	

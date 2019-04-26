@@ -34,6 +34,19 @@ public class BasicMathAdditionController {
     	return "randomMathAdditionExam";
     }
     
+    @GetMapping("/timed")
+    public String examTimed() {
+    	return "randomMathAdditionExamTimed";
+    }
+    
+    @GetMapping("/done")
+    @ResponseBody
+    public String sendResults() {
+    	BasicMathController.setCorrectAnswers(correctAnswers);
+    	BasicMathController.setTotalAnswers(totalAnswers);
+    	return "OK";
+    }
+    
   //those are all returning the operator values for a certain equation
     @GetMapping("/operator")
     @ResponseBody

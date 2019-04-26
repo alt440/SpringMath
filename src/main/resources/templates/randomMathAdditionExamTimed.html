@@ -1,0 +1,189 @@
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<Title>Random Math</Title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="additionAjaxCalls.js"></script>
+	<script src="../getImageOperator.js"></script>
+	<script src="../animationHandling.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/randomMath.css">
+</head>
+
+<body>
+	<div id="pageTitle">Math Rush</div>
+	<div id="scoreHandling">
+		<label id="correctAnswers" class="scoreDisplay"></label><br/>
+		<label id="over" class="scoreDisplay">___</label><br/>
+		<label id="allQuestions" class="scoreDisplay"></label><br/>
+		<br/>
+		<br/>
+		<div id="circleFillUp">
+			<div class='outer-shadow'>
+  			</div>
+  			<div class='inner-shadow'>
+  			</div>
+  			<div class='hold left' id="leftPart">
+				<div class='fill' id="fillOne"></div>
+			</div>
+			<div class='hold right' id="rightPart">
+			    <div class='fill' id="fillTwo"></div>
+			</div>
+		</div>
+	</div>
+	
+	<table id="tableHBox">
+		<tr>
+			<td><label id="var1" class="vars"></label></td>
+			<!--  don't set the source so I do not have a wrong operator displayed first -->
+			<td><img id="operator"></td>
+			<td><label id="var2" class="vars"></label></td>
+			<td><img id="equalSign" src="../img/equalSign.PNG" alt="Equal sign"></td>
+			<td><input type="text" id="answerText"></td>
+			<td><input type="submit" value="Submit" id="submitAnswer"></td>
+		</tr>
+		<tr>
+			<td></td>
+		</tr>
+	</table>
+	
+	<!-- Shows the feedback message. Says Nice Job! or Sorry, wrong answer -->
+	<label id="feedback"></label>
+	
+	<script>
+	//to handle the answer response so it does not get modified, you can 
+	//simply give the response ("Nice job!" or "Sorry, wrong answer.")
+	//thus, the answer response has no way of being modified
+		var operator = -1;
+		var var2 = -1;
+		var var1 = -1;
+		var totalAnswers = 0;
+		var correctAnswers = 0;
+		var output = "";
+		const answerX = false;
+		$(document).ready(function(){
+			//to change the length of animation based on some user input
+			//have to do -1 to that time you want (if you want 5s for whole animation, do (5-1)/2 bbecause thats just how it works)
+			var halfTimeAnimation = 6;
+			$('.left').stop();
+			$('.right').stop();
+			$('.left').animate({},{
+				duration: "6s",
+				easing: 'linear'
+			});
+			$('.right').animate({},{
+				duration: "6s",
+				easing: 'linear'
+			});
+			
+			
+			//this is a lock that allows only one event at a time to enter submit button
+			var lock = false;
+			
+			//trigger focus on input when going on page
+			$("#answerText").focus();
+			
+			//to press submit on enter
+			$("#answerText").keyup(function(event){
+				if (event.which === 13){					
+					$("#submitAnswer").click();
+				} 
+			});
+			
+			//clicks on submit answer when time is up (when right animation has finished)
+			$('.right').on('animationend webkitAnimationEnd', function() { 
+			    $("#submitAnswer").click();
+			});
+			
+			//get the operator and second operand
+			$.when(getOperator(), getOperand2()).done(function(){
+				//get the first operand next, because we want a whole number as response
+				$.when(getOperand1(var2), getCorrectAnswersValue(), getTotalAnswersValue()).done(function(){
+					$('#operator').attr('src', srcOperatorImage(operator));
+					//setting values of labels
+					$('#var1').html(var1);
+					$('#var2').html(var2);
+					
+					//setting values for score
+					$('#correctAnswers').html(correctAnswers);
+					$('#allQuestions').html(totalAnswers);
+				});
+			});
+			
+			//same thing as above, but this time this is generated from a click
+			$('#submitAnswer').click(function(){
+				
+				//pause the animations
+				$(".left").css("-webkit-animation-play-state", "paused");
+				$(".right").css("-webkit-animation-play-state", "paused");
+				
+				if(lock === false){
+					lock = true;
+					
+					$.when(getAnswer($("#answerText").val())).done(function(){
+						$('#feedback').html(output);
+
+						//change equation
+						setTimeout(function(){
+							$.when(getOperator(), getOperand2()).done(function(){
+								//get the first operand next, because we want a whole number as response
+								$.when(getOperand1(var2), getCorrectAnswersValue(), getTotalAnswersValue()).done(function(){
+									
+									if(totalAnswers === 50){
+										//call backend to say it is done and load another page
+										$.ajax({
+											type: "GET",
+											url: "/addition/done",
+											timeout: 10000,
+											success: function(){
+												window.location.href="/done";
+											},
+											error: function(e){
+												
+											}
+										})	
+									}
+									
+									else{
+										$('#operator').attr('src', srcOperatorImage(operator));
+										//setting values of labels
+										$('#var1').html(var1);
+										$('#var2').html(var2);
+										
+										output = "";
+										$('#feedback').html(output);
+										//setting values for score
+										$('#correctAnswers').html(correctAnswers);
+										$('#allQuestions').html(totalAnswers);
+										
+										//reset the value of the input to ""
+										$("#answerText").val("");
+										
+										//restart animations
+										reset_animation("leftPart");
+										reset_animation("rightPart");
+										reset_animation("fillOne");
+										reset_animation("fillTwo");
+										
+										//remove the lock
+										lock = false;
+									}
+									
+								});
+							});
+						}, 1000);
+						
+					});
+					
+				}
+				
+				
+				
+			});
+			
+		});
+		
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<html>
+
+<head>
+	<title>Complete</title>
+</head>
+
+<body>
+	<div th:switch="${correctAnswers}">
+		<p th:case=-1>Hi</p>
+		<p th:case="*">Congratulations! You just completed the game.</p>
+	</div>
+</body>
+</html>
