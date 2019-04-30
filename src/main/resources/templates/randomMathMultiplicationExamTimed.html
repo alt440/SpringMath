@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<Title>Random Math</Title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="additionAjaxCalls.js"></script>
+	<script src="multiplicationAjaxCalls.js"></script>
 	<script src="../getImageOperator.js"></script>
 	<script src="../animationHandling.js"></script>
 	<link rel="stylesheet" type="text/css" href="../css/randomMath.css">
@@ -17,14 +17,11 @@
 		<label id="correctAnswers" class="scoreDisplay"></label><br/>
 		<label id="over" class="scoreDisplay">___</label><br/>
 		<label id="allQuestions" class="scoreDisplay"></label><br/>
-		<br/>
-		<br/>
 		
 		<div class="circle" id="circleFillUp">
 			<div class="circleInsider" id="circleInsider"></div>
 			<label id="timeLeft"></label>
 		</div>
-		
 	</div>
 	
 	<table id="tableHBox">
@@ -42,13 +39,9 @@
 		</tr>
 	</table>
 	
-	<!-- Shows the feedback message. Says Nice Job! or Sorry, wrong answer -->
 	<label id="feedback"></label>
 	
-	<!-- th:inline allows thymeleaf to recognize this is javascript -->
-	<script th:inline="text">
-	//also thymeleaf
-	/*<![CDATA[*/
+	<script>
 	//to handle the answer response so it does not get modified, you can 
 	//simply give the response ("Nice job!" or "Sorry, wrong answer.")
 	//thus, the answer response has no way of being modified
@@ -60,16 +53,11 @@
 		var output = "";
 		const answerX = false;
 		
-		//to indicate the time remaining
-		var timeRemaining=6;
-		
-		[# th:if="${timeVal != 0}"]
-			timeRemaining = [[${timeVal}]];
-		[/]
+		var timeRemaining = 6;
 		$("#timeLeft").html(timeRemaining);
+		
 		$(document).ready(function(){
 			
-			$(".circleInsider").stop();
 			$(".circleInsider").css("-webkit-animation-play-state", "paused");
 
 			$(".circleInsider").css("animation-duration", timeRemaining+"s");
@@ -78,7 +66,7 @@
 			$("#circleInsider").removeClass("circleInsider");
 			setTimeout(function(){
 				$("#circleInsider").addClass("circleInsider");
-			},1);//
+			},1);//*/
 			//$(".right").css("-webkit-animation-play-state", "paused");
 			
 			//this time interval is for setting the time remaining depending on the actual time remaining to answer the question
@@ -132,90 +120,85 @@
 				//lock allows only one click on submit to pass
 				if(lock === false){
 					lock = true;
-					
 					$.when(getAnswer($("#answerText").val())).done(function(){
-						$('#feedback').html(output);
-
-						//change equation
-						setTimeout(function(){
-							$.when(getOperator(), getOperand2()).done(function(){
-								//get the first operand next, because we want a whole number as response
-								$.when(getOperand1(var2), getCorrectAnswersValue(), getTotalAnswersValue()).done(function(){
-									
-									if(totalAnswers === 50){
-										//call backend to say it is done and load another page
-										$.ajax({
-											type: "GET",
-											url: "/addition/done",
-											timeout: 10000,
-											success: function(){
-												window.location.href="/done";
-											},
-											error: function(e){
-												
-											}
-										})	
-									}
-									
-									else{
-										$('#operator').attr('src', srcOperatorImage(operator));
-										//setting values of labels
-										$('#var1').html(var1);
-										$('#var2').html(var2);
+							$('#feedback').html(output);
+							
+							//change equation
+							setTimeout(function(){
+								$.when(getOperator(), getOperand2()).done(function(){
+									//get the first operand next, because we want a whole number as response
+									$.when(getOperand1(var2), getCorrectAnswersValue(), getTotalAnswersValue()).done(function(){
 										
-										output = "";
-										$('#feedback').html(output);
-										//setting values for score
-										$('#correctAnswers').html(correctAnswers);
-										$('#allQuestions').html(totalAnswers);
+										if(totalAnswers === 50){
+											//call backend to say it is done and load another page
+											$.ajax({
+												type: "GET",
+												url: "/addition/done",
+												timeout: 10000,
+												success: function(){
+													window.location.href="/done";
+												},
+												error: function(e){
+													
+												}
+											})	
+										}
 										
-										//reset the value of the input to ""
-										$("#answerText").val("");
+										else{
+											//change equation
+											$('#operator').attr('src', srcOperatorImage(operator));
+											//setting values of labels
+											$('#var1').html(var1);
+											$('#var2').html(var2);
+											
+											output = "";
+											$('#feedback').html(output);
+											//setting values for score
+											$('#correctAnswers').html(correctAnswers);
+											$('#allQuestions').html(totalAnswers);
+											
+											//reset the value of the input to ""
+											$("#answerText").val("");
+											
+											
+											//restart animations. BEST WAY TO DO IT!!!
+											reset_animation2("circleInsider");
+											
+											//to indicate the time remaining
+											timeRemaining = 6;
+											$("#timeLeft").html(timeRemaining);
+											
+											//remove previous time interval
+											window.clearInterval(timeInterval);
+											//reset the time interval, because it might not be exact
+											timeInterval = setInterval(function(){
+												//decrease time remaining to answer
+												if(timeRemaining !== 0){
+													timeRemaining -=1;
+													$('#timeLeft').html(timeRemaining);
+												}
+												else{
+													$("#submitAnswer").click();
+												}
+											}, 1000);
+											
+											//remove the lock
+											lock = false;
+										}
 										
 										
-										//restart animations. BEST WAY TO DO IT!!!
-										reset_animation2("circleInsider");
-										
-										//to indicate the time remaining
-										timeRemaining = 6;
-										[# th:if="${timeVal != 0}"]
-											timeRemaining = [[${timeVal}]];
-										[/]
-										$("#timeLeft").html(timeRemaining);
-										
-										//remove previous time interval
-										window.clearInterval(timeInterval);
-										//reset the time interval, because it might not be exact
-										timeInterval = setInterval(function(){
-											//decrease time remaining to answer
-											if(timeRemaining !== 0){
-												timeRemaining -=1;
-												$('#timeLeft').html(timeRemaining);
-											}
-											else{
-												$("#submitAnswer").click();
-											}
-										}, 1000);
-										
-										//remove the lock
-										lock = false;
-									}
-									
+									});
 								});
-							});
-						}, 1000);
-						
-					});
-					
+							}, 1000);
+							
+							
+					})
 				}
-				
-				
-				
 			});
 			
 		});
-		//thymeleaf
-		/*]]>*/
+		
+		
 	</script>
 </body>
 </html>

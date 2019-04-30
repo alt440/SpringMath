@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Select Time</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="animationHandling.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/randomMath.css">
+	<link rel="stylesheet" type="text/css" href="../css/selectTime.css">
+</head>
+<body>
+	<div id="pageTitle">Math Rush</div>
+	<label>Select the time in seconds allowed to give a response. Passed that time, no answers will be accepted and you will lose 1 mark. (Value between 3 and 30. Default: 5)</label>
+	<input type="text" id="inputTime"/>
+	<input type="button" value="Submit" id="confirmTime"/>
+	
+	<label id="countdown"></label>
+	
+	<script>
+		var count = 3;
+		$(document).ready(function(){
+			
+			$("#confirmTime").click(function(){
+				validateTime($("#inputTime").val());
+				//validate the value
+			});
+			
+			//when animation is done
+			$('#countdown').on('animationend webkitAnimationEnd', function() { 
+			    changeValReset();
+			});
+		});
+		
+		function validateTime(val){
+			return $.ajax({
+				type: "POST",
+				url: "/validateTime",
+				timeout: 10000,
+				contentType: "application/json",
+				data: encodeURI(JSON.stringify({time: val})),
+				processData: false,
+				success: function(){
+					$("#countdown").html("Ready?");
+					$("#countdown").addClass("countdown");
+					
+				},
+				error: function(e){
+					console.log(e);
+				}
+			});
+		}
+		
+		function goToDestination(){
+			window.location.href = "/jumpToDestination";
+		}
+		
+		function changeValReset(){
+			
+			if (count === 0){
+				//seek destination
+				goToDestination();
+			}
+			else{
+				$("#countdown").html(count);
+				count--;
+				reset_animation3("countdown","countdown");
+			}
+		}
+	
+	</script>
+</body>
+</html>

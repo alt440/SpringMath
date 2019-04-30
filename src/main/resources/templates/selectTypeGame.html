@@ -13,28 +13,33 @@
 	
 	<table id="typeGames">
 		<tr>
-			<td id="practiceTitle">Practice</td>
-			<td id="examTitle">Exam</td>
+			<td id="practiceTitle" class="titleTypeGame">Practice</td>
+			<td id="examTitle" class="titleTypeGame">Exam</td>
+			<td id="timedExamTitle" class="titleTypeGame">Timed Exam</td>
 		</tr>
 		
 		<tr>
 			<td><input id="additionPractice" class="addition" type="button" value="Addition"/></td>
 			<td><input id="additionExam" class="addition" type="button" value="Addition"/></td>
+			<td><input id="additionTimedExam" class="addition timed" type="button" value="Addition"/></td>
 		</tr>
 			
 		<tr>
 			<td><input id="subtractionPractice" class="subtraction" type="button" value="Subtraction"/></td>
 			<td><input id="subtractionExam" class="subtraction" type="button" value="Subtraction"/></td>
+			<td><input id="subtractionTimedExam" class="subtraction timed" type="button" value="Subtraction"/></td>
 		</tr>
 		
 		<tr>
 			<td><input id="multiplicationPractice" class="multiplication" type="button" value="Multiplication"/></td>
 			<td><input id="multiplicationExam" class="multiplication" type="button" value="Multiplication"/></td>
+			<td><input id="multiplicationTimedExam" class="multiplication timed" type="button" value="Multiplication"/></td>
 		</tr>
 		
 		<tr>
 			<td><input id="divisionPractice" class="division" type="button" value="Division"/></td>
 			<td><input id="divisionExam" class="division" type="button" value="Division"/></td>
+			<td><input id="divisionTimedExam" class="division timed" type="button" value="Division"/></td>
 		</tr>
 	
 	</table>
@@ -111,6 +116,38 @@
 				$("#divisionExam").css("-webkit-animation-play-state", "paused");				
 			});
 			
+			$("#additionTimedExam").mouseover(function(){
+				$("#additionTimedExam").css("-webkit-animation-play-state", "running");	
+			});
+			$("#additionTimedExam").mouseout(function(){
+				reset_animation('additionTimedExam');
+				$("#additionTimedExam").css("-webkit-animation-play-state", "paused");				
+			});
+			
+			$("#multiplicationTimedExam").mouseover(function(){
+				$("#multiplicationTimedExam").css("-webkit-animation-play-state", "running");	
+			});
+			$("#multiplicationTimedExam").mouseout(function(){
+				reset_animation('multiplicationTimedExam');
+				$("#multiplicationTimedExam").css("-webkit-animation-play-state", "paused");				
+			});
+			
+			$("#divisionTimedExam").mouseover(function(){
+				$("#divisionTimedExam").css("-webkit-animation-play-state", "running");	
+			});
+			$("#divisionTimedExam").mouseout(function(){
+				reset_animation('divisionTimedExam');
+				$("#divisionTimedExam").css("-webkit-animation-play-state", "paused");				
+			});
+			
+			$("#subtractionTimedExam").mouseover(function(){
+				$("#subtractionTimedExam").css("-webkit-animation-play-state", "running");	
+			});
+			$("#subtractionTimedExam").mouseout(function(){
+				reset_animation('subtractionTimedExam');
+				$("#subtractionTimedExam").css("-webkit-animation-play-state", "paused");				
+			});
+			
 			//adding click actions on the buttons
 			$("#additionPractice").click(function(){
 				window.location.href="/addition/math";
@@ -143,7 +180,44 @@
 			$("#divisionExam").click(function(){
 				window.location.href="/division/exam";
 			});
+			
+			//timed exam
+			$("#additionTimedExam").click(function(){
+				setDestination(0);
+			});
+			
+			$("#subtractionTimedExam").click(function(){
+				setDestination(1);
+			});
+			
+			$("#multiplicationTimedExam").click(function(){
+				setDestination(2);
+			});
+			
+			$("#divisionTimedExam").click(function(){
+				setDestination(3);
+			});
 		});
+		
+		
+		//ajax call
+		function setDestination(val){
+			return $.ajax({
+				type: "POST",
+				url: "/setDestination",
+				timeout: 10000,
+				contentType: "application/json",
+				data: encodeURI(JSON.stringify({destinationVal: val})),
+				processData: false,
+				success: function(){
+					//redirect to set time page
+					window.location.href="/selectTime";
+				},
+				error: function(e){
+					console.log(e);
+				}
+			});
+		}
 	
 	</script>
 	

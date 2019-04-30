@@ -95,5 +95,18 @@ public class BasicMathMultiplicationController {
 		    	
 		    	return "Sorry, Wrong Answer.";
 		    }
+		    
+		    @GetMapping("/timed")
+		    public String examTimed() {
+		    	return "randomMathMultiplicationExamTimed";
+		    }
+		    
+		    @GetMapping("/done")
+		    @ResponseBody
+		    public String sendResults() {
+		    	BasicMathController.setCorrectAnswers(correctAnswers);
+		    	BasicMathController.setTotalAnswers(totalAnswers);
+		    	return "OK";
+		    }
 	
 }

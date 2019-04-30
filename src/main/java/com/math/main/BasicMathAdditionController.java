@@ -1,11 +1,13 @@
 package com.math.main;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 
 @Controller
 @RequestMapping(value = "/addition")
@@ -34,10 +36,20 @@ public class BasicMathAdditionController {
     	return "randomMathAdditionExam";
     }
     
+    //this URL crashes when no time provided. Thus, must go at selectTime page before coming here.
     @GetMapping("/timed")
-    public String examTimed() {
+    public String examTimed(@ModelAttribute("time") int time, Model model) {
+    	//gets the time value from the basic math controller /selectTime
+    	model.addAttribute("timeVal", time);
     	return "randomMathAdditionExamTimed";
     }
+    
+    //need to overload URL above in case I am just loading the file without previous referral selectTime? not working.
+    /*@GetMapping("/timed")
+    public String examTimed2() {
+    	//gets the time value from the basic math controller /selectTime
+    	return "randomMathAdditionExamTimed";
+    }*/
     
     @GetMapping("/done")
     @ResponseBody

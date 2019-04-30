@@ -102,5 +102,18 @@ public class BasicMathDivisionController {
 	    	
 	    	return "Sorry, Wrong Answer.";
 	    }
+	    
+	    @GetMapping("/timed")
+	    public String examTimed() {
+	    	return "randomMathDivisionExamTimed";
+	    }
+	    
+	    @GetMapping("/done")
+	    @ResponseBody
+	    public String sendResults() {
+	    	BasicMathController.setCorrectAnswers(correctAnswers);
+	    	BasicMathController.setTotalAnswers(totalAnswers);
+	    	return "OK";
+	    }
 	
 }

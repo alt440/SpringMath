@@ -12,6 +12,8 @@
 }
 
 #tableHBox{
+	position: relative;
+	top: 15%;
 	border-spacing: 10px;
 	margin-left: 30%;
 	margin-right: 25%;
@@ -102,12 +104,12 @@ body{
 
 /*Circle loading animation*/
 /*This as a reference: https://stackoverflow.com/questions/35383629/css-circle-border-fill-animation */
-#circleFillUp {
+/*#circleFillUp {
   width: 50px;
   height: 50px;
   margin: 30px auto;
   position: relative;
-}
+}*/
 
 .outer-shadow,
 .inner-shadow {
@@ -148,8 +150,9 @@ body{
   height: 100%;
   border-radius: 100%;
   clip: rect(0px, 25px, 50px, 0px);
+  
 }
-#leftPart .fill {
+.left .fill {
   z-index: 1;
   -webkit-animation: left 1s linear;
   -moz-animation: left 1s linear;
@@ -171,13 +174,13 @@ body{
     -webkit-transform: rotate(180deg);
   }
 }
-#rightPart {
+.right {
   z-index: 3;
   -webkit-transform: rotate(180deg);
   -moz-transform: rotate(180deg);
   transform: rotate(180deg);
 }
-#rightPart .fill {
+.right .fill {
   z-index: 3;
   -webkit-animation: right 1s linear;
   -moz-animation: right 1s linear;
@@ -207,3 +210,27 @@ body{
   margin-top: 7px;
 }
 
+/*Custom classes*/
+/*.rightAnimCustom {
+  z-index: 3;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.rightAnimCustom .fillCustom{
+  z-index: 3;
+  -webkit-animation: right 3000ms linear;
+  -moz-animation: right 3000ms linear;
+  animation: right 3000ms linear both;
+  -webkit-animation-delay: 3000ms;
+  -moz-animation-delay: 3000ms;
+  animation-delay: 3000ms;
+}
+
+.leftAnimCustom .fillCustom{
+  z-index: 1;
+  -webkit-animation: left 3000ms linear;
+  -moz-animation: left 3000ms linear;
+  animation: left 3000ms linear both;
+}*/
