@@ -6,6 +6,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="divisionAjaxCalls.js"></script>
 	<script src="../getImageOperator.js"></script>
+	<script src="../operationSimulator.js"></script>
 	<link rel="stylesheet" type="text/css" href="../css/randomMath.css">
 </head>
 
@@ -34,6 +35,89 @@
 	
 	<label id="feedback"></label>
 	
+	<table id="explanationTable">
+		<tr>
+			<!-- Comments explaining the steps -->
+			<td><label id="commentSimulation" class="simVal"></label></td>
+		</tr>
+		<tr>
+			<td><input type="button" id="restartSimulation" value="Restart Division Simulation"/></td>
+		</tr>
+	</table>
+	
+	
+	<!-- Shows the formal way of doing the addition -->
+	<table id="simulationTable">
+		<tr>
+			<td></td>
+			<td></td>
+			<td class="widerColumn"></td>
+			<!--  This row handles the answers. (how many times two go in 1? sort of thing) -->
+			<td class="simVal" id="answerHundredDigit"></td>
+			<td class="simVal" id="answerDecadeDigit"></td>
+			<td class="simVal" id="answerUnitDigit"></td>
+		</tr>
+		<tr>
+			<!-- This row shows the operands -->
+			<td class="simVal" id="operand2DecadeDigit"></td>
+			<td class="simVal" id="operand2UnitDigit"></td>
+			<td class="simVal widerColumn" id="separator"></td>
+			
+			<td class="simVal" id="operand1HundredDigit"></td>
+			<td class="simVal" id="operand1DecadeDigit"></td>
+			<td class="simVal" id="operand1UnitDigit"></td>
+		</tr>
+		<!-- Adding three more rows for subtractions -->
+		<tr>
+			<!-- First number subtracted from value -->
+			<td></td>
+			<td></td>
+			<td class="widerColumn"><img id="operator1" src="../img/blank.png"></td>
+			<td class="simVal" id="firstValHundredDigit"></td>
+			<td class="simVal" id="firstValDecadeDigit"></td>
+			<td class="simVal" id="firstValUnitDigit"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td colspan="3" id="answerBar1" class="simVal"></td>
+		</tr>
+		<tr>
+			<!-- First answer subtraction-->
+			<td></td>
+			<td></td>
+			<td class="widerColumn"></td>
+			<td class="simVal" id="firstAnswerHundredDigit"></td>
+			<td class="simVal" id="firstAnswerDecadeDigit"></td>
+			<td class="simVal" id="firstAnswerUnitDigit"></td>
+		</tr>
+		<tr>
+			<!-- Second number subtracted from value -->
+			<td></td>
+			<td></td>
+			<td class="widerColumn"><img id="operator2" src="../img/blank.png"></td>
+			<td class="simVal" id="secondValHundredDigit"></td>
+			<td class="simVal" id="secondValDecadeDigit"></td>
+			<td class="simVal" id="secondValUnitDigit"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td colspan="3" id="answerBar2" class="simVal"></td>
+		</tr>
+		<tr>
+			<!-- Second answer subtraction-->
+			<td></td>
+			<td></td>
+			<td class="widerColumn"></td> 
+			<td class="simVal" id="secondAnswerHundredDigit"></td>
+			<td class="simVal" id="secondAnswerDecadeDigit"></td>
+			<td class="simVal" id="secondAnswerUnitDigit"></td>
+		</tr>
+	</table>
+	
 	<script>
 	//to handle the answer response so it does not get modified, you can 
 	//simply give the response ("Nice job!" or "Sorry, wrong answer.")
@@ -43,9 +127,16 @@
 		var var1 = -1;
 		var totalAnswers = 0;
 		var correctAnswers = 0;
+		//tells you how many tries were made to get the answer
+		var counterTries = 0;
 		var output = "";
 		const answerX = false;
 		$(document).ready(function(){
+			//to restart the animation
+			$("#restartSimulation").click(function(){
+				simulateDivision(var1, var2);
+			});
+			
 			//get the operator and second operand
 			$.when(getOperator(), getOperand2()).done(function(){
 				//get the first operand next, because we want a whole number as response
@@ -66,24 +157,47 @@
 				$.when(getAnswer($("#answerText").val())).done(function(){
 						$('#feedback').html(output);
 						
-						//change equation
-						setTimeout(function(){
-							$.when(getOperator(), getOperand2()).done(function(){
-								//get the first operand next, because we want a whole number as response
-								$.when(getOperand1(var2), getCorrectAnswersValue(), getTotalAnswersValue()).done(function(){
-									$('#operator').attr('src', srcOperatorImage(operator));
-									//setting values of labels
-									$('#var1').html(var1);
-									$('#var2').html(var2);
-									
-									output = "";
-									$('#feedback').html(output);
-									//setting values for score
-									$('#correctAnswers').html(correctAnswers);
-									$('#allQuestions').html(totalAnswers);
+						//increments the tries to the question
+						counterTries++;
+						if(output.localeCompare("Nice Job!") == 0){
+							//change equation
+							setTimeout(function(){
+								$.when(getOperator(), getOperand2()).done(function(){
+									//get the first operand next, because we want a whole number as response
+									$.when(getOperand1(var2), getCorrectAnswersValue(), getTotalAnswersValue()).done(function(){
+										$('#operator').attr('src', srcOperatorImage(operator));
+										//setting values of labels
+										$('#var1').html(var1);
+										$('#var2').html(var2);
+										
+										output = "";
+										$('#feedback').html(output);
+										//setting values for score
+										$('#correctAnswers').html(correctAnswers);
+										$('#allQuestions').html(totalAnswers);
+									});
 								});
-							});
-						}, 1000);
+							}, 1000);
+							
+							counterTries = 0;
+						}
+						else{
+							setTimeout(function(){
+								$('#feedback').html("Oops! You got the wrong answer. Look below to know how to do this operation correctly.");
+								
+								//show the tables
+								setTimeout(function(){									
+									$("#commentSimulation").show();
+									$("#simulationTable").show();
+									simulateDivision(var1, var2);
+									$("#restartSimulation").show();
+								}, 1000);
+							}, 1000);
+							
+							
+							//to reset the tries and go to the next question. Good or not?
+							counterTries = 0;
+						}
 				})
 				
 			});

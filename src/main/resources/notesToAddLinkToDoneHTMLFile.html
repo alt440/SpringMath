@@ -30,5 +30,7 @@ Inside the else condition goes the code to renew the page with a new operation a
 The if condition is to tell us that after 10 operations, go to the "done" URL. 
 This contains an AJAX call which sends to the backend that the game is done. The backend uses that URL to
 send the data to the BasicMathController. When we change URL, the BasicMathController gets its page refreshed.
+
+EDIT: I only do window.location.href="/addition/done"; now. That is because of redirection.
 </body>
 </html>

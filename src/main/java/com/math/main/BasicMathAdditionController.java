@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
@@ -52,11 +53,13 @@ public class BasicMathAdditionController {
     }*/
     
     @GetMapping("/done")
-    @ResponseBody
-    public String sendResults() {
-    	BasicMathController.setCorrectAnswers(correctAnswers);
-    	BasicMathController.setTotalAnswers(totalAnswers);
-    	return "OK";
+    public String sendResults(RedirectAttributes redirect) {
+    	redirect.addFlashAttribute("correctAnswers", correctAnswers);
+    	redirect.addFlashAttribute("totalAnswers", totalAnswers);
+    	if(totalAnswers!=50) {
+    		return "redirect:/error";
+    	}
+    	return "redirect:/done";
     }
     
   //those are all returning the operator values for a certain equation

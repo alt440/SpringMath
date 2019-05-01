@@ -357,7 +357,240 @@ function simulateMultiplication(operand1, operand2){
 }
 
 function simulateDivision(operand1, operand2){
-	//To Do Eventually...
+
+	var timeoutDelay = 5000;
+	//show the table
+	$("#simulationTable").show();
+	//reset values to replay the scenario (all values in class simVal)
+	$(".simVal").html("");
+	
+	//set image back to blank
+	$("#operator1").attr("src","../img/blank.png");
+	$("#operator2").attr("src","../img/blank.png");
+	
+	$("#commentSimulation").html("First, set the values as shown below.");
+	
+	var op1hundredDigit = parseInt(operand1/100);
+	var op1decadeDigit = parseInt(operand1/10)%10;
+	var op1unitDigit = operand1%10;
+	if(op1hundredDigit!=0){
+		$("#operand1HundredDigit").html(op1hundredDigit);
+	}
+	if(op1decadeDigit!=0){
+		$("#operand1DecadeDigit").html(op1decadeDigit);
+	}
+	
+	$("#operand1UnitDigit").html(op1unitDigit);
+	
+	//set the separator
+	$("#separator").html("|");
+	
+	var op2DecadeDigit = parseInt(operand2/10);
+	var op2UnitDigit = operand2%10;
+	if(op2DecadeDigit!=0){
+		$("#operand2DecadeDigit").html(op2DecadeDigit);
+	}
+	
+	$("#operand2UnitDigit").html(op2UnitDigit);
+	
+	//Now that we have removed all 0s, I start the procedure
+	timeouts.push(setTimeout(function(){
+		$("#commentSimulation").html("Then, look at how many times the dividend goes into the divisor. To do that, we look into each digit of the dividend individually.");
+	},timeoutDelay));
+	
+	timeouts.push(setTimeout(function(){
+		//start at units. this assumes that dividend is smaller than divisor, thus the dividend can go multiple times in the divisor. 
+		if(op1decadeDigit === 0 && op1hundredDigit === 0){
+			//compare unit with unit of the two operands
+			var maxNbTimes = parseInt(op1unitDigit/op2UnitDigit);
+			var val = maxNbTimes*op2UnitDigit;
+			$("#firstValUnitDigit").html(val);
+			var remainder = op1unitDigit - val;
+			$("#firstAnswerUnitDigit").html(remainder);
+			$("#operator1").attr("src","../img/subtract.png");
+			$("#answerBar1").html("----------");
+			$("#answerUnitDigit").html(maxNbTimes);
+			$("#commentSimulation").html("How much times do "+op1unitDigit+" go into "+op2UnitDigit+"? It goes "+maxNbTimes+" times, because "+val+" is the closest lower value in multiples of "+op2UnitDigit+" to "+op1unitDigit+".");
+			
+			timeouts.push(setTimeout(function(){
+				$("#commentSimulation").html("Then, the answer can be found above the dividend. ("+parseInt(operand1/operand2)+")");
+			}, timeoutDelay));
+		}
+		
+		else if(op1hundredDigit === 0){
+			
+			var maxNbTimes=parseInt(op1decadeDigit/operand2);
+			var val = maxNbTimes*operand2;
+			var remainder = op1decadeDigit-val;
+			
+			$("#commentSimulation").html("How much times do "+op1decadeDigit+" go into "+operand2+"? It goes "+maxNbTimes+" times, because "+val+" is the closest lower value in multiples of "+operand2+" to "+op1decadeDigit+".");
+			if(val === 0){
+				timeouts.push(setTimeout(function(){
+					$("#commentSimulation").html("Because "+op1decadeDigit+" divided by "+operand2+" gives 0, then we need to bring down the next digit.");
+					
+					timeouts.push(setTimeout(function(){
+						var operand1Val = op1decadeDigit*10+op1unitDigit;
+						maxNbTimes = parseInt(operand1Val/operand2);
+						val = maxNbTimes*operand2;
+						remainder = operand1Val - val;
+						
+						$("#firstValUnitDigit").html(val%10);
+						$("#firstValDecadeDigit").html(parseInt(val/10));
+						$("#operator1").attr("src", "../img/subtract.png");
+						$("#answerBar1").html("----------");
+						$("#answerUnitDigit").html(maxNbTimes);
+						
+						$("#firstAnswerUnitDigit").html(remainder%10);
+						if(parseInt(remainder/10) !== 0){
+							$("#firstAnswerDecadeDigit").html(parseInt(remainder/10));
+						}
+						
+						$("#commentSimulation").html("How much times do "+operand1Val+" go into "+operand2+"? It goes "+maxNbTimes+" times, because "+val+" is the closest lower value in multiples of "+operand2+" to "+operand1Val+".");
+						
+					}, timeoutDelay));
+					
+					timeouts.push(setTimeout(function(){
+						$("#commentSimulation").html("Then, the answer can be found above the dividend. ("+parseInt(operand1/operand2)+")");
+					}, timeoutDelay*2));
+					
+				}, timeoutDelay));
+			}
+			
+			else{
+				timeouts.push(setTimeout(function(){
+					//here i do the first subtraction then I do the second
+					$("#firstValDecadeDigit").html(val%10);
+					$("#operator1").attr("src", "../img/subtract.png");
+					$("#answerBar1").html("----------");
+					$("#answerDecadeDigit").html(maxNbTimes);
+					
+					$("#firstAnswerDecadeDigit").html(remainder%10);
+
+					timeouts.push(setTimeout(function(){
+						//second subtraction
+						//bring down second value
+						$("#firstAnswerUnitDigit").html(op1unitDigit);
+						$("#commentSimulation").html("Then, bring down the unit digit of the dividend.");
+						timeouts.push(setTimeout(function(){
+							var decadeVal = remainder%10;
+							var operand1Val = decadeVal*10+op1unitDigit;
+							maxNbTimes = parseInt(operand1Val/operand2);
+							val = operand2*maxNbTimes;
+							var valDecadeUnit = parseInt(val/10);
+							remainder = operand1Val - val;
+							
+							$("#operator2").attr("src", "../img/subtract.png");
+							$("#answerBar2").html("----------");
+							$("#secondValDecadeDigit").html(valDecadeUnit);
+							$("#secondValUnitDigit").html(val%10);
+							
+							$("#secondAnswerDecadeDigit").html(parseInt(remainder/10));
+							$("#secondAnswerUnitDigit").html(remainder%10);
+							
+							$("#answerUnitDigit").html(maxNbTimes);
+							
+							$("#commentSimulation").html("How much times do "+operand1Val+" go into "+operand2+"? It goes "+maxNbTimes+" times, because "+val+" is the closest lower value in multiples of "+operand2+" to "+operand1Val+".");
+							
+							timeouts.push(setTimeout(function(){
+								$("#commentSimulation").html("The answer can be found above the dividend. ("+parseInt(operand1/operand2)+")");
+							},timeoutDelay));
+						}, timeoutDelay));						
+					}, timeoutDelay));
+				}, timeoutDelay));
+			}
+		}
+		
+		else{
+			//assuming the divisor is greater than 1, because numbers above a 100 have greater divisors than 1
+			$("#commentSimulation").html("Because the hundred digit is smaller than the divisor, pull down the decade value.");
+			
+			timeouts.push(setTimeout(function(){
+				var operand1Val = op1hundredDigit*10+op1decadeDigit;
+				var maxNbTimes=parseInt(operand1Val/operand2);
+				var val = maxNbTimes*operand2;
+				var remainder = operand1Val-val;
+				
+				$("#commentSimulation").html("How much times do "+operand1Val+" go into "+operand2+"? It goes "+maxNbTimes+" times, because "+val+" is the closest lower value in multiples of "+operand2+" to "+operand1Val+".");
+				if(val === 0){
+					timeouts.push(setTimeout(function(){
+						$("#commentSimulation").html("Because "+operand1Val+" divided by "+operand2+" gives 0, then we need to bring down the next digit.");
+						
+						timeouts.push(setTimeout(function(){
+							var operand1Val = op1decadeDigit*10+op1unitDigit;
+							maxNbTimes = parseInt(operand1Val/operand2);
+							val = maxNbTimes*operand2;
+							remainder = operand1Val - val;
+							
+							$("#firstValUnitDigit").html(val%10);
+							$("#firstValDecadeDigit").html(parseInt(val/10));
+							$("#operator1").attr("src", "../img/subtract.png");
+							$("#answerBar1").html("----------");
+							$("#answerUnitDigit").html(maxNbTimes);
+							
+							$("#firstAnswerUnitDigit").html(remainder%10);
+							if(parseInt(remainder/10) !== 0){
+								$("#firstAnswerDecadeDigit").html(parseInt(remainder/10));
+							}
+							
+							$("#commentSimulation").html("How much times do "+operand1Val+" go into "+operand2+"? It goes "+maxNbTimes+" times, because "+val+" is the closest lower value in multiples of "+operand2+" to "+operand1Val+".");
+							
+						}, timeoutDelay));
+						
+						timeouts.push(setTimeout(function(){
+							$("#commentSimulation").html("Then, the answer can be found above the dividend. ("+parseInt(operand1/operand2)+")");
+						}, timeoutDelay*2));
+						
+					}, timeoutDelay));
+				}
+				
+				else{
+					timeouts.push(setTimeout(function(){
+						//here i do the first subtraction then I do the second
+						$("#firstValDecadeDigit").html(val%10);
+						$("#firstValHundredDigit").html(parseInt(val/10));
+						$("#operator1").attr("src", "../img/subtract.png");
+						$("#answerBar1").html("----------");
+						$("#answerDecadeDigit").html(maxNbTimes);
+						
+						$("#firstAnswerDecadeDigit").html(remainder%10);
+
+						timeouts.push(setTimeout(function(){
+							//second subtraction
+							//bring down second value
+							$("#firstAnswerUnitDigit").html(op1unitDigit);
+							$("#commentSimulation").html("Then, bring down the unit digit of the dividend.");
+							timeouts.push(setTimeout(function(){
+								var decadeVal = remainder%10;
+								var operand1Val = decadeVal*10+op1unitDigit;
+								maxNbTimes = parseInt(operand1Val/operand2);
+								val = operand2*maxNbTimes;
+								var valDecadeUnit = parseInt(val/10);
+								remainder = operand1Val - val;
+								
+								$("#operator2").attr("src", "../img/subtract.png");
+								$("#answerBar2").html("----------");
+								$("#secondValDecadeDigit").html(valDecadeUnit);
+								$("#secondValUnitDigit").html(val%10);
+								
+								$("#secondAnswerDecadeDigit").html(parseInt(remainder/10));
+								$("#secondAnswerUnitDigit").html(remainder%10);
+								
+								$("#answerUnitDigit").html(maxNbTimes);
+								
+								$("#commentSimulation").html("How much times do "+operand1Val+" go into "+operand2+"? It goes "+maxNbTimes+" times, because "+val+" is the closest lower value in multiples of "+operand2+" to "+operand1Val+".");
+								
+								timeouts.push(setTimeout(function(){
+									$("#commentSimulation").html("The answer can be found above the dividend. ("+parseInt(operand1/operand2)+")");
+								},timeoutDelay));
+							}, timeoutDelay));						
+						}, timeoutDelay));
+					}, timeoutDelay));
+				}
+			}, timeoutDelay));
+			
+		}
+		
+	}, timeoutDelay*2));
 }
 
 function initSetup(operand1, operand2){

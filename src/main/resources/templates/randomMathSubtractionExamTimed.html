@@ -41,7 +41,8 @@
 	
 	<label id="feedback"></label>
 	
-	<script>
+	<!-- th:inline allows thymeleaf to recognize this is javascript -->
+	<script th:inline="text">
 	//to handle the answer response so it does not get modified, you can 
 	//simply give the response ("Nice job!" or "Sorry, wrong answer.")
 	//thus, the answer response has no way of being modified
@@ -54,6 +55,10 @@
 		const answerX = false;
 		
 		var timeRemaining = 6;
+		//thymeleaf instructions
+		[# th:if="${timeVal != 0 && timeVal != null}"]
+			timeRemaining = [[${timeVal}]];
+		[/]
 		$("#timeLeft").html(timeRemaining);
 		
 		$(document).ready(function(){
@@ -132,17 +137,7 @@
 										
 										if(totalAnswers === 50){
 											//call backend to say it is done and load another page
-											$.ajax({
-												type: "GET",
-												url: "/addition/done",
-												timeout: 10000,
-												success: function(){
-													window.location.href="/done";
-												},
-												error: function(e){
-													
-												}
-											})	
+											window.location.href = "/subtraction/done";	
 										}
 										
 										else{
@@ -167,6 +162,10 @@
 											
 											//to indicate the time remaining
 											timeRemaining = 6;
+											//thymeleaf instructions
+											[# th:if="${timeVal != 0 && timeVal != null}"]
+												timeRemaining = [[${timeVal}]];
+											[/]
 											$("#timeLeft").html(timeRemaining);
 											
 											//remove previous time interval
@@ -195,7 +194,6 @@
 			});
 			
 		});
-		
 		
 	</script>
 </body>

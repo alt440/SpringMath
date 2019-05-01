@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.ui.Model;
@@ -21,6 +22,11 @@ public class BasicMathController {
 	private int timeBetweenEquations = -1;
 	private int destination = -1;
 	
+	@GetMapping("/error")
+	public String errorMessage() {
+		return "error";
+	}
+	
 	@GetMapping("/")
 	public String homePage() {
 		return "homePage";
@@ -32,7 +38,7 @@ public class BasicMathController {
 	}
 	
 	@GetMapping("/done")
-	public String doneScoreDisplay(Model model) {
+	public String doneScoreDisplay(@ModelAttribute("correctAnswers") int correctAnswers, @ModelAttribute("totalAnswers") int totalAnswers, Model model) {
 		model.addAttribute("correctAnswers", correctAnswers);
 		model.addAttribute("totalAnswers", totalAnswers);
 		return "gameMathDone";
@@ -142,12 +148,10 @@ public class BasicMathController {
 		default: return "redirect:/addition/timed";
 		}
 	}
-	
-	public static void setCorrectAnswers(int val) {
-		correctAnswers = val;
-	}
-	
-	public static void setTotalAnswers(int val) {
-		totalAnswers = val;
+
+	//page that give suggestions to go further in math
+	@GetMapping("/lookingAhead")
+	public String lookingAhead() {
+		return "lookingAhead";
 	}
 }

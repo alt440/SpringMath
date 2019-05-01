@@ -2,23 +2,17 @@
 
 <head>
 	<meta charset="utf-8">
-	<Title>Random Math</Title>
+	<Title>Explanation Addition</Title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="additionAjaxCalls.js"></script>
 	<!-- ball handling -->
 	<script src="../ballHandling.js"></script>
 	<script src="../getImageOperator.js"></script>
-	<script src="../operationSimulator.js"></script>
 	<link rel="stylesheet" type="text/css" href="../css/randomMath.css">
 </head>
 
 <body>
 	<div id="pageTitle">Math Rush</div>
-	<div id="scoreHandling">
-		<label id="correctAnswers" class="scoreDisplay"></label><br/>
-		<label id="over" class="scoreDisplay">___</label><br/>
-		<label id="allQuestions" class="scoreDisplay"></label><br/>
-	</div>
 	
 	<table id="tableHBox">
 		<tr>
@@ -27,8 +21,7 @@
 			<td><img id="operator"></td>
 			<td><label id="var2" class="vars"></label></td>
 			<td><img id="equalSign" src="../img/equalSign.PNG" alt="Equal sign"></td>
-			<td><input type="text" id="answerText"></td>
-			<td><input type="submit" value="Submit" id="submitAnswer"></td>
+			<td><label id="answerText"></label></td>
 		</tr>
 		<tr>
 			<td></td>
@@ -142,56 +135,7 @@
 		</tr>		
 	</table>
 	
-	<!-- Comments explaining the steps -->
-	<table id="explanationTable">
-		<tr>
-			<td><label id="commentSimulation" class="simVal"></label></td>
-		</tr>
-		<tr>
-			<td><input type="button" id="restartSimulation" value="Restart Addition Simulation"/></td>
-		</tr>
-	</table>
 	
-	
-	<!-- Shows the formal way of doing the addition -->
-	<table id="simulationTable">
-		<!-- This row handles when a certain column of digits surpasses nine -->
-		<tr>
-			<!-- Intentionally left blank -->
-			<td></td>
-			<!-- Trailing value from decades -->
-			<td class="simVal" id="trailingDecades"></td>
-			<!-- Trailing value from units -->
-			<td class="simVal" id="trailingUnits"></td>
-		</tr>
-		<tr>
-			<!-- Intentionally left empty -->
-			<td></td>
-			<!-- These two are for the first operand -->
-			<td class="simVal" id="operand1DecadeDigit"></td>
-			<td class="simVal" id="operand1UnitDigit"></td>
-		</tr>
-		<tr>
-			<!-- This one is for the operator -->
-			<td><img id="operatorSignVal"></td>
-			<!-- These are for the second operand -->
-			<td class="simVal" id="operand2DecadeDigit"></td>
-			<td class="simVal" id="operand2UnitDigit"></td>
-		</tr>
-		<tr>
-			<!-- This will be the equal bar -->
-			<td class="simVal" id="equalBar"></td>
-			<td class="equalBarExtension simVal"></td>
-			<td class="equalBarExtension simVal"></td>
-		</tr>
-		<tr>
-			<!-- Intentionally left empty -->
-			<td></td>
-			<!-- This will be the answer -->
-			<td class="simVal" id="answerDecadeDigit"></td>
-			<td class="simVal" id="answerUnitDigit"></td>
-		</tr>
-	</table>
 	
 	<script>
 	//to handle the answer response so it does not get modified, you can 
@@ -206,25 +150,37 @@
 		var counterTries = 0;
 		const answerX = false;
 		$(document).ready(function(){
-			//tells simulator what to operate on click
-			$("#restartSimulation").click(function(){
-				simulateAddition(var1, var2);
-			});
+			
+			//locks the animation so that it finishes before the user is allowed to click on restart
+			var lock = false;
 			
 			//this hides the whole table handling the addition explanation until first try
-			$("#ballElements").hide();
+			$("#ballElements").show();
 			//this hides the explanation button until second try
-			$("#explanationAddition").hide();
+			$("#explanationAddition").show();
 			//set the click function for that button
 			$("#explanationAddition").click(function(){
-				ansBallHandling(var1, var2);
+				if(lock === false){
+					ballHandling(var1, var2);
+					
+					lock = true;
+					setTimeout(function(){
+						ansBallHandling(var1, var2);
+					}, 5000);
+					
+					setTimeout(function(){
+						lock=false;
+					}, 8000);
+				}
+				
+				
 			});
 			
 			//initialize the ball images to blank. removes the borders set by an untouched image object.
 			initBallImgsBlank();
 			
 			//hide the ball tables at first
-			$("#ballElements").hide();
+			$("#ballElements").show();
 			
 			//get the operator and second operand
 			$.when(getOperator(), getOperand2()).done(function(){
@@ -235,92 +191,21 @@
 					$('#var1').html(var1);
 					$('#var2').html(var2);
 					
-					//setting values for score
-					$('#correctAnswers').html(correctAnswers);
-					$('#allQuestions').html(totalAnswers);
+					lock = true;
+					ballHandling(var1, var2);
+					
+					setTimeout(function(){
+						ansBallHandling(var1, var2);
+					},5000);
+					
+					setTimeout(function(){
+						lock = false;
+					}, 8000);
+					
 				});
 			});
 			
-			//same thing as above, but this time this is generated from a click
-			$('#submitAnswer').click(function(){
-				$.when(getAnswer($("#answerText").val())).done(function(){
-					
-					//hide the ball elements if counterTries is 0
-					if(counterTries === 0){
-						$("#ballElements").hide();
-						$("#explanationAddition").hide();
-					}
-					
-					
-					$('#feedback').html(output);
-					//increments the tries to the question
-					counterTries++;
-					if(output.localeCompare("Nice Job!") == 0){
-						//change equation
-						setTimeout(function(){
-							$.when(getOperator(), getOperand2()).done(function(){
-								//get the first operand next, because we want a whole number as response
-								$.when(getOperand1(var2), getCorrectAnswersValue(), getTotalAnswersValue()).done(function(){
-									$('#operator').attr('src', srcOperatorImage(operator));
-									//setting values of labels
-									$('#var1').html(var1);
-									$('#var2').html(var2);
-									
-									output = "";
-									$('#feedback').html(output);
-									//setting values for score
-									$('#correctAnswers').html(correctAnswers);
-									$('#allQuestions').html(totalAnswers);
-									
-									//hide the ball tables at first
-									$("#ballElements").hide();
-								});
-							});
-						}, 1000);
-						counterTries = 0;
-					}
-					else if(counterTries == 1){
-						//redo the question with the balls showing up to explain how it is done.
-						
-						setTimeout(function(){
-							$('#feedback').html("Let us try this again");
-							
-							//show the tables
-							setTimeout(function(){
-								$("#ballElements").show();
-								//show the balls with animation
-								ballHandling(var1, var2);
-							}, 1000);
-						}, 1000);
-						
-					}
-					else if(counterTries == 2){
-						//redo the question with the simulation showing up to explain how it is done (with answer).
-						
-						setTimeout(function(){
-							$('#feedback').html("Oops! You got the wrong answer. Look below to know how to do this operation correctly.");
-							
-							//show the tables
-							setTimeout(function(){
-								$("#ballElements").show();
-								//show the button for the balls with animation
-								$("#explanationAddition").show();
-								
-								$("#commentSimulation").show();
-								$("#simulationTable").show();
-								simulateAddition(var1, var2);
-								$("#restartSimulation").show();
-							}, 1000);
-						}, 1000);
-						
-						
-						//to reset the tries and go to the next question. Good or not?
-						counterTries = 0;
-					}
-						
-				})
-				
-			});
+			
 			
 		});
 		
