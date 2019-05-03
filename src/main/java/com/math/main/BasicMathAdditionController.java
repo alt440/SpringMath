@@ -27,12 +27,26 @@ public class BasicMathAdditionController {
 	
     @GetMapping("/math")
     public String math() {
+    	correctAnswers=0;
+    	totalAnswers=0;
+    	operator=-1;
+    	operand1=-1;
+    	operand2=-1;
+    	hasOperand1=false;
+    	hasOperand2=false;
     	//returns the html file named randomMathAddition. Found in src/main/resources/templates
     	return "randomMathAddition";
     }
     
     @GetMapping("/exam")
     public String exam() {
+    	correctAnswers=0;
+    	totalAnswers=0;
+    	operator=-1;
+    	operand1=-1;
+    	operand2=-1;
+    	hasOperand1=false;
+    	hasOperand2=false;
     	//returns html file named randomMathAdditionExam
     	return "randomMathAdditionExam";
     }
@@ -40,6 +54,13 @@ public class BasicMathAdditionController {
     //this URL crashes when no time provided. Thus, must go at selectTime page before coming here.
     @GetMapping("/timed")
     public String examTimed(@ModelAttribute("time") int time, Model model) {
+    	correctAnswers=0;
+    	totalAnswers=0;
+    	operator=-1;
+    	operand1=-1;
+    	operand2=-1;
+    	hasOperand1=false;
+    	hasOperand2=false;
     	//gets the time value from the basic math controller /selectTime
     	model.addAttribute("timeVal", time);
     	return "randomMathAdditionExamTimed";

@@ -36,7 +36,7 @@
 }
 
 body{
-	background-color: #238c8c/*#e0b416*//*#98acba*/;
+	background-color: #077299/*#238c8c*//*#e0b416*//*#98acba*/;
 }
 
 #playNow{
@@ -57,6 +57,24 @@ body{
 #playNow: hover{
 	background-color: #ea6831;
 	color: #302f2f;
+}
+
+#suggestions{
+	background-color: #ef5d1e;
+	width: 200px;
+	height: 100px;
+	position: absolute;
+	right: 5%;
+	top: 0%;
+	border: solid 3px black;
+	border-top: none;
+}
+
+#textSuggestion{
+	position: absolute;
+	font-size: 30px;
+	text-align: center;
+	top: 10px;
 }
 
 .animation-target {

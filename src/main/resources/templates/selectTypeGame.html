@@ -44,7 +44,13 @@
 	
 	</table>
 	
+	<input type="button" id="returnToHomePage" value="Return to Home Page"/>
 	<script>
+	
+		$("#returnToHomePage").click(function(){
+			window.location.href = "/";
+		});
+	
 		$(document).ready(function(){
 			//pause it at start of program
 			$(".addition").css("-webkit-animation-play-state", "paused");

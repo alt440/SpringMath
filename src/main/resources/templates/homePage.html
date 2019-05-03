@@ -9,6 +9,9 @@
 
 <body>
 	<h2 id="pageTitle">Math Rush</h2>
+	<div id="suggestions">
+		<label id="textSuggestion">Game is too easy?</label>
+	</div>
 	<div id="buttonAndDiv">
 		<div id="testDiv" class="movingObj animation-target">
 			<label id="testDivText"></label>
@@ -31,6 +34,27 @@
 				$("#playNow").css("background-color", "#ef5d1e");
 				$("#playNow").css("color", "black");
 			});
+			
+			$("#suggestions").mouseover(function(){
+				//extend bar down
+				//future text position
+				$("#suggestions").stop();
+				$("#suggestions").animate({height:'125px'}, 400);
+				$("#textSuggestion").stop();
+				$("#textSuggestion").animate({top: '35px'}, 400);
+			});
+			
+			$("#suggestions").mouseout(function(){
+				//pull bar up
+				$("#suggestions").stop();
+				$("#suggestions").animate({height:'100px'}, 1000);
+				$("#textSuggestion").stop();
+				$("#textSuggestion").animate({top:'10px'}, 1000);
+			});
+			
+			$("#suggestions").click(function(){
+				window.location.href = "lookingAhead";
+			})
 			
 			//put action on button
 			$("#playNow").click(function(){

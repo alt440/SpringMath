@@ -91,7 +91,9 @@ body{
 }
 
 #feedback{
-	left: -10%;
+	position: absolute;
+	top: 15%;
+	left: 35%;
 }
 
 .simVal, #equalBar, .equalBarExtension{
@@ -253,3 +255,17 @@ body{
   -moz-animation: left 3000ms linear;
   animation: left 3000ms linear both;
 }*/
+
+#returnToHomePage{
+	font-family: "Project Font";
+	font-size: 40px;
+	border-style: solid;
+	border-width: 3px;
+	border-color: black;
+	background-color: #ef5d1e;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	color: black;
+	position: absolute;
+	bottom: 5%;
+	left: 5%;
+}

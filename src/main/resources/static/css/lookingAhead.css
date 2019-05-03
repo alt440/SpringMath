@@ -1,0 +1,57 @@
+@font-face{
+	font-family: "Project Font";
+	src: url("../fonts/project.ttf");
+}
+
+.magicSquareNote{
+	border-style: solid;
+	border-width: 3px;
+	border-color: black;
+	background-color: #ef5d1e;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	color: black;
+	position: relative;
+	top: 50px;
+	width: 300px;
+	height: 250px;
+}
+
+table{
+	position: relative;
+	top: 15%;
+	border-spacing: 10px;
+	margin-left: 40%;
+	margin-right: 25%;
+	margin-top: 0%;
+}
+
+body{
+	background-color: #077299;
+}
+
+.titleNote{
+	font-size: 35px;
+	font-weight: bold;
+	font-family: "Project Font";
+	position: relative;
+	top: 10px;
+	
+}
+
+.descriptionNote{
+	position: relative;
+	top: 50px;
+	font-size: 20px;
+	text-align: center;
+}
+
+#title{
+	font-size: 60px;
+	font-family: "Project Font";
+}
+
+#useOfPage{
+	position: relative;
+	top: 20px;
+	font-size: 30px;
+}

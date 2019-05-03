@@ -1,9 +1,56 @@
 @charset "ISO-8859-1";
 
+@font-face{
+	font-family: "Project Font";
+	src: url("../fonts/project.ttf");
+}
+
+body{
+	background-color: #077299;
+}
+
+#title{
+	font-size: 60px;
+	font-family: "Project Font";
+	font-weight: bold;
+}
+
+#descriptionPage{
+	font-size: 40px;
+}
+
+#inputTime{
+	position: relative;
+	top: 40px;
+	font-size: 30px;
+	text-align: center;
+}
+
+#confirmTime{
+	position: relative;
+	top: 70px;
+	font-family: "Project Font";
+	font-size: 40px;
+	border-style: solid;
+	border-width: 3px;
+	border-color: black;
+	background-color: #ef5d1e;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	color: black;
+}
+
+#note{
+	position: absolute;
+	bottom: 20%;
+	font-size: 25px;
+	left: 37%;
+	width: 500px;
+}
+
 #countdown{
 	position: absolute;
-	top: 20%;
-	left: 40%;
+	top: 45%;
+	left: 50%;
 	font-size: 70px;
 }
 

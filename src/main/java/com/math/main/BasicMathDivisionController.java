@@ -33,12 +33,26 @@ public class BasicMathDivisionController {
 		
 	    @GetMapping("/math")
 	    public String math() {
+	    	correctAnswers=0;
+	    	totalAnswers=0;
+	    	operator=-1;
+	    	operand1=-1;
+	    	operand2=-1;
+	    	hasOperand1=false;
+	    	hasOperand2=false;
 	    	//returns the html file named randomMath. Found in src/main/resources/templates
 	    	return "randomMathDivision";
 	    }
 	    
 	    @GetMapping("/exam")
 	    public String exam() {
+	    	correctAnswers=0;
+	    	totalAnswers=0;
+	    	operator=-1;
+	    	operand1=-1;
+	    	operand2=-1;
+	    	hasOperand1=false;
+	    	hasOperand2=false;
 	    	//returns html file named randomMathDivisionExam
 	    	return "randomMathDivisionExam";
 	    }
@@ -107,6 +121,13 @@ public class BasicMathDivisionController {
 	    
 	    @GetMapping("/timed")
 	    public String examTimed(@ModelAttribute("time") int time, Model model) {
+	    	correctAnswers=0;
+	    	totalAnswers=0;
+	    	operator=-1;
+	    	operand1=-1;
+	    	operand2=-1;
+	    	hasOperand1=false;
+	    	hasOperand2=false;
 	    	//gets the time value from the basic math controller /selectTime
 	    	model.addAttribute("timeVal", time);
 	    	return "randomMathDivisionExamTimed";

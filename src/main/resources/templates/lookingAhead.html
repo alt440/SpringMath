@@ -2,9 +2,34 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Looking Ahead</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="css/randomMath.css">
+<link rel="stylesheet" href="css/lookingAhead.css">
 </head>
 <body>
-
+	<div id="pageTitle">Math Rush</div>
+	<label id="title">Ideas for Progress</label><br/>
+	<div id="useOfPage">This page gives suggestions on what to do next to progress in the field of mathematics.</div>
+	<table>
+		<tr>
+			<td><div class="magicSquareNote">
+					<label class="titleNote">Magic Squares</label><br/>
+					<label class="descriptionNote">Magic squares are squares filled with numbers in which the sum of any row, column, or diagonal is the same.</label>	
+				</div>
+			</td>
+		</tr>
+	</table>
+	
+	<input type="button" id="returnToHomePage" value="Return to Home Page"/>
+	
+	<script>
+	
+		$("#returnToHomePage").click(function(){
+			window.location.href = "/";
+		});
+	
+	</script>
 </body>
 </html>

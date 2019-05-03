@@ -10,13 +10,20 @@
 </head>
 <body>
 	<div id="pageTitle">Math Rush</div>
-	<label>Select the time in seconds allowed to give a response. Passed that time, no answers will be accepted and you will lose 1 mark. (Value between 3 and 30. Default: 5)</label>
-	<input type="text" id="inputTime"/>
+	<div id="title">Select the Time</div><br/>
+	<label id="descriptionPage">Select the time in seconds you will have to answer one math question. Passed that time, no answers will be accepted and you will lose 1 mark. (Value between 3 and 30. Default: 5)</label><br/>
+	<input type="text" id="inputTime"/><br/>
 	<input type="button" value="Submit" id="confirmTime"/>
 	
 	<label id="countdown"></label>
 	
+	<div id="note">Note: You do not need time to press on the input field, because it is automatically done for you. When you are done answering a question, just press Enter.</div>
+	<input type="button" id="returnToHomePage" value="Return to Home Page"/>
 	<script>
+		$("#returnToHomePage").click(function(){
+			window.location.href = "/";
+		});
+	
 		var count = 3;
 		$(document).ready(function(){
 			
