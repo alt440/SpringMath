@@ -9,8 +9,11 @@
 </head>
 
 <body>
-	<h2 id="pageTitle">Math Rush</h2>
-	
+	<h2 id="pageTitle" class="pageTitle">Math Rush</h2>
+	<label id="practiceExplanation" class="typeGameExplanation">Practice Mode: You can take all the time you want, and if you get the answer wrong, a step-by-step answer is given.</label><br/>
+	<label id="examExplanation" class="typeGameExplanation">Exam Mode: You can take all the time you want, but you will not get a second change if your answer is wrong.</label><br/>
+	<label id="timedExplanation" class="typeGameExplanation">Timed Exam Mode: You have limited time (to your choosing), and you do not get a second chance.</label><br/>
+	<br/>
 	<table id="typeGames">
 		<tr>
 			<td id="practiceTitle" class="titleTypeGame">Practice</td>
@@ -44,8 +47,91 @@
 	
 	</table>
 	
-	<input type="button" id="returnToHomePage" value="Return to Home Page"/>
+	<input type="button" id="returnToHomePage" class="returnToHomePage" value="Return to Home Page"/>
 	<script>
+	
+		//managing size
+		//have to create new style when reaches 1200 as well. Starts becoming a weird page
+		if($(window).width()<=800){
+			$("#returnToHomePage").removeClass("returnToHomePage");
+			$("#practiceExplanation").removeClass("typeGameExplanation");
+			$("#examExplanation").removeClass("typeGameExplanation");
+			$("#timedExplanation").removeClass("typeGameExplanation");
+			setTimeout(function(){
+				$("#returnToHomePage").addClass("returnToHomePageSmaller");
+				$("#practiceExplanation").addClass("typeGameExplanationSmaller");
+				$("#examExplanation").addClass("typeGameExplanationSmaller");
+				$("#timedExplanation").addClass("typeGameExplanationSmaller");
+			},1);
+			
+			//removing tds using
+			//at row 0, element 1
+			for(var i=0;i<5;i++){
+				$("#typeGames tr").eq(i).children('td').eq(2).remove();
+				$("#typeGames tr").eq(i).children('td').eq(1).remove();
+			}
+			
+			//adding rows using 
+			$("#typeGames tr:last").after('<tr>'+
+					'<td id="examTitle" class="titleTypeGame">Exam</td>'+
+					'</tr><tr>'+
+					'<td><input id="additionExam" class="addition" type="button" value="Addition"/></td>'+
+					'</tr><tr>'+
+					'<td><input id="subtractionExam" class="subtraction" type="button" value="Subtraction"/></td>'+
+					'</tr><tr>'+
+					'<td><input id="multiplicationExam" class="multiplication" type="button" value="Multiplication"/></td>'+
+					'</tr><tr>'+
+					'<td><input id="divisionExam" class="division" type="button" value="Division"/></td>'+
+					'</tr><tr>'+
+					'<td id="timedExamTitle" class="titleTypeGame">Timed Exam</td>'+
+					'</tr><tr>'+
+					'<td><input id="additionTimedExam" class="addition timed" type="button" value="Addition"/></td>'+
+					'</tr><tr>'+
+					'<td><input id="subtractionTimedExam" class="subtraction timed" type="button" value="Subtraction"/></td>'+
+					'</tr><tr>'+
+					'<td><input id="multiplicationTimedExam" class="multiplication timed" type="button" value="Multiplication"/></td>'+
+					'</tr><tr>'+
+					'<td><input id="divisionTimedExam" class="division timed" type="button" value="Division"/></td>'+
+					'</tr>');
+		}
+	
+		//give it a lock so it is not called to often
+		var lock = false;
+		$(window).on('resize',function(){
+			if(!lock){
+				lock = true;
+				if($(window).width()<=800){
+					$("#returnToHomePage").removeClass("returnToHomePage");
+					$("#practiceExplanation").removeClass("typeGameExplanation");
+					$("#examExplanation").removeClass("typeGameExplanation");
+					$("#timedExplanation").removeClass("typeGameExplanation");
+					setTimeout(function(){
+						$("#returnToHomePage").addClass("returnToHomePageSmaller");
+						$("#practiceExplanation").addClass("typeGameExplanationSmaller");
+						$("#examExplanation").addClass("typeGameExplanationSmaller");
+						$("#timedExplanation").addClass("typeGameExplanationSmaller");
+					},1);
+					
+				} else{
+					$("#returnToHomePage").removeClass("returnToHomePageSmaller");
+					$("#practiceExplanation").removeClass("typeGameExplanationSmaller");
+					$("#examExplanation").removeClass("typeGameExplanationSmaller");
+					$("#timedExplanation").removeClass("typeGameExplanationSmaller");
+					setTimeout(function(){
+						$("#returnToHomePage").addClass("returnToHomePage");
+						$("#practiceExplanation").addClass("typeGameExplanation");
+						$("#examExplanation").addClass("typeGameExplanation");
+						$("#timedExplanation").addClass("typeGameExplanation");
+					},1);
+				}
+				//give it 300ms until next request.
+				setTimeout(function(){
+					lock = false;
+				}, 300);
+				
+			}
+			
+		})
 	
 		$("#returnToHomePage").click(function(){
 			window.location.href = "/";

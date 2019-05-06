@@ -13,7 +13,7 @@
 </head>
 
 <body>
-	<div id="pageTitle">Math Rush</div>
+	<div id="pageTitle" class="pageTitle">Math Rush</div>
 	<div id="scoreHandling">
 		<label id="correctAnswers" class="scoreDisplay"></label><br/>
 		<label id="over" class="scoreDisplay">___</label><br/>
@@ -79,9 +79,7 @@
 		</tr>
 		<tr>
 			<!-- This will be the equal bar -->
-			<td class="simVal" id="equalBar"></td>
-			<td class="equalBarExtension simVal"></td>
-			<td class="equalBarExtension simVal"></td>
+			<td colspan="3" class="simVal" id="equalBar"></td>
 		</tr>
 		<tr>
 			<!-- Intentionally left empty -->
@@ -142,6 +140,7 @@
 										
 										output = "";
 										$('#feedback').html(output);
+										$('#feedback').css("left","40%");
 										//setting values for score
 										$('#correctAnswers').html(correctAnswers);
 										$('#allQuestions').html(totalAnswers);
@@ -153,6 +152,7 @@
 							//show subtraction simulation
 							setTimeout(function(){
 								$('#feedback').html("Oops! You got the wrong answer. Look below to know how to do this operation correctly.");
+								$('#feedback').css("left","20%");
 								
 								//show the tables
 								setTimeout(function(){

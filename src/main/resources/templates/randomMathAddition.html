@@ -15,7 +15,7 @@
 </head>
 
 <body>
-	<div id="pageTitle">Math Rush</div>
+	<div id="pageTitle" class="pageTitle">Math Rush</div>
 	<div id="scoreHandling">
 		<label id="correctAnswers" class="scoreDisplay"></label><br/>
 		<label id="over" class="scoreDisplay">___</label><br/>
@@ -41,110 +41,6 @@
 	
 	<!-- Shows the feedback message. Says Nice Job! or Sorry, wrong answer -->
 	<label id="feedback"></label>
-	
-	
-	<input type="button" id="explanationAddition" value="Visual explanation of the addition"/>
-	<!-- This makes a straight line out of the ball elements -->
-	<!-- This section gives an animation that will explain how the addition works visually -->
-	<!-- Max 5 balls per row -->
-	<table id="ballElements">
-		<tr>
-			<td>
-				<!-- Stores nb of operand1 in terms of balls -->
-				<table id="operand1Balls">
-					<tr>
-						<td><img class="ballImg" id="op1ball00"></td>
-						<td><img class="ballImg" id="op1ball01"></td>
-						<td><img class="ballImg" id="op1ball02"></td>
-						<td><img class="ballImg" id="op1ball03"></td>
-						<td><img class="ballImg" id="op1ball04"></td>
-					</tr>
-					<tr>
-						<td><img class="ballImg" id="op1ball10"></td>
-						<td><img class="ballImg" id="op1ball11"></td>
-						<td><img class="ballImg" id="op1ball12"></td>
-						<td><img class="ballImg" id="op1ball13"></td>
-						<td><img class="ballImg" id="op1ball14"></td>
-					</tr>
-					<tr>
-						<td><img class="ballImg" id="op1ball20"></td>
-						<td><img class="ballImg" id="op1ball21"></td>
-						<td><img class="ballImg" id="op1ball22"></td>
-						<td><img class="ballImg" id="op1ball23"></td>
-						<td><img class="ballImg" id="op1ball24"></td>
-					</tr>
-				</table>
-			</td>
-			
-			<td>
-				<!-- This is the balls for operand2 -->
-				<table id="operand2Balls">
-					<tr>
-						<td><img class="ballImg" id="op2ball00"></td>
-						<td><img class="ballImg" id="op2ball01"></td>
-						<td><img class="ballImg" id="op2ball02"></td>
-						<td><img class="ballImg" id="op2ball03"></td>
-						<td><img class="ballImg" id="op2ball04"></td>
-					</tr>
-					<tr>
-						<td><img class="ballImg" id="op2ball10"></td>
-						<td><img class="ballImg" id="op2ball11"></td>
-						<td><img class="ballImg" id="op2ball12"></td>
-						<td><img class="ballImg" id="op2ball13"></td>
-						<td><img class="ballImg" id="op2ball14"></td>
-					</tr>
-					<tr>
-						<td><img class="ballImg" id="op2ball20"></td>
-						<td><img class="ballImg" id="op2ball21"></td>
-						<td><img class="ballImg" id="op2ball22"></td>
-						<td><img class="ballImg" id="op2ball23"></td>
-						<td><img class="ballImg" id="op2ball24"></td>
-					</tr>
-				</table>
-			</td>
-			
-			<td>
-				<!-- This is the balls for the answer. Max is 12+12, so table has 5 rows -->
-				<table id="answerBalls">
-					<tr>
-						<td><img class="ballImg" id="ansball00"></td>
-						<td><img class="ballImg" id="ansball01"></td>
-						<td><img class="ballImg" id="ansball02"></td>
-						<td><img class="ballImg" id="ansball03"></td>
-						<td><img class="ballImg" id="ansball04"></td>
-					</tr>
-					<tr>
-						<td><img class="ballImg" id="ansball10"></td>
-						<td><img class="ballImg" id="ansball11"></td>
-						<td><img class="ballImg" id="ansball12"></td>
-						<td><img class="ballImg" id="ansball13"></td>
-						<td><img class="ballImg" id="ansball14"></td>
-					</tr>
-					<tr>
-						<td><img class="ballImg" id="ansball20"></td>
-						<td><img class="ballImg" id="ansball21"></td>
-						<td><img class="ballImg" id="ansball22"></td>
-						<td><img class="ballImg" id="ansball23"></td>
-						<td><img class="ballImg" id="ansball24"></td>
-					</tr>
-					<tr>
-						<td><img class="ballImg" id="ansball30"></td>
-						<td><img class="ballImg" id="ansball31"></td>
-						<td><img class="ballImg" id="ansball32"></td>
-						<td><img class="ballImg" id="ansball33"></td>
-						<td><img class="ballImg" id="ansball34"></td>
-					</tr>
-					<tr>
-						<td><img class="ballImg" id="ansball40"></td>
-						<td><img class="ballImg" id="ansball41"></td>
-						<td><img class="ballImg" id="ansball42"></td>
-						<td><img class="ballImg" id="ansball43"></td>
-						<td><img class="ballImg" id="ansball44"></td>
-					</tr>
-				</table>
-			</td>
-		</tr>		
-	</table>
 	
 	<!-- Comments explaining the steps -->
 	<table id="explanationTable">
@@ -184,9 +80,7 @@
 		</tr>
 		<tr>
 			<!-- This will be the equal bar -->
-			<td class="simVal" id="equalBar"></td>
-			<td class="equalBarExtension simVal"></td>
-			<td class="equalBarExtension simVal"></td>
+			<td colspan="3" class="simVal" id="equalBar"></td>
 		</tr>
 		<tr>
 			<!-- Intentionally left empty -->
@@ -272,6 +166,7 @@
 									
 									output = "";
 									$('#feedback').html(output);
+									$('#feedback').css("left","40%");
 									//setting values for score
 									$('#correctAnswers').html(correctAnswers);
 									$('#allQuestions').html(totalAnswers);
@@ -283,33 +178,13 @@
 						}, 1000);
 						counterTries = 0;
 					}
-					else if(counterTries == 1){
-						//redo the question with the balls showing up to explain how it is done.
-						
-						setTimeout(function(){
-							$('#feedback').html("Let us try this again");
-							
-							//show the tables
-							setTimeout(function(){
-								$("#ballElements").show();
-								//show the balls with animation
-								ballHandling(var1, var2);
-							}, 1000);
-						}, 1000);
-						
-					}
-					else if(counterTries == 2){
-						//redo the question with the simulation showing up to explain how it is done (with answer).
-						
+					else{
 						setTimeout(function(){
 							$('#feedback').html("Oops! You got the wrong answer. Look below to know how to do this operation correctly.");
+							$('#feedback').css("left","20%");
 							
 							//show the tables
-							setTimeout(function(){
-								$("#ballElements").show();
-								//show the button for the balls with animation
-								$("#explanationAddition").show();
-								
+							setTimeout(function(){									
 								$("#commentSimulation").show();
 								$("#simulationTable").show();
 								simulateAddition(var1, var2);

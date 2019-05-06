@@ -3,12 +3,22 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Oops! We were not able to serve your request</title>
+<link rel="stylesheet" href="css/selectTime.css">
+<link rel="stylesheet" href="../css/selectTime.css">
 </head>
 <body>
-	<h2>Oops! We were not able to serve your request.</h2>
-	<p>Have you lost your way around the website? This may be because you did not follow the normal flow of the application.</p>
+	<h2 id="title">Oops! We were not able to serve your request.</h2>
+	<p id="descriptionPage">Did your math just bring you here? Let me help you. A black hole has been generated to break through time and space to redirect you to the home page.</p>
 	<p>You will be redirected to the home page in 5 seconds.</p>
 	
+	<!-- Muted now required to work with Google Chrome. Playsinline for iPhone? -->
+	<video width="960" height="540" controls autoplay loop muted playsinline>
+		<source src="img/blackHole.mp4" type="video/mp4"/>
+		<source src="img/blackHole.ogg" type="video/ogg"/>
+		<source src="../img/blackHole.mp4" type="video/mp4"/>
+		<source src="../img/blackHole.ogg" type="video/ogg"/>
+		Your browser does not support the video formats.
+	</video>
 	<script>
 		setTimeout(function(){
 			window.location.href = "/";

@@ -13,7 +13,7 @@
 </head>
 
 <body>
-	<div id="pageTitle">Math Rush</div>
+	<div id="pageTitle" class="pageTitle">Math Rush</div>
 	<div id="scoreHandling">
 		<label id="correctAnswers" class="scoreDisplay"></label><br/>
 		<label id="over" class="scoreDisplay">___</label><br/>
@@ -72,10 +72,7 @@
 		</tr>
 		<tr>
 			<!-- This will be the equal bar -->
-			<td class="simVal equalBarExtension"></td>
-			<td class="simVal" id="equalBar"></td>
-			<td class="simVal equalBarExtension"></td>
-			<td class="simVal equalBarExtension"></td>
+			<td colspan="4" class="simVal" id="equalBar"></td>
 		</tr>
 		<!-- This row handles when a certain column of digits surpasses nine -->
 		<tr>
@@ -108,10 +105,7 @@
 		</tr>
 		<tr>
 			<!-- This will be the equal bar -->
-			<td class="simVal equalBarExtension0"></td>
-			<td class="simVal" id="equalBar0"></td>
-			<td class="simVal equalBarExtension0"></td>
-			<td class="simVal equalBarExtension0"></td>
+			<td colspan="4" class="simVal" id="equalBar0"></td>
 		</tr>
 		
 		<tr>
@@ -178,6 +172,7 @@
 										
 										output = "";
 										$('#feedback').html(output);
+										$('#feedback').css("left","40%");
 										//setting values for score
 										$('#correctAnswers').html(correctAnswers);
 										$('#allQuestions').html(totalAnswers);
@@ -189,6 +184,7 @@
 							//show subtraction simulation
 							setTimeout(function(){
 								$('#feedback').html("Oops! You got the wrong answer. Look below to know how to do this operation correctly.");
+								$('#feedback').css("left","20%");
 								
 								//show the tables
 								setTimeout(function(){

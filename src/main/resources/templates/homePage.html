@@ -8,7 +8,7 @@
 </head>
 
 <body>
-	<h2 id="pageTitle">Math Rush</h2>
+	<h2 id="pageTitle" class="pageTitle">Math Rush</h2>
 	<div id="suggestions">
 		<label id="textSuggestion">Game is too easy?</label>
 	</div>
@@ -16,10 +16,55 @@
 		<div id="testDiv" class="movingObj animation-target">
 			<label id="testDivText"></label>
 		</div>
-		<input id="playNow" type="button" value="Play Now"/>
+		<input id="playNow" class="playNow" type="button" value="Play Now"/>
 	</div>
 	
 	<script>
+		//have to create new style when reaches 1200 as well. Starts becoming a weird page
+		if($(window).width()<=800){
+			$("#pageTitle").removeClass("pageTitle");
+			$("#testDiv").removeClass("movingObj");
+			$("#playNow").removeClass("playNow");
+			setTimeout(function(){
+				$("#pageTitle").addClass("pageTitleSmaller");
+				$("#testDiv").addClass("movingObjSmaller");
+				$("#playNow").addClass("playNowSmaller");
+			},1);
+		}
+	
+		//give it a lock so it is not called to often
+		var lock = false;
+		$(window).on('resize',function(){
+			if(!lock){
+				lock = true;
+				if($(window).width()<=800){
+					$("#pageTitle").removeClass("pageTitle");
+					$("#testDiv").removeClass("movingObj");
+					$("#playNow").removeClass("playNow");
+					setTimeout(function(){
+						$("#pageTitle").addClass("pageTitleSmaller");
+						$("#testDiv").addClass("movingObjSmaller");
+						$("#playNow").addClass("playNowSmaller");
+					},1);
+					
+				} else{
+					$("#pageTitle").removeClass("pageTitleSmaller");
+					$("#testDiv").removeClass("movingObjSmaller");
+					$("#playNow").removeClass("playNowSmaller");
+					setTimeout(function(){
+						$("#pageTitle").addClass("pageTitle");
+						$("#testDiv").addClass("movingObj");
+						$("#playNow").addClass("playNow");
+					},1);
+				}
+				//give it 300ms until next request.
+				setTimeout(function(){
+					lock = false;
+				}, 300);
+				
+			}
+			
+		})
 	
 		var nextTimeout = 0;
 		//stop the animation after 2 and 1/2 times. Want to see animation
