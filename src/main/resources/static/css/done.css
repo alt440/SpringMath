@@ -1,0 +1,48 @@
+@font-face{
+	font-family: "Project Font";
+	src: url("../fonts/project.ttf");
+}
+
+#title{
+	font-size: 60px;
+	font-family: "Project Font";
+	font-weight: bold;
+	position: relative;
+}
+
+body{
+	background-color: #077299;
+}
+
+#message{
+	position: relative;
+	font-size: 40px;
+	top: 100px;
+	
+}
+
+#correctAnswersView{
+	position: relative;
+	font-size: 30px;
+	top: 90px;
+}
+
+#totalAnswersView{
+	position: relative;
+	font-size: 30px;
+	top: 90px;
+}
+
+#percentageView{
+	position: relative;
+	font-size: 30px;
+	top: 90px;
+}
+
+#feedbackMessage{
+	position: relative;
+	font-size: 40px;
+	font-weight: bold;
+	top: 90px;
+	left: 270px;
+}

@@ -9,6 +9,7 @@
 	position: absolute;
 	left: 10px;
 	top: 10px;
+	width: 250px;
 }
 
 #tableHBox{
@@ -95,6 +96,7 @@ body{
 	font-size: 25px;
 	top: 15%;
 	left: 40%;
+	right: 20%;
 }
 
 .simVal, #equalBar, .equalBarExtension{
@@ -107,6 +109,7 @@ body{
 }
 
 #explanationTable{
+	position: relative;
 	border-spacing: 0px;
 	margin-left: 35%;
 	margin-right: 25%;
@@ -277,7 +280,28 @@ body{
 	background-color: #ef5d1e;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	color: black;
-	position: absolute;
+	position: relative;
 	bottom: 5%;
 	left: 5%;
+}
+
+.translateButtons{
+	width: 50px;
+}
+
+#translateLanguage{
+	background-color: #ef5d1e;
+	width: 300px;
+	height: 100px;
+	border: solid 3px black;
+	border-top: none;
+	position: fixed;
+	top: -54px;
+	left: 250px;
+}
+
+#translateText{
+	position: relative;
+	left: 60px;
+	font-size: 30px;
 }

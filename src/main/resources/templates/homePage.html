@@ -1,30 +1,49 @@
 <html>
 
 <head>
+	<script src="translationObject.js"></script>
 	<title>Welcome to Math Rush</title>
+	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3">
+	<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
 	<link rel="stylesheet" type="text/css" href="css/homePage.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="jquery-3.3.1.min.js"></script>
 	<script src="animationHandling.js"></script>
+	<script src="translateOnChange.js"></script>
 </head>
 
 <body>
-	<h2 id="pageTitle" class="pageTitle">Math Rush</h2>
+	<h2 id="pageTitle" class="pageTitle translate">Math Rush</h2>
 	<div id="suggestions">
-		<label id="textSuggestion">Game is too easy?</label>
+		<label id="textSuggestion" class="translate">Game is too easy?</label>
 	</div>
+	<div id="translateLanguage">
+		<table>
+			<tr>
+				<td><img src="img/united-states-of-america-flag-button-square-small.png" class="translateButtons english" alt="English"></td>
+				<td><img src="img/france-flag-button-square-small.png" class="translateButtons french" alt="French"></td>
+				<td><img src="img/india-flag-button-square-small.png" class="translateButtons hindi" alt="Hindi"></td>
+				<td><img src="img/spain-flag-button-square-small.png" class="translateButtons spanish" alt="Spanish"></td>
+				<td><img src="img/china-flag-button-square-small.png" class="translateButtons mandarin" alt="Mandarin"></td>
+			</tr>
+		</table>
+		<label id="translateText">Translate Page</label>
+	</div>
+	<label id="purpose" class="translate">The way to go to learn addition, subtraction, multiplication, and division!</label>
 	<div id="buttonAndDiv">
 		<div id="testDiv" class="movingObj animation-target">
-			<label id="testDivText"></label>
+			<label id="testDivText" class="translate"></label>
 		</div>
-		<input id="playNow" class="playNow" type="button" value="Play Now"/>
+		<input id="playNow" class="playNow translate" type="button" value="Play Now"/>
 	</div>
 	
-	<script>
+	<script>	
 		//have to create new style when reaches 1200 as well. Starts becoming a weird page
 		if($(window).width()<=800){
 			$("#pageTitle").removeClass("pageTitle");
 			$("#testDiv").removeClass("movingObj");
 			$("#playNow").removeClass("playNow");
+			$("#purpose").css("left", "10%");
+			$("#purpose").css("width", "300px");
 			setTimeout(function(){
 				$("#pageTitle").addClass("pageTitleSmaller");
 				$("#testDiv").addClass("movingObjSmaller");
@@ -41,6 +60,8 @@
 					$("#pageTitle").removeClass("pageTitle");
 					$("#testDiv").removeClass("movingObj");
 					$("#playNow").removeClass("playNow");
+					$("#purpose").css("left", "10%");
+					$("#purpose").css("width", "300px");
 					setTimeout(function(){
 						$("#pageTitle").addClass("pageTitleSmaller");
 						$("#testDiv").addClass("movingObjSmaller");
@@ -51,16 +72,16 @@
 					$("#pageTitle").removeClass("pageTitleSmaller");
 					$("#testDiv").removeClass("movingObjSmaller");
 					$("#playNow").removeClass("playNowSmaller");
+					$("#purpose").css("left", "35%");
+					$("#purpose").css("width", "700px");
+					$("#purpose").css("top","-50px");
 					setTimeout(function(){
 						$("#pageTitle").addClass("pageTitle");
 						$("#testDiv").addClass("movingObj");
 						$("#playNow").addClass("playNow");
 					},1);
 				}
-				//give it 300ms until next request.
-				setTimeout(function(){
-					lock = false;
-				}, 300);
+				lock=false;
 				
 			}
 			
@@ -79,6 +100,9 @@
 				$("#playNow").css("background-color", "#ef5d1e");
 				$("#playNow").css("color", "black");
 			});
+			
+			//set events related to changing language of the page
+			setTranslationEvents();
 			
 			$("#suggestions").mouseover(function(){
 				//extend bar down
@@ -112,14 +136,17 @@
 			for(var i=0;i<3;i++){
 				setTimeout(function(){
 					$("#testDivText").html("FUN");
+					onTextChange($("#testDivText"));
 				}, nextTimeout);
 				
 				setTimeout(function(){
 					$("#testDivText").html("EASY");
+					onTextChange($("#testDivText"));
 				}, nextTimeout+durationAnimation);
 				
 				setTimeout(function(){
 					$("#testDivText").html("EFFECTIVE");
+					onTextChange($("#testDivText"));
 				}, nextTimeout+ (2*durationAnimation));
 				
 				nextTimeout+=7000;
@@ -137,8 +164,9 @@
 			}
 			
 		});
-	
 	</script>
+	<script src="translate.js"></script>
+	
 </body>
 
 </html>

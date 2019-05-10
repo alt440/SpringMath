@@ -3,33 +3,99 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Looking Ahead</title>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="translationObject.js"></script>
+<script src="jquery-3.3.1.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.33, maximum-scale=3">
 <link rel="stylesheet" href="css/randomMath.css">
 <link rel="stylesheet" href="css/lookingAhead.css">
 </head>
 <body>
-	<div id="pageTitle">Math Rush</div>
-	<label id="title">Ideas for Progress</label><br/>
-	<div id="useOfPage">This page gives suggestions on what to do next to progress in the field of mathematics.</div>
+	<div id="pageTitle" class="translate">Math Rush</div>
+	
+	<div id="translateLanguage">
+		<table>
+			<tr>
+				<td><img src="img/united-states-of-america-flag-button-square-small.png" class="translateButtons english" alt="English"></td>
+				<td><img src="img/france-flag-button-square-small.png" class="translateButtons french" alt="French"></td>
+				<td><img src="img/india-flag-button-square-small.png" class="translateButtons hindi" alt="Hindi"></td>
+				<td><img src="img/spain-flag-button-square-small.png" class="translateButtons spanish" alt="Spanish"></td>
+				<td><img src="img/china-flag-button-square-small.png" class="translateButtons mandarin" alt="Mandarin"></td>
+			</tr>
+		</table>
+		<label id="translateText">Translate Page</label>
+	</div>
+	
+	<label id="title" class="translate">Ideas for Progress</label><br/>
+	<div id="useOfPage" class="translate">This page gives suggestions on what to do next to progress in the field of mathematics.</div>
 	<table>
 		<tr>
 			<td><div class="magicSquareNote">
-					<label class="titleNote">Magic Squares</label><br/>
-					<label class="descriptionNote">Magic squares are squares filled with numbers in which the sum of any row, column, or diagonal is the same.</label>	
+					<label class="titleNote translate">Magic Squares</label><br/>
+					<label class="descriptionNote translate">Magic squares are squares filled with numbers in which the sum of any row, column, or diagonal is the same.</label>	
 				</div>
 			</td>
 		</tr>
 	</table>
 	
-	<input type="button" id="returnToHomePage" value="Return to Home Page"/>
+	<input type="button" id="returnToHomePage" class="translate" value="Return to Home Page"/>
 	
 	<script>
 	
+		//return to home page button adjustments
+		$("#returnToHomePage").css("position","absolute");
+		$("#returnToHomePage").css("bottom","5%");
+		$("#returnToHomePage").css("top","auto");
+	
+		if($(window).width()<=800){
+			$("table").css("margin-left","0%");
+			$("#title").css("font-size","50px");
+			$("#title").css("position","relative");
+			$("#title").css("top","50px");
+			$("#useOfPage").css("top","50px");
+			$("#returnToHomePage").css("position","relative");
+			$("#returnToHomePage").css("font-size","20px");
+			$("#returnToHomePage").css("top","70px");
+		}
+	
+		lock2=false;
+		$(window).on('resize',function(){
+			if(!lock2){
+				lock2 = true;
+				
+				if($(window).width()<=800){
+					$("table").css("margin-left","0%");
+					$("#title").css("font-size","50px");
+					$("#title").css("position","relative");
+					$("#title").css("top","50px");
+					$("#useOfPage").css("top","50px");
+					$("#returnToHomePage").css("position","relative");
+					$("#returnToHomePage").css("font-size","20px");
+					$("#returnToHomePage").css("top","70px");
+				}
+				
+				else{
+					$("table").css("margin-left","35%");
+					$("#title").css("font-size","60px");
+					$("#title").css("top","auto");
+					$("#useOfPage").css("top","auto");
+					$("#returnToHomePage").css("font-size","40px");
+					$("#returnToHomePage").css("position","absolute");
+					$("#returnToHomePage").css("bottom","5%");
+					$("#returnToHomePage").css("top","auto");
+				}
+				
+				lock2=false;
+			}
+		});
+	
+		//set events related to changing language of the page
+		setTranslationEvents();
+		
 		$("#returnToHomePage").click(function(){
 			window.location.href = "/";
 		});
 	
 	</script>
+	<script src="translate.js"></script>
 </body>
 </html>

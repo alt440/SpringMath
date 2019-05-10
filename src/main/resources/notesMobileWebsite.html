@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+Add this to adjust for any device:
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.33, maximum-scale=3">
+Note that this is not a magic solution; it scales the web page to fit on the device (in terms of width). However, it might be necessary to set your page differently. 
+For example, in my addition/subtraction/... operations, I want the input field to be seen directly as soon as the user is shown that page.
+
+I scaled the browser to a different width to be able to change the layout of the page based on the width of the browser page.
+NOTE: Go in Google Chrome, Dev Tools --> Look for top left button there is a mobile phone icon and you need to click on that and this can simulate any width/height of screen
+
+This below is what I added to the addition page so that my content is displaying "well" in other resolutions.
+I adjust the content's placement to allow for a better display of the information. The information can then be displayed bigger.
+if($(window).width()<=800){
+			$("#feedback").css("font-size","20px");
+			$("#feedback").css("left","0%");
+			$("#feedback").css("right","20%");
+			$("#explanationTable").css("margin-top","17%");
+			$("#simulationTable").css("margin-top","10%");
+			$("#explanationTable").css("margin-right","10%");
+			$("#simulationTable").css("margin-right","10%");
+			$("#tableHBox").css("margin-left","0%");
+			$("#explanationTable").css("margin-left","5%");
+			$("#simulationTable").css("margin-left","5%");
+			
+			//change table structure to fit
+			addRows2(srcImg, var1, var2, onClickSubmit);
+			
+		}
+		
+		//give it a lock so it is not called to often
+		var lock = false;
+		$(window).on('resize',function(){
+			if(!lock){
+				lock = true;
+				
+				if($(window).width()<=800){
+					$("#feedback").css("font-size","20px");
+					$("#feedback").css("left","0%");
+					$("#feedback").css("right","20%");
+					$("#explanationTable").css("margin-top","17%");
+					$("#simulationTable").css("margin-top","10%");
+					$("#explanationTable").css("margin-right","10%");
+					$("#tableHBox").css("margin-left","0%");
+					$("#simulationTable").css("margin-right","10%");
+					$("#explanationTable").css("margin-left","5%");
+					$("#simulationTable").css("margin-left","5%");
+					
+					addRows2(srcImg, var1, var2, onClickSubmit);
+					
+				} else{
+					$("#feedback").css("font-size", "25px");
+					$("#feedback").css("left","40%");
+					$("#explanationTable").css("margin-top","10%");
+					$("#simulationTable").css("margin-top","3%");
+					$("#tableHBox").css("margin-left","35%");
+					$("#explanationTable").css("margin-left","35%");
+					$("#simulationTable").css("margin-left","35%");
+					
+					removeRows2(srcImg, var1, var2, onClickSubmit);
+				}
+				
+				//should I let a delay?
+				lock = false;
+				
+			}
+			
+		})
+</body>
+</html>

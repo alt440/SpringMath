@@ -2,53 +2,77 @@
 
 <head>
 	<title>Choose your Math</title>
+	<script src="translationObject.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.33, maximum-scale=3">
 	<link rel="stylesheet" type="text/css" href="css/homePage.css">
 	<link rel="stylesheet" type="text/css" href="css/selectTypeGame.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="jquery-3.3.1.min.js"></script>
 	<script src="animationHandling.js"></script>
+	<!-- Translate on change needs to be defined before modifyTableStructure -->
+	<script src="translateOnChange.js"></script>
+	<script src="modifyTableStructure.js"></script>
+	<script src="initAnimationsAndDestinations.js"></script>
 </head>
 
 <body>
-	<h2 id="pageTitle" class="pageTitle">Math Rush</h2>
-	<label id="practiceExplanation" class="typeGameExplanation">Practice Mode: You can take all the time you want, and if you get the answer wrong, a step-by-step answer is given.</label><br/>
-	<label id="examExplanation" class="typeGameExplanation">Exam Mode: You can take all the time you want, but you will not get a second change if your answer is wrong.</label><br/>
-	<label id="timedExplanation" class="typeGameExplanation">Timed Exam Mode: You have limited time (to your choosing), and you do not get a second chance.</label><br/>
+	<h2 id="pageTitle" class="pageTitle translate">Math Rush</h2>
+	
+	<div id="translateLanguage">
+		<table>
+			<tr>
+				<td><img src="img/united-states-of-america-flag-button-square-small.png" class="translateButtons english" alt="English"></td>
+				<td><img src="img/france-flag-button-square-small.png" class="translateButtons french" alt="French"></td>
+				<td><img src="img/india-flag-button-square-small.png" class="translateButtons hindi" alt="Hindi"></td>
+				<td><img src="img/spain-flag-button-square-small.png" class="translateButtons spanish" alt="Spanish"></td>
+				<td><img src="img/china-flag-button-square-small.png" class="translateButtons mandarin" alt="Mandarin"></td>
+			</tr>
+		</table>
+		<label id="translateText">Translate Page</label>
+	</div>
+	
+	<label id="practiceExplanation" class="typeGameExplanation translate">Practice Mode: You can take all the time you want, and if you get the answer wrong, a step-by-step answer is given.</label><br/><br/>
+	<label id="examExplanation" class="typeGameExplanation translate">Exam Mode: You can take all the time you want, but you will not get a second chance if your answer is wrong.</label><br/><br/>
+	<label id="timedExplanation" class="typeGameExplanation translate">Timed Exam Mode: You have limited time (to your choosing), and you do not get a second chance.</label><br/><br/>
 	<br/>
 	<table id="typeGames">
 		<tr>
-			<td id="practiceTitle" class="titleTypeGame">Practice</td>
-			<td id="examTitle" class="titleTypeGame">Exam</td>
-			<td id="timedExamTitle" class="titleTypeGame">Timed Exam</td>
+			<td id="practiceTitle" class="titleTypeGame translate">Practice</td>
+			<td id="examTitle" class="titleTypeGame translate">Exam</td>
+			<td id="timedExamTitle" class="titleTypeGame translate">Timed Exam</td>
 		</tr>
 		
 		<tr>
-			<td><input id="additionPractice" class="addition" type="button" value="Addition"/></td>
-			<td><input id="additionExam" class="addition" type="button" value="Addition"/></td>
-			<td><input id="additionTimedExam" class="addition timed" type="button" value="Addition"/></td>
+			<td><input id="additionPractice" class="addition buttonClass translate" type="button" value="Addition"/></td>
+			<td><input id="additionExam" class="addition buttonClass translate" type="button" value="Addition"/></td>
+			<td><input id="additionTimedExam" class="addition timed buttonClass translate" type="button" value="Addition"/></td>
 		</tr>
 			
 		<tr>
-			<td><input id="subtractionPractice" class="subtraction" type="button" value="Subtraction"/></td>
-			<td><input id="subtractionExam" class="subtraction" type="button" value="Subtraction"/></td>
-			<td><input id="subtractionTimedExam" class="subtraction timed" type="button" value="Subtraction"/></td>
+			<td><input id="subtractionPractice" class="subtraction buttonClass translate" type="button" value="Subtraction"/></td>
+			<td><input id="subtractionExam" class="subtraction buttonClass translate" type="button" value="Subtraction"/></td>
+			<td><input id="subtractionTimedExam" class="subtraction timed buttonClass translate" type="button" value="Subtraction"/></td>
 		</tr>
 		
 		<tr>
-			<td><input id="multiplicationPractice" class="multiplication" type="button" value="Multiplication"/></td>
-			<td><input id="multiplicationExam" class="multiplication" type="button" value="Multiplication"/></td>
-			<td><input id="multiplicationTimedExam" class="multiplication timed" type="button" value="Multiplication"/></td>
+			<td><input id="multiplicationPractice" class="multiplication buttonClass translate" type="button" value="Multiplication"/></td>
+			<td><input id="multiplicationExam" class="multiplication buttonClass translate" type="button" value="Multiplication"/></td>
+			<td><input id="multiplicationTimedExam" class="multiplication timed buttonClass translate" type="button" value="Multiplication"/></td>
 		</tr>
 		
 		<tr>
-			<td><input id="divisionPractice" class="division" type="button" value="Division"/></td>
-			<td><input id="divisionExam" class="division" type="button" value="Division"/></td>
-			<td><input id="divisionTimedExam" class="division timed" type="button" value="Division"/></td>
+			<td><input id="divisionPractice" class="division buttonClass translate" type="button" value="Division"/></td>
+			<td><input id="divisionExam" class="division buttonClass translate" type="button" value="Division"/></td>
+			<td><input id="divisionTimedExam" class="division timed buttonClass translate" type="button" value="Division"/></td>
 		</tr>
 	
 	</table>
 	
-	<input type="button" id="returnToHomePage" class="returnToHomePage" value="Return to Home Page"/>
+	<input type="button" id="returnToHomePage" class="returnToHomePage translate" value="Return to Home Page"/>
 	<script>
+	
+		//return to home page button adjustments
+		$("#returnToHomePage").css("position","relative");
+		$("#returnToHomePage").css("top","10px");
 	
 		//managing size
 		//have to create new style when reaches 1200 as well. Starts becoming a weird page
@@ -64,35 +88,11 @@
 				$("#timedExplanation").addClass("typeGameExplanationSmaller");
 			},1);
 			
-			//removing tds using
-			//at row 0, element 1
-			for(var i=0;i<5;i++){
-				$("#typeGames tr").eq(i).children('td').eq(2).remove();
-				$("#typeGames tr").eq(i).children('td').eq(1).remove();
-			}
+			//change table structure to fit
+			addRows();
 			
-			//adding rows using 
-			$("#typeGames tr:last").after('<tr>'+
-					'<td id="examTitle" class="titleTypeGame">Exam</td>'+
-					'</tr><tr>'+
-					'<td><input id="additionExam" class="addition" type="button" value="Addition"/></td>'+
-					'</tr><tr>'+
-					'<td><input id="subtractionExam" class="subtraction" type="button" value="Subtraction"/></td>'+
-					'</tr><tr>'+
-					'<td><input id="multiplicationExam" class="multiplication" type="button" value="Multiplication"/></td>'+
-					'</tr><tr>'+
-					'<td><input id="divisionExam" class="division" type="button" value="Division"/></td>'+
-					'</tr><tr>'+
-					'<td id="timedExamTitle" class="titleTypeGame">Timed Exam</td>'+
-					'</tr><tr>'+
-					'<td><input id="additionTimedExam" class="addition timed" type="button" value="Addition"/></td>'+
-					'</tr><tr>'+
-					'<td><input id="subtractionTimedExam" class="subtraction timed" type="button" value="Subtraction"/></td>'+
-					'</tr><tr>'+
-					'<td><input id="multiplicationTimedExam" class="multiplication timed" type="button" value="Multiplication"/></td>'+
-					'</tr><tr>'+
-					'<td><input id="divisionTimedExam" class="division timed" type="button" value="Division"/></td>'+
-					'</tr>');
+			//set font smaller
+			$(".buttonClass").css("font-size","25px");
 		}
 	
 		//give it a lock so it is not called to often
@@ -105,6 +105,7 @@
 					$("#practiceExplanation").removeClass("typeGameExplanation");
 					$("#examExplanation").removeClass("typeGameExplanation");
 					$("#timedExplanation").removeClass("typeGameExplanation");
+					
 					setTimeout(function(){
 						$("#returnToHomePage").addClass("returnToHomePageSmaller");
 						$("#practiceExplanation").addClass("typeGameExplanationSmaller");
@@ -112,206 +113,58 @@
 						$("#timedExplanation").addClass("typeGameExplanationSmaller");
 					},1);
 					
+					addRows();
+					init();
+					
+					//set font smaller
+					$(".buttonClass").css("font-size","25px");
+					
 				} else{
 					$("#returnToHomePage").removeClass("returnToHomePageSmaller");
 					$("#practiceExplanation").removeClass("typeGameExplanationSmaller");
 					$("#examExplanation").removeClass("typeGameExplanationSmaller");
 					$("#timedExplanation").removeClass("typeGameExplanationSmaller");
+					
 					setTimeout(function(){
 						$("#returnToHomePage").addClass("returnToHomePage");
 						$("#practiceExplanation").addClass("typeGameExplanation");
 						$("#examExplanation").addClass("typeGameExplanation");
 						$("#timedExplanation").addClass("typeGameExplanation");
 					},1);
+					
+					//return to home page button adjustments
+					$("#returnToHomePage").css("position","relative");
+					$("#returnToHomePage").css("top","10px");
+					
+					removeRows();
+					init();
+					
+					//set font bigger
+					$(".buttonClass").css("font-size","40px");
 				}
-				//give it 300ms until next request.
-				setTimeout(function(){
-					lock = false;
-				}, 300);
+
+				//should I let a delay?
+				lock = false;
 				
 			}
 			
 		})
 	
+		//set events related to changing language of the page
+		setTranslationEvents();
+		
 		$("#returnToHomePage").click(function(){
 			window.location.href = "/";
 		});
 	
 		$(document).ready(function(){
-			//pause it at start of program
-			$(".addition").css("-webkit-animation-play-state", "paused");
-			$(".subtraction").css("-webkit-animation-play-state", "paused");
-			$(".multiplication").css("-webkit-animation-play-state", "paused");
-			$(".division").css("-webkit-animation-play-state", "paused");
-			//adding animation on mouse hover over button
-			$("#additionPractice").mouseover(function(){
-				$("#additionPractice").css("-webkit-animation-play-state", "running");	
-			});
-			$("#additionPractice").mouseout(function(){
-				reset_animation('additionPractice');
-				$("#additionPractice").css("-webkit-animation-play-state", "paused");				
-			});
-			
-			$("#additionExam").mouseover(function(){
-				$("#additionExam").css("-webkit-animation-play-state", "running");	
-			});
-			$("#additionExam").mouseout(function(){
-				reset_animation('additionExam');
-				$("#additionExam").css("-webkit-animation-play-state", "paused");				
-			});
-			
-			$("#subtractionPractice").mouseover(function(){
-				$("#subtractionPractice").css("-webkit-animation-play-state", "running");	
-			});
-			$("#subtractionPractice").mouseout(function(){
-				reset_animation('subtractionPractice');
-				$("#subtractionPractice").css("-webkit-animation-play-state", "paused");				
-			});
-			
-			$("#subtractionExam").mouseover(function(){
-				$("#subtractionExam").css("-webkit-animation-play-state", "running");	
-			});
-			$("#subtractionExam").mouseout(function(){
-				reset_animation('subtractionExam');
-				$("#subtractionExam").css("-webkit-animation-play-state", "paused");				
-			});
-			
-			$("#multiplicationPractice").mouseover(function(){
-				$("#multiplicationPractice").css("-webkit-animation-play-state", "running");	
-			});
-			$("#multiplicationPractice").mouseout(function(){
-				reset_animation('multiplicationPractice');
-				$("#multiplicationPractice").css("-webkit-animation-play-state", "paused");				
-			});
-			
-			$("#multiplicationExam").mouseover(function(){
-				$("#multiplicationExam").css("-webkit-animation-play-state", "running");	
-			});
-			$("#multiplicationExam").mouseout(function(){
-				reset_animation('multiplicationExam');
-				$("#multiplicationExam").css("-webkit-animation-play-state", "paused");				
-			});
-			
-			$("#divisionPractice").mouseover(function(){
-				$("#divisionPractice").css("-webkit-animation-play-state", "running");	
-			});
-			$("#divisionPractice").mouseout(function(){
-				reset_animation('divisionPractice');
-				$("#divisionPractice").css("-webkit-animation-play-state", "paused");				
-			});
-			
-			$("#divisionExam").mouseover(function(){
-				$("#divisionExam").css("-webkit-animation-play-state", "running");	
-			});
-			$("#divisionExam").mouseout(function(){
-				reset_animation('divisionExam');
-				$("#divisionExam").css("-webkit-animation-play-state", "paused");				
-			});
-			
-			$("#additionTimedExam").mouseover(function(){
-				$("#additionTimedExam").css("-webkit-animation-play-state", "running");	
-			});
-			$("#additionTimedExam").mouseout(function(){
-				reset_animation('additionTimedExam');
-				$("#additionTimedExam").css("-webkit-animation-play-state", "paused");				
-			});
-			
-			$("#multiplicationTimedExam").mouseover(function(){
-				$("#multiplicationTimedExam").css("-webkit-animation-play-state", "running");	
-			});
-			$("#multiplicationTimedExam").mouseout(function(){
-				reset_animation('multiplicationTimedExam');
-				$("#multiplicationTimedExam").css("-webkit-animation-play-state", "paused");				
-			});
-			
-			$("#divisionTimedExam").mouseover(function(){
-				$("#divisionTimedExam").css("-webkit-animation-play-state", "running");	
-			});
-			$("#divisionTimedExam").mouseout(function(){
-				reset_animation('divisionTimedExam');
-				$("#divisionTimedExam").css("-webkit-animation-play-state", "paused");				
-			});
-			
-			$("#subtractionTimedExam").mouseover(function(){
-				$("#subtractionTimedExam").css("-webkit-animation-play-state", "running");	
-			});
-			$("#subtractionTimedExam").mouseout(function(){
-				reset_animation('subtractionTimedExam');
-				$("#subtractionTimedExam").css("-webkit-animation-play-state", "paused");				
-			});
-			
-			//adding click actions on the buttons
-			$("#additionPractice").click(function(){
-				window.location.href="/addition/math";
-			});
-			
-			$("#additionExam").click(function(){
-				window.location.href="/addition/exam";
-			});
-			
-			$("#subtractionPractice").click(function(){
-				window.location.href="/subtraction/math";
-			});
-			
-			$("#subtractionExam").click(function(){
-				window.location.href="/subtraction/exam";
-			});
-			
-			$("#multiplicationPractice").click(function(){
-				window.location.href="/multiplication/math";
-			});
-			
-			$("#multiplicationExam").click(function(){
-				window.location.href="/multiplication/exam";
-			});
-			
-			$("#divisionPractice").click(function(){
-				window.location.href="/division/math";
-			});
-			
-			$("#divisionExam").click(function(){
-				window.location.href="/division/exam";
-			});
-			
-			//timed exam
-			$("#additionTimedExam").click(function(){
-				setDestination(0);
-			});
-			
-			$("#subtractionTimedExam").click(function(){
-				setDestination(1);
-			});
-			
-			$("#multiplicationTimedExam").click(function(){
-				setDestination(2);
-			});
-			
-			$("#divisionTimedExam").click(function(){
-				setDestination(3);
-			});
+			init();
 		});
 		
 		
-		//ajax call
-		function setDestination(val){
-			return $.ajax({
-				type: "POST",
-				url: "/setDestination",
-				timeout: 10000,
-				contentType: "application/json",
-				data: encodeURI(JSON.stringify({destinationVal: val})),
-				processData: false,
-				success: function(){
-					//redirect to set time page
-					window.location.href="/selectTime";
-				},
-				error: function(e){
-					console.log(e);
-				}
-			});
-		}
+		
 	
 	</script>
-	
+	<script src="translate.js"></script>
 </body>
 </html>

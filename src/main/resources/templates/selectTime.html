@@ -2,24 +2,119 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.33, maximum-scale=3">
 	<title>Select Time</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="translationObject.js"></script>
+	<script src="jquery-3.3.1.min.js"></script>
 	<script src="animationHandling.js"></script>
+	<script src="translateOnChange.js"></script>
 	<link rel="stylesheet" type="text/css" href="../css/randomMath.css">
 	<link rel="stylesheet" type="text/css" href="../css/selectTime.css">
 </head>
 <body>
-	<div id="pageTitle" class="pageTitle">Math Rush</div>
-	<div id="title">Select the Time</div><br/>
-	<label id="descriptionPage">Select the time in seconds you will have to answer one math question. Passed that time, no answers will be accepted and you will lose 1 mark. (Value between 3 and 30. Default: 5)</label><br/>
+	<div id="pageTitle" class="pageTitle translate">Math Rush</div>
+	
+	<div id="translateLanguage">
+		<table>
+			<tr>
+				<td><img src="img/united-states-of-america-flag-button-square-small.png" class="translateButtons english" alt="English"></td>
+				<td><img src="img/france-flag-button-square-small.png" class="translateButtons french" alt="French"></td>
+				<td><img src="img/india-flag-button-square-small.png" class="translateButtons hindi" alt="Hindi"></td>
+				<td><img src="img/spain-flag-button-square-small.png" class="translateButtons spanish" alt="Spanish"></td>
+				<td><img src="img/china-flag-button-square-small.png" class="translateButtons mandarin" alt="Mandarin"></td>
+			</tr>
+		</table>
+		<label id="translateText">Translate Page</label>
+	</div>
+	
+	<div id="title" class="translate">Select the Time</div><br/>
+	<label id="descriptionPage" class="translate">Select the time in seconds you will have to answer one math question. Passed that time, no answers will be accepted and you will lose 1 mark. (Value between 3 and 30. Default: 5)</label><br/>
 	<input type="text" id="inputTime"/><br/>
-	<input type="button" value="Submit" id="confirmTime"/>
+	<input type="button" value="Submit" id="confirmTime" class="translate"/>
 	
-	<label id="countdown"></label>
+	<label id="countdown" class="translate"></label>
 	
-	<div id="note">Note: You do not need time to press on the input field, because it is automatically done for you. When you are done answering a question, just press Enter.</div>
-	<input type="button" id="returnToHomePage" value="Return to Home Page"/>
+	<div id="note" class="translate">Note: You do not need time to press on the input field, because it is automatically done for you. When you are done answering a question, just press Enter.</div>
+	<input type="button" id="returnToHomePage" value="Return to Home Page" class="translate"/>
 	<script>
+	
+		//putting homepage button in right place
+		$("#returnToHomePage").css("top","250px");
+		//trigger translate
+		$(".translateButtons").css("width","50px");
+	
+		if($(window).width()<=800){
+			$("#title").css("top","50px");
+			$("#descriptionPage").css("font-size","30px");
+			$("#descriptionPage").css("top","50px");
+			$("#inputTime").css("top","90px");
+			$("#confirmTime").css("top","120px");
+			$("#note").css("text-align","center");
+			$("#note").css("left","0%");
+			$("#note").css("width","auto");
+			$("#note").css("top","150px");
+			$("#note").css("position", "relative");
+			$("#returnToHomePage").css("font-size","20px");
+			$("#returnToHomePage").css("position","relative");
+			$("#returnToHomePage").css("top","150px");
+			$("#countdown").css("position", "relative");
+			$("#countdown").css("text-align", "center");
+			$("#countdown").css("top", "150px");
+			$("#countdown").css("left","0%");
+		}
+		
+		//give it a lock so it is not called to often
+		var lock = false;
+		$(window).on('resize',function(){
+			if(!lock){
+				lock = true;
+				
+				if($(window).width()<=800){
+					$("#title").css("top","50px");
+					$("#descriptionPage").css("font-size","30px");
+					$("#descriptionPage").css("top","50px");
+					$("#inputTime").css("top","90px");
+					$("#confirmTime").css("top","120px");
+					$("#note").css("text-align","center");
+					$("#note").css("left","0%");
+					$("#note").css("width","auto");
+					$("#note").css("top","150px");
+					$("#note").css("position", "relative");
+					$("#returnToHomePage").css("font-size","20px");
+					$("#returnToHomePage").css("position","relative");
+					$("#returnToHomePage").css("top","150px");
+					$("#countdown").css("position", "relative");
+					$("#countdown").css("text-align", "center");
+					$("#countdown").css("top", "150px");
+					$("#countdown").css("left","0%");
+				} else{
+					//reset to what it was
+					$("#title").css("top","0px");
+					$("#descriptionPage").css("font-size","40px");
+					$("#descriptionPage").css("top","0px");
+					$("#inputTime").css("top","40px");
+					$("#confirmTime").css("top","70px");
+					$("#note").css("text-align","left");
+					$("#note").css("left","37%");
+					$("#note").css("width","500px");
+					$("#note").css("top","90px");
+					$("#note").css("position", "relative");
+					$("#returnToHomePage").css("font-size","40px");
+					$("#returnToHomePage").css("position","relative");
+					$("#returnToHomePage").css("top","250px");
+					$("#countdown").css("position", "relative");
+					$("#countdown").css("text-align", "left");
+					$("#countdown").css("top", "300px");
+					$("#countdown").css("left", "-100px");
+				}
+				
+				//should I let a delay?
+				lock = false;
+				
+			}
+			
+		})
+		
 		$("#returnToHomePage").click(function(){
 			window.location.href = "/";
 		});
@@ -36,6 +131,9 @@
 			$('#countdown').on('animationend webkitAnimationEnd', function() { 
 			    changeValReset();
 			});
+			
+			//set events related to changing language of the page
+			setTranslationEvents();
 		});
 		
 		function validateTime(val){
@@ -48,6 +146,7 @@
 				processData: false,
 				success: function(){
 					$("#countdown").html("Ready?");
+					onTextChange($("#countdown"));
 					$("#countdown").addClass("countdown");
 					
 				},
@@ -68,12 +167,13 @@
 				goToDestination();
 			}
 			else{
-				$("#countdown").html(count);
+				$("#countdown").html(count);//no need to translate, only nbs
 				count--;
 				reset_animation3("countdown","countdown");
 			}
 		}
 	
 	</script>
+	<script src="translate.js"></script>
 </body>
 </html>

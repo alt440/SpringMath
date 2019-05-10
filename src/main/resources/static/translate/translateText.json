@@ -1,0 +1,499 @@
+{
+    "Math Rush": {
+        "fr": "Ru\u00E9e de Math\u00E9matiques",
+        "es":"Carrera de matem\u00E1ticas",
+        "chi":"\u6570\u5B66\u51b2\u51b2\u51b2",
+        "hi":"\u0917\u0923\u093f\u0924 \u0915\u0940 \u092d\u0940\u0921\u093c" 
+    },
+    "Random Math": {
+    	"fr": "Maths al\u00E9atoires",
+    	"es": "Matem\u00E1ticas al azar",
+    	"chi":"\u968f\u673a\u6570\u5B66",
+    	"hi":"\u0930\u0948\u0902\u0921\u092e \u0917\u0923\u093f\u0924"
+    },
+    "Game is too easy?":{
+    	"fr": "Le jeu est trop facile?",
+    	"es": "El juego es muy facil?",
+    	"chi":"\u6E38\u620F\u592a\u5bb9\u6613\u4E86?",
+    	"hi":"\u0916\u0947\u0932 \u092c\u0939\u0941\u0924 \u0906\u0938\u093e\u0928 \u0939\u0948\u003f"
+    },
+    "The way to go to learn addition, subtraction, multiplication, and division!":{
+    	"fr":"La mani\u00E8re de faire pour apprendre l'addition, la soustraction, la multiplication, et la division",
+    	"es":"¡El camino a seguir para aprender suma, resta, multiplicación y división!",
+    	"chi":"\u5b66\u4e60\u52a0\u6cd5\uff0c\u51cf\u6cd5\uff0c\u4e58\u6cd5\u548c\u9664\u6cd5\u7684\u65b9\u6cd5\uff01",
+    	"hi":"\u0907\u0938\u0915\u0947 \u0905\u0932\u093e\u0935\u093e\u002c \u0918\u091f\u093e\u0935\u002c \u0917\u0941\u0923\u093e\u002c \u0914\u0930 \u0935\u093f\u092d\u093e\u091c\u0928 \u0938\u0940\u0916\u0928\u0947 \u0915\u0947 \u0932\u093f\u090f \u0930\u093e\u0938\u094d\u0924\u093e\u0021"
+    },
+    "Play Now":{
+    	"fr": "Jouez maintenant",
+    	"es": "Juega ahora",
+    	"chi":"\u73b0\u5728\u64ad\u653e",
+    	"hi":"\u0905\u092c \u0916\u0947\u0932\u0924\u0947 \u0939\u0948\u0902"
+    },
+    "Practice Mode: You can take all the time you want, and if you get the answer wrong, a step-by-step answer is given.":{
+    	"fr": "Mode pratique: Vous pouvez prendre tout le temps que vous voulez. Si votre r\u00E9ponse est mauvaise, les \u00E9tapes pour arriver \u00E0 la solution seront montr\u00E9es.",
+    	"es": "Modo de pr\u00E1ctica: Puede tomarse todo el tiempo que desee y, si la respuesta es incorrecta, se proporciona una respuesta paso a paso.",
+    	"chi":"\u7ec3\u4e60\u6a21\u5f0f\uff1a\u60a8\u53EF\u4ee5\u968f\u65f6\u5B66\u4e60\uFF0C\u5982\u679C\u7B54\u6848\u9519\u8bef\uFF0C\u5219\u4f1a\u7ED9\u51FA\u9010\u6b65\u7684\u7B54\u6848\u3002",
+    	"hi":"\u0905\u092d\u094d\u092f\u093e\u0938 \u092e\u094b\u0921\u003a \u0906\u092a \u0939\u0930 \u0938\u092e\u092f \u0932\u0947 \u0938\u0915\u0924\u0947 \u0939\u0948\u0902\u002c \u0914\u0930 \u092f\u0926\u093f \u0906\u092a\u0915\u094b \u0909\u0924\u094d\u0924\u0930 \u0917\u0932\u0924 \u092e\u093f\u0932\u0924\u093e \u0939\u0948\u002c \u0924\u094b \u091a\u0930\u0923\u002d\u0926\u0930\u002d\u091a\u0930\u0923 \u0909\u0924\u094d\u0924\u0930 \u0926\u093f\u092f\u093e \u091c\u093e\u0924\u093e \u0939\u0948\u0964"
+    },
+    "Exam Mode: You can take all the time you want, but you will not get a second chance if your answer is wrong.":{
+    	"fr": "Mode examen: Vous pouvez prendre tout le temps que vous voulez, mais vous n'aurez pas de deuxi\u00E8me chance si votre r\u00E9ponse est mauvaise.",
+    	"es": "Modo de examen: Puede tomarse todo el tiempo que desee, pero no tendr\u00E1 una segunda oportunidad si su respuesta es incorrecta.",
+    	"chi":"\u8003\u8bd5\u6a21\u5f0f\uff1a\u60a8\u53EF\u4ee5\u968f\u65f6\u5B66\u4e60\uFF0C\u4F46\u5982\u679C\u7B54\u6848\u9519\u8bef\uFF0C\u60a8\u5c06\u65e0\u6cd5\u83b7\u5f97\u7b2c\u4e8c\u6b21\u673a\u4f1a\u3002",
+    	"hi":"\u092a\u0930\u0940\u0915\u094d\u0937\u093e \u092e\u094b\u0921\u003a \u0906\u092a \u0939\u0930 \u0938\u092e\u092f \u0932\u0947 \u0938\u0915\u0924\u0947 \u0939\u0948\u0902\u002c \u0932\u0947\u0915\u093f\u0928 \u0906\u092a\u0915\u094b \u0926\u0942\u0938\u0930\u093e \u092e\u094c\u0915\u093e \u0928\u0939\u0940\u0902 \u092e\u093f\u0932\u0947\u0917\u093e \u092f\u0926\u093f \u0906\u092a\u0915\u093e \u0909\u0924\u094d\u0924\u0930 \u0917\u0932\u0924 \u0939\u0948"
+    },
+    "Timed Exam Mode: You have limited time (to your choosing), and you do not get a second chance.":{
+    	"fr": "Mode examen minut\u00E9: Votre temps est limit\u00E9 (au choix), et vous n'aurez pas de deuxi\u00E8me chance.",
+    	"es": "Modo de examen cronometrado: Tiene un tiempo limitado (a su elecci\u00F3n) y no tiene una segunda oportunidad.",
+    	"chi":"\u5b9a\u65f6\u8003\u8bd5\u6a21\u5f0f\uff1a\u4F60\u7684\u65f6\u95f4\u6709\u9650\uff08\u6839\u636e\u4F60\u7684\u9009\u62E9\uFF09\uFF0C\u4F60\u6ca1\u6709\u7b2c\u4e8c\u6b21\u673a\u4f1a\u3002",
+    	"hi":"\u0938\u092e\u092f\u092c\u0926\u094d\u0927 \u092a\u0930\u0940\u0915\u094d\u0937\u093e \u092e\u094b\u0921\u003a \u0906\u092a\u0915\u0947 \u092a\u093e\u0938 \u0938\u0940\u092e\u093f\u0924 \u0938\u092e\u092f \u0028\u0906\u092a\u0915\u0947 \u091a\u0941\u0928\u0928\u0947 \u0915\u0947 \u0932\u093f\u090f\u0029 \u0939\u0948\u002c \u0914\u0930 \u0906\u092a\u0915\u094b \u0926\u0942\u0938\u0930\u093e \u092e\u094c\u0915\u093e \u0928\u0939\u0940\u0902 \u092e\u093f\u0932\u0924\u093e \u0939\u0948\u0964"
+    },
+    "Addition":{
+    	"fr":"Addition",
+    	"es": "Adici\u00F3n",
+    	"chi":"\u52A0\u6210",
+    	"hi":"\u0907\u0938\u0915\u0947 \u0905\u0932\u093e\u0935\u093e"
+    },
+    "Subtraction":{
+    	"fr":"Soustraction",
+    	"es":"Sustracci\u00F3n",
+    	"chi":"\u51cf\u6cd5",
+    	"hi":"\u0918\u091f\u093e\u0935"
+    },
+    "Multiplication":{
+    	"fr":"Multiplication",
+    	"es":"Multiplicaci\u00F3n",
+    	"chi":"\u4e58\u6cd5",
+    	"hi":"\u0917\u0941\u0923\u0928"
+    },
+    "Division":{
+    	"fr":"Division",
+    	"es":"Divisi\u00F3n",
+    	"chi":"\u5e08",
+    	"hi":"\u0935\u093f\u092d\u093e\u091c\u0928"
+    },
+    "Return to Home Page":{
+    	"fr":"Retour \u00E0 l'accueil",
+    	"es": "Regresar a la p\u00E1gina principal",
+    	"chi":"\u56DE\u5230\u4e3b\u9875",
+    	"hi":"\u0939\u094b\u092e\u092a\u0947\u091c \u092a\u0930 \u0935\u093e\u092a\u0938 \u0906\u090f\u0902"
+    },
+    "Exam":{
+    	"fr":"Examen",
+    	"es":"Examen",
+    	"chi":"\u8003\u8bd5",
+    	"hi":"\u092a\u0930\u0940\u0915\u094d\u0937\u093e"
+    },
+    "Practice":{
+    	"fr":"Pratique",
+    	"es":"Pr\u00E1ctica",
+    	"chi":"\u5b9e\u8df5",
+    	"hi":"\u0905\u092d\u094d\u092f\u093e\u0938"
+    },
+    "Timed Exam":{
+    	"fr":"Examen minut\u00E9",
+    	"es":"Examen cronometrado",
+    	"chi":"\u5b9a\u65f6\u8003\u8bd5",
+    	"hi":"\u0938\u092e\u092f \u092a\u0930 \u092a\u0930\u0940\u0915\u094d\u0937\u093e"
+    },
+    "Submit":{
+    	"fr":"Valider",
+    	"es":"Enviar",
+    	"chi":"\u63d0\u4ea4",
+    	"hi":"\u091c\u092e\u093e \u0915\u0930\u0947\u0902"
+    },
+    "Sorry, Wrong Answer.":{
+    	"fr": "D\u00E9sol\u00E9, mauvaise r\u00E9ponse.",
+    	"es":"Lo siento, respuesta incorrecta.",
+    	"chi":"\u5bf9\u4e0d\u8d77\uFF0C\u9519\u8bef\u7684\u7B54\u6848\u3002",
+    	"hi":"\u0915\u094d\u0937\u092e\u093e \u0915\u0930\u0947\u0902\u002c \u0917\u0932\u0924 \u0909\u0924\u094d\u0924\u0930"
+    },
+    "Nice Job!":{
+    	"fr": "Bon travail!",
+    	"es":"Buen trabajo!",
+    	"chi":"\u4e0d\u9519\u7684\u5de5\u4f5c\uff01",
+    	"hi":"\u0905\u091a\u094d\u091b\u0940 \u0928\u094c\u0915\u0930\u0940\u0021"
+    },
+    "Oops! Wrong answer.Look below for an explanation.":{
+    	"fr": "D\u00E9sol\u00E9! Mauvaise r\u00E9ponse. Regardez ci-dessous pour une explication.",
+    	"es":"¡Uy! Respuesta incorrecta. Busque a continuaci\u00F3n una explicaci\u00F3n.",
+    	"chi":"\u54ce\u5440\uff01\u9519\u8bef\u7684\u7B54\u6848\u3002\u770B\u4E0B\u9762\u7684\u89e3\u91ca\u3002",
+    	"hi":"\u090a\u092a\u094d\u0938\u0021 \u0917\u0932\u0924 \u0909\u0924\u094d\u0924\u0930\u0964 \u0938\u094d\u092a\u0937\u094d\u091f\u0940\u0915\u0930\u0923 \u0915\u0947 \u0932\u093f\u090f \u0928\u0940\u091a\u0947 \u0926\u0947\u0916\u0947\u0902\u0964"
+    },
+    "Select the Time":{
+    	"fr": "Choisissez le temps",
+    	"es":"Selecciona la hora",
+    	"chi":"\u9009\u62E9\u65f6\u95f4",
+    	"hi":"\u0938\u092e\u092f \u0915\u093e \u091a\u092f\u0928 \u0915\u0930\u0947\u0902"
+    },
+    "Select the time in seconds you will have to answer one math question. Passed that time, no answers will be accepted and you will lose %n mark. (Value between %n and %n. Default: %n)":{
+    	"fr": "Choisissez le temps en secondes que vous aurez pour r\u00E9pondre aux questions. Pass\u00E9 ce temps, vous perdrez %n point. (Valeur entre %n et %n. Par d\u00E9faut: %n)",
+    	"es":"Seleccione el tiempo en segundos que tendr\u00E1 que responder a una pregunta de matem\u00E1ticas. Transcurrido ese tiempo, no se aceptar\u00E1n respuestas y perder\u00E1 %n nota. (Valor entre %n y %n. Valor predeterminado: %n)",
+    	"chi":"\u9009\u62E9\u60a8\u5fc5\u987b\u56DE\u7B54\u4E00\u4E2A\u6570\u5B66\u95ee\u9898\u7684\u65f6\u95f4\uFF08\u4ee5\u79d2\u4e3a\u5355\u4F4D\uFF09\u3002\u901A\u8FC7\u90a3\u4E2A\u65f6\u95f4\uFF0C\u6ca1\u6709\u7B54\u6848\u5c06\u88AB\u63a5\u53d7\uFF0C\u4F60\u5c06\u5931\u53bb%n\u6807\u8bb0\u3002 \uFF08%n\u548c%n\u4E4B\u95f4\u7684\u503C\u3002\u9ed8\u8ba4\u503C：%n\uFF09",
+    	"hi":"\u0938\u0947\u0915\u0902\u0921 \u092e\u0947\u0902 \u0938\u092e\u092f \u0915\u093e \u091a\u092f\u0928 \u0915\u0930\u0947\u0902 \u0906\u092a\u0915\u094b \u090f\u0915 \u0917\u0923\u093f\u0924 \u092a\u094d\u0930\u0936\u094d\u0928 \u0915\u093e \u0909\u0924\u094d\u0924\u0930 \u0926\u0947\u0928\u093e \u0939\u094b\u0917\u093e\u0964 \u0909\u0938 \u0938\u092e\u092f \u092c\u0940\u0924 \u0917\u092f\u093e\u002c \u0915\u094b\u0908 \u0909\u0924\u094d\u0924\u0930 \u0938\u094d\u0935\u0940\u0915\u093e\u0930 \u0928\u0939\u0940\u0902 \u0915\u093f\u092f\u093e \u091c\u093e\u090f\u0917\u093e \u0914\u0930 \u0906\u092a\u0025 %n \u0905\u0902\u0915 \u0916\u094b \u0926\u0947\u0902\u0917\u0947 \u0028%n \u0914\u0930\u0025 %n \u0915\u0947 \u092c\u0940\u091a \u092e\u093e\u0928\u0964 \u0921\u093f\u092b\u093c\u0949\u0932\u094d\u091f\u003a%n\u0029"
+    },
+    "Note: You do not need time to press on the input field, because it is automatically done for you. When you are done answering a question, just press Enter.":{
+    	"fr": "PS: Vous n'avez pas besoin d'appuyer sur le champ de saisie de texte, parce qu'elle est automatiquement s\u00E9lectionn\u00E9e. Quand vous avez fini de r\u00E9pondre \u00E0 la question, pesez sur Enter.",
+    	"es":"Nota: no necesita tiempo para presionar en el campo de entrada, ya que se realiza autom\u00E1ticamente por usted. Cuando haya terminado de responder una pregunta, simplemente presione Enter.",
+    	"chi":"\u6ce8\u610f\uff1a\u60a8\u65e0\u9700\u65f6\u95f4\u6309\u8f93\u5165\u5B57\u6bb5\uFF0C\u56e0\u4e3a\u5b83\u4f1a\u81ea\u52a8\u4e3a\u60a8\u5B8C\u6210\u3002\u5B8C\u6210\u56DE\u7B54\u95ee\u9898\u540E\uFF0C\u53ea\u9700\u6309Enter\u952e\u5373\u53EF\u3002",
+    	"hi":"\u0928\u094b\u091f\u003a \u0906\u092a\u0915\u094b \u0907\u0928\u092a\u0941\u091f \u092b\u093c\u0940\u0932\u094d\u0921 \u092a\u0930 \u092a\u094d\u0930\u0947\u0938 \u0915\u0930\u0928\u0947 \u0915\u0947 \u0932\u093f\u090f \u0938\u092e\u092f \u0915\u0940 \u0906\u0935\u0936\u094d\u092f\u0915\u0924\u093e \u0928\u0939\u0940\u0902 \u0939\u0948\u002c \u0915\u094d\u092f\u094b\u0902\u0915\u093f \u092f\u0939 \u0938\u094d\u0935\u091a\u093e\u0932\u093f\u0924 \u0930\u0942\u092a \u0938\u0947 \u0906\u092a\u0915\u0947 \u0932\u093f\u090f \u0915\u093f\u092f\u093e \u091c\u093e\u0924\u093e \u0939\u0948\u0964 \u091c\u092c \u0906\u092a \u0915\u093f\u0938\u0940 \u092a\u094d\u0930\u0936\u094d\u0928 \u0915\u093e \u0909\u0924\u094d\u0924\u0930 \u0926\u0947 \u0930\u0939\u0947 \u0939\u094b\u0902\u002c \u0924\u094b \u092c\u0938 \u0045\u006e\u0074\u0065\u0072 \u0926\u092c\u093e\u090f\u0902\u0964"
+    },
+    "Ready?":{
+    	"fr": "Pr\u00EAt?",
+    	"es": "Listo?",
+    	"chi":"\u51c6\u5907\u003f",
+    	"hi":"\u0924\u0948\u092f\u093e\u0930"
+    },
+    "FUN":{
+    	"fr":"Amusant",
+    	"es":"Divertido",
+    	"chi":"\u5f00\u73a9\u7b11",
+    	"hi":"\u092e\u091c\u093c\u093e"
+    },
+    "EASY":{
+    	"fr":"Facile",
+    	"es":"F\u00E1cil",
+    	"chi":"\u7b80\u5355",
+    	"hi":"\u0906\u0938\u093e\u0928"
+    },
+    "EFFECTIVE":{
+    	"fr":"Efficace",
+    	"es":"Eficaz",
+    	"chi":"\u6709\u6548",
+    	"hi":"\u092a\u094d\u0930\u092d\u093e\u0935\u0940"
+    },
+    "You answered %n questions correctly.":{
+    	"fr": "Vous avez r\u00E9pondu \u00E0 %n questions correctement.",
+    	"es": "Respondiste %n preguntas correctamente.",
+    	"chi":"\u4F60\u56DE\u7B54\u4E86\u603b\u5171%n\u4E2A\u95ee\u9898\u3002",
+    	"hi":"\u0906\u092a\u0928\u0947 %n \u092a\u094d\u0930\u0936\u094d\u0928\u094b\u0902 \u0915\u093e \u0938\u0939\u0940 \u0909\u0924\u094d\u0924\u0930 \u0926\u093f\u092f\u093e\u0964"
+    },
+    "You answered a total of %n questions.":{
+    	"fr": "Vous avez r\u00E9pondu \u00E0 %n questions au total.",
+    	"es": "Respondiste un total de %n preguntas.",
+    	"chi": "\u4f60\u56de\u7b54\u4e86\u603b\u5171%n\u4e2a\u95ee\u9898\u3002",
+    	"hi":"\u0906\u092a\u0928\u0947 \u0915\u0941\u0932 %n \u092a\u094d\u0930\u0936\u094d\u0928\u094b\u0902 \u0915\u0947 \u0909\u0924\u094d\u0924\u0930 \u0926\u093f\u090f\u0964"
+    },
+    "Result: %n%":{
+    	"fr": "R\u00E9sultat: %n%",
+    	"es": "Resultado: %n%",
+    	"chi":"\u7ed3\u679C： %n%",
+    	"hi":"\u092a\u0930\u093f\u0923\u093e\u092e\u003a %n%"
+    },
+    "AMAZING!":{
+    	"fr": "IMPRESSIONNANT!",
+    	"es": "INCRE\u00EDBLE",
+    	"chi":"\u60ca\u4eba\uff01",
+    	"hi":"\u0917\u091c\u092c \u0915\u093e"
+    },
+    "Splendid!":{
+    	"fr":"Splendide!",
+    	"es":"Espl\u00E9ndido",
+    	"chi":"\u707f\u70c2\uff01",
+    	"hi":"\u0936\u093e\u0928\u0926\u093e\u0930"
+    },
+    "Could be better":{
+    	"fr":"Pourrait \u00EAtre mieux",
+    	"es": "Podr\u00EDa ser mejor",
+    	"chi":"\u6709\u5f85\u6539\u5584",
+    	"hi":"\u092c\u0947\u0939\u0924\u0930 \u0939\u094b \u0938\u0915\u0924\u093e \u0925\u093e"
+    },
+    "You need more practice":{
+    	"fr":"Vous avez besoin de plus de pratique",
+    	"es":"Necesitas m\u00E1s practica",
+    	"chi":"\u4F60\u9700\u8981\u66f4\u591a\u7ec3\u4e60",
+    	"hi":"\u0906\u092a\u0915\u094b \u0905\u0927\u093f\u0915 \u0905\u092d\u094d\u092f\u093e\u0938 \u0915\u0940 \u0906\u0935\u0936\u094d\u092f\u0915\u0924\u093e \u0939\u0948"
+    },
+    "You are below the passing grade":{
+    	"fr":"Vous \u00EAtes en dessous de la note de passage",
+    	"es":"Est\u00E1s por debajo de la calificaci\u00F3n aprobatoria",
+    	"chi":"\u4F60\u4F4E\u4E8E\u53ca\u683c\u5206\u6570",
+    	"hi":"\u0906\u092a \u092a\u093e\u0938\u093f\u0902\u0917 \u0917\u094d\u0930\u0947\u0921 \u0938\u0947 \u0928\u0940\u091a\u0947 \u0939\u0948\u0902"
+    },
+    "Congratulations! You just completed the game.":{
+    	"fr":"F\u00E9licitations! Vous avez compl\u00E9t\u00E9 le jeu.",
+    	"es":"¡Felicidades! Acabas de completar el juego.",
+    	"chi":"\u606d\u559c\uff01\u4F60\u521A\u521A\u5B8C\u6210\u4E86\u6bd4\u8d5b\u3002",
+    	"hi":"\u092c\u0927\u093e\u0908 \u0939\u094b\u0021 \u0906\u092a\u0928\u0947 \u092c\u0938 \u0916\u0947\u0932 \u092a\u0942\u0930\u093e \u0915\u093f\u092f\u093e\u0964"
+    },
+    "Oops! We were not able to serve your request.":{
+    	"fr":"Oups! Nous n'avons pas pu ex\u00E9cuter votre requ\u00EAte.",
+    	"es":"¡Uy! No pudimos atender su solicitud.",
+    	"chi":"\u54ce\u5440\uff01\u6211\u4EEC\u65e0\u6cd5\u6ee1\u8db3\u60a8\u7684\u8981\u6C42\u3002",
+    	"hi":"\u090a\u092a\u094d\u0938\u0021 \u0939\u092e \u0906\u092a\u0915\u0947 \u0905\u0928\u0941\u0930\u094b\u0927 \u0915\u0940 \u0938\u0947\u0935\u093e \u0915\u0930\u0928\u0947 \u092e\u0947\u0902 \u0938\u0915\u094d\u0937\u092e \u0928\u0939\u0940\u0902 \u0925\u0947\u0964"
+    },
+    "Did your math just bring you here? Let me help you. A black hole has been generated to break through time and space to redirect you to the home page.":{
+    	"fr":"Est-ce vos math\u00E9matiques qui vous ont amen\u00E9es ici? Laissez-moi vous aider. Un trou noir vient d'\u00EAtre g\u00E9n\u00E9r\u00E9 pour briser le temps et l'espace pour vous rediriger vers la page principale.",
+    	"es":"¿Tus matem\u00E1ticas te trajeron aqu\u00ED? Deja que te ayude. Se ha generado un agujero negro para atravesar el tiempo y el espacio para redirigirlo a la p\u00E1gina de inicio.",
+    	"chi":"\u4F60\u7684\u6570\u5B66\u53ea\u662f\u628a\u4F60\u5E26\u5230\u8fd9\u513f\u4E86\u5417\uff1f\u8ba9\u6211\u6765\u5e2e\u52a9\u4F60\u3002\u5df2\u751f\u6210\u9ed1\u6d1e\u4ee5\u7a81\u7834\u65f6\u95f4\u548c\u7a7a\u95f4\u4ee5\u5c06\u60a8\u91cd\u5b9a\u5411\u5230\u4e3b\u9875\u3002",
+    	"hi":"\u0915\u094d\u092f\u093e \u0906\u092a\u0915\u093e \u0917\u0923\u093f\u0924 \u0906\u092a\u0915\u094b \u092f\u0939\u093e\u0902 \u0924\u0915 \u200b\u200b\u0932\u0947 \u0906\u092f\u093e\u003f \u092e\u0941\u091d\u0947 \u0906\u092a\u0915\u0940 \u092e\u0926\u0926 \u0915\u0930\u0928\u0947 \u0926\u094b\u0964 \u0906\u092a\u0915\u094b \u0939\u094b\u092e \u092a\u0947\u091c \u092a\u0930 \u0930\u0940\u0921\u093e\u092f\u0930\u0947\u0915\u094d\u091f \u0915\u0930\u0928\u0947 \u0915\u0947 \u0932\u093f\u090f \u0938\u092e\u092f \u0914\u0930 \u0938\u094d\u0925\u093e\u0928 \u0915\u0947 \u092e\u093e\u0927\u094d\u092f\u092e \u0938\u0947 \u090f\u0915 \u092c\u094d\u0932\u0948\u0915 \u0939\u094b\u0932 \u0909\u0924\u094d\u092a\u0928\u094d\u0928 \u0939\u0941\u0906 \u0939\u0948\u0964"
+    },
+    "You will be redirected to the home page in %n seconds.":{
+    	"fr":"Vous allez \u00EAtre redirig\u00E9 vers la page principle dans %n secondes.",
+    	"es":"Ser\u00E1 redirigido a la p\u00E1gina de inicio en %n segundos.",
+    	"chi":"\u60a8\u5c06\u5728%n\u79d2\u5185\u91cd\u5b9a\u5411\u5230\u4e3b\u9875\u3002",
+    	"hi":"\u0906\u092a\u0915\u094b %n \u0938\u0947\u0915\u0902\u0921 \u092e\u0947\u0902 \u0939\u094b\u092e \u092a\u0947\u091c \u092a\u0930 \u092a\u0941\u0928\u0903 \u0928\u093f\u0930\u094d\u0926\u0947\u0936\u093f\u0924 \u0915\u093f\u092f\u093e \u091c\u093e\u090f\u0917\u093e\u0964"
+    },
+    "Your browser does not support the video formats.":{
+    	"fr":"Votre navigateur ne supporte pas les formats vid\u00E9os disponibles.",
+    	"es":"Su navegador no soporta los formatos de video.",
+    	"chi":"\u60a8\u7684\u6d4f\u89c8\u5668\u4e0d\u652f\u6301\u89c6\u9891\u683c\u5f0f\u3002",
+    	"hi":"\u0906\u092a\u0915\u093e \u092c\u094d\u0930\u093e\u0909\u091c\u093c\u0930 \u0935\u0940\u0921\u093f\u092f\u094b \u092a\u094d\u0930\u093e\u0930\u0942\u092a\u094b\u0902 \u0915\u093e \u0938\u092e\u0930\u094d\u0925\u0928 \u0928\u0939\u0940\u0902 \u0915\u0930\u0924\u093e \u0939\u0948\u0964"
+    },
+    "Ideas for Progress":{
+    	"fr": "Quelques id\u00E9es pour progresser",
+    	"es":"Ideas para progresar",
+    	"chi":"\u8FDB\u6b65\u7684\u60f3\u6cd5",
+    	"hi":"\u092a\u094d\u0930\u0917\u0924\u093f \u0915\u0947 \u0932\u093f\u090f \u0935\u093f\u091a\u093e\u0930"
+    },
+    "This page gives suggestions on what to do next to progress in the field of mathematics.":{
+    	"fr": "Cette page donne des suggestions pour progresser dans le domaine des math\u00E9matiques.",
+    	"es": "Esta p\u00E1gina ofrece sugerencias sobre qu\u00E9 hacer al lado del progreso en el campo de las matem\u00E1ticas.",
+    	"chi":"\u8be5\u9875\u9762\u63d0\u4f9b\u4E86\u6709\u5173\u6570\u5B66\u9886\u57df\u7684\u8FDB\u5c55\u60c5\u51b5\u7684\u5efa\u8bae\u3002",
+    	"hi":"\u092f\u0939 \u092a\u0943\u0937\u094d\u0920 \u0917\u0923\u093f\u0924 \u0915\u0947 \u0915\u094d\u0937\u0947\u0924\u094d\u0930 \u092e\u0947\u0902 \u092a\u094d\u0930\u0917\u0924\u093f \u0915\u0947 \u0932\u093f\u090f \u0906\u0917\u0947 \u0915\u094d\u092f\u093e \u0915\u0930\u0928\u0947 \u0915\u0947 \u0938\u0941\u091d\u093e\u0935 \u0926\u0947\u0924\u093e \u0939\u0948\u0964"
+    },
+    "Magic Squares":{
+    	"fr":"Carr\u00E9s magiques",
+    	"es":"Cuadrados m\u00E1gicos",
+    	"chi":"\u9b54\u672f\u5e7f\u573a",
+    	"hi":"\u091c\u093e\u0926\u0942 \u0935\u0930\u094d\u0917"
+    },
+    "Magic squares are squares filled with numbers in which the sum of any row, column, or diagonal is the same.":{
+    	"fr": "Les carr\u00E9s magiques sont des carr\u00E9s remplis de chiffres qui vont donner la m\u00EAme somme sur toutes les rang\u00E9es, colonnes, et principales diagonales.",
+    	"es": "Los cuadrados m\u00E1gicos son cuadrados rellenos con n\u00FAmeros en los que la suma de cualquier fila, columna o diagonal es la misma.",
+    	"chi":"\u5e7b\u65b9\u662F\u586b\u5145\u6570\u5B57\u7684\u6b63\u65b9\u5f62\uFF0C\u5176\u4e2d\u4efb\u4f55\u884c\uFF0C\u5217\u6216\u5bf9\u89d2\u7ebf\u7684\u603b\u548c\u662F\u76F8\u540c\u7684\u3002",
+    	"hi":"\u092e\u0948\u091c\u093f\u0915 \u0938\u094d\u0915\u094d\u0935\u0947\u092f\u0930 \u0909\u0928 \u0938\u0902\u0916\u094d\u092f\u093e\u0913\u0902 \u0938\u0947 \u092d\u0930\u0947 \u0935\u0930\u094d\u0917 \u0939\u094b\u0924\u0947 \u0939\u0948\u0902 \u091c\u093f\u0928\u092e\u0947\u0902 \u0915\u093f\u0938\u0940 \u092d\u0940 \u092a\u0902\u0915\u094d\u0924\u093f\u002c \u0938\u094d\u0924\u0902\u092d \u092f\u093e \u0935\u093f\u0915\u0930\u094d\u0923 \u0915\u093e \u092f\u094b\u0917 \u0938\u092e\u093e\u0928 \u0939\u094b\u0924\u093e \u0939\u0948\u0964"
+    },
+    "Oops! Wrong answer. Look below for an explanation.":{
+    	"fr":"Oups! Mauvaise r\u00E9ponse. Regardez ci-dessous pour une explication.",
+    	"es":"¡Uy! Respuesta incorrecta. Busque a continuaci\u00F3n una explicaci\u00F3n.",
+    	"chi":"\u54ce\u5440\uff01\u9519\u8bef\u7684\u7B54\u6848\u3002\u8bf7\u770b\u4E0B\u9762\u7684\u89e3\u91ca\u3002",
+    	"hi":"\u090a\u092a\u094d\u0938\u0021 \u0917\u0932\u0924 \u091c\u0935\u093e\u092c\u0964 \u0938\u094d\u092a\u0937\u094d\u091f\u0940\u0915\u0930\u0923 \u0915\u0947 \u0932\u093f\u090f \u0928\u0940\u091a\u0947 \u0926\u0947\u0916\u0947\u0902\u0964"
+    },
+    "Restart Addition Simulation":{
+    	"fr":"Recommencer la simulation de l'addition",
+    	"es":"Reiniciar simulaci\u00F3n de adici\u00F3n",
+    	"chi":"\u91cd\u65b0\u542f\u52a8\u6dfb\u52a0\u6a21\u62df",
+    	"hi":"\u0905\u0924\u093f\u0930\u093f\u0915\u094d\u0924 \u0938\u093f\u092e\u0941\u0932\u0947\u0936\u0928 \u0915\u094b \u092a\u0941\u0928\u0930\u093e\u0930\u0902\u092d \u0915\u0930\u0947\u0902"
+    },
+    "Restart Subtraction Simulation":{
+    	"fr":"Recommencer la simulation de la soustraction",
+    	"es":"Reiniciar simulaci\u00F3n de sustracci\u00F3n",
+    	"chi":"\u91cd\u65b0\u5f00\u59cb\u51cf\u6cd5\u6a21\u62df",
+    	"hi":"\u0918\u091f\u093e\u0935 \u0938\u093f\u092e\u0941\u0932\u0947\u0936\u0928 \u0915\u094b \u092a\u0941\u0928\u0930\u093e\u0930\u0902\u092d \u0915\u0930\u0947\u0902"
+    },
+    "Restart Multiplication Simulation":{
+    	"fr":"Recommencer la simulation de la multiplication",
+    	"es":"Reiniciar la simulaci\u00F3n de multiplicaci\u00F3n",
+    	"chi":"\u91cd\u65b0\u542f\u52a8\u4e58\u6cd5\u6a21\u62df",
+    	"hi":"\u0917\u0941\u0923\u0928 \u0938\u093f\u092e\u0941\u0932\u0947\u0936\u0928 \u0915\u094b \u092a\u0941\u0928\u0930\u093e\u0930\u0902\u092d \u0915\u0930\u0947\u0902"
+    },
+    "Restart Division Simulation":{
+    	"fr":"Recommencer la simulation de la division",
+    	"es":"Reiniciar la simulaci\u00F3n de divisi\u00F3n",
+    	"chi":"\u91cd\u542f\u5206\u533a\u6a21\u62df",
+    	"hi":"\u0935\u093f\u092d\u093e\u091c\u0928 \u0938\u093f\u092e\u0941\u0932\u0947\u0936\u0928 \u0915\u094b \u092a\u0941\u0928\u0930\u093e\u0930\u0902\u092d \u0915\u0930\u0947\u0902"
+    },
+    
+    
+    "Next, sum the right most digits. The result gives %n. Put the result under the equal bar.":{
+    	"fr":"Ensuite, additionnez les valeurs les plus \u00E0 droites. Le r\u00E9sultat donne %n. Mettez ce r\u00E9sultat en dessous de la barre de r\u00E9sultats.",
+    	"es":"Luego, suma los d\u00EDgitos m\u00E1s a la derecha. El resultado da %n. Pon el resultado debajo de la barra igual.",
+    	"chi":"\u63a5\u4E0B\u6765\uFF0C\u5c06\u6700\u53f3\u8fb9\u7684\u6570\u5B57\u76F8\u52A0\u3002\u7ed3\u679C\u7ED9\u51FA%n\u3002\u5c06\u7ed3\u679C\u7f6e\u4E8E\u76f8\u7b49\u7684\u6761\u5f62\u4E0B\u3002",
+    	"hi":"\u0905\u0917\u0932\u093e\u002c \u0938\u0939\u0940 \u0938\u092c\u0938\u0947 \u0905\u0927\u093f\u0915 \u0905\u0902\u0915\u094b\u0902 \u0915\u093e \u092f\u094b\u0917\u0964 \u092a\u0930\u093f\u0923\u093e\u092e %n \u0926\u0947\u0924\u093e \u0939\u0948\u0964 \u092a\u0930\u093f\u0923\u093e\u092e \u0915\u094b \u092c\u0930\u093e\u092c\u0930 \u092c\u093e\u0930 \u0915\u0947 \u0928\u0940\u091a\u0947 \u0930\u0916\u0947\u0902\u0964"
+    },
+    "Because the sum of the right most digits is greater than %n, we need to transfer the decade digit of the answer to the decade digits' column.":{
+    	"fr":"Puisque la sum des valeurs les plus \u00E0 droites est sup\u00E9rieur \u00E0 %n, nous avons besoin de transf\u00E9rer le chiffre des dizaines de la r\u00E9ponse avec les autres chiffres des dizaines.",
+    	"es":"Debido a que la suma de los d\u00EDgitos m\u00E1s correctos es mayor que %n, necesitamos transferir el d\u00EDgito de la d\u00E9cada de la respuesta a la columna de los d\u00EDgitos de la d\u00E9cada.",
+    	"chi":"\u7531\u4E8E\u6700\u53f3\u8fb9\u6570\u5B57\u7684\u603b\u548c\u5927\u4E8E%n\uFF0C\u6211\u4EEC\u9700\u8981\u5c06\u7B54\u6848\u7684\u5341\u8FDB\u5236\u6570\u5B57\u8f6c\u79fb\u5230\u5341\u8FDB\u5236\u6570\u5B57\u5217\u3002",
+    	"hi":"\u0915\u094d\u092f\u094b\u0902\u0915\u093f \u0938\u0939\u0940 \u0905\u0927\u093f\u0915\u093e\u0902\u0936 \u0905\u0902\u0915\u094b\u0902 \u0915\u093e \u092f\u094b\u0917 %n \u0938\u0947 \u0905\u0927\u093f\u0915 \u0939\u0948\u002c \u0907\u0938\u0932\u093f\u090f \u0939\u092e\u0947\u0902 \u0909\u0924\u094d\u0924\u0930 \u0915\u0947 \u0926\u0936\u0915 \u0915\u0947 \u0905\u0902\u0915 \u0915\u094b \u0926\u0936\u0915 \u0915\u0947 \u0905\u0902\u0915 \u0915\u0947 \u0915\u0949\u0932\u092e \u092e\u0947\u0902 \u0938\u094d\u0925\u093e\u0928\u093e\u0902\u0924\u0930\u093f\u0924 \u0915\u0930\u0928\u093e \u0939\u094b\u0917\u093e\u0964"
+    },
+    "Now, we need to sum the decades of each number. Do not forget the extra decade value you added!":{
+    	"fr":"Maintenant, nous avons besoin d'additionner les dizaines. N'oubliez pas d'inclure la dizaine additionelle!",
+    	"es":"Ahora, necesitamos sumar las d\u00E9cadas de cada n\u00FAmero. ¡No olvide el valor extra de la d\u00E9cada que agreg\u00F3!",
+    	"chi":"\u73b0\u5728\uFF0C\u6211\u4EEC\u9700\u8981\u603b\u7ed3\u6bcf\u4E2A\u6570\u5B57\u7684\u6570\u5341\u5E74\u3002\u4e0d\u8981\u5fd8\u8bb0\u4F60\u6DFB\u52A0\u7684\u989d\u5916\u5341\u5E74\u4ef7\u503C\uff01",
+    	"hi":"\u0905\u092c\u002c \u0939\u092e\u0947\u0902 \u092a\u094d\u0930\u0924\u094d\u092f\u0947\u0915 \u0938\u0902\u0916\u094d\u092f\u093e \u0915\u0947 \u0926\u0936\u0915\u094b\u0902 \u0915\u093e \u092f\u094b\u0917 \u0915\u0930\u0928\u0947 \u0915\u0940 \u0906\u0935\u0936\u094d\u092f\u0915\u0924\u093e \u0939\u0948\u0964 \u0906\u092a\u0915\u0947 \u0926\u094d\u0935\u093e\u0930\u093e \u091c\u094b\u0921\u093c\u0947 \u0917\u090f \u0905\u0924\u093f\u0930\u093f\u0915\u094d\u0924 \u0926\u0936\u0915 \u0915\u0947 \u092e\u0942\u0932\u094d\u092f \u0915\u094b \u092e\u0924 \u092d\u0942\u0932\u0928\u093e\u0021"
+    },
+    "Finally, we have the answer of the equation under the equal bar.":{
+    	"fr":"Finalement, nous avons la r\u00E9ponse en dessous de la barre de r\u00E9sultats.",
+    	"es":"Finalmente, tenemos la respuesta de la ecuaci\u00F3n debajo de la barra igual.",
+    	"chi":"\u6700\u540E\uFF0C\u6211\u4EEC\u5728\u7B49\u6761\u4E0B\u5f97\u5230\u4E86\u7B49\u5f0f\u7684\u7B54\u6848\u3002",
+    	"hi":"\u0905\u0902\u0924 \u092e\u0947\u0902\u002c \u0939\u092e\u093e\u0930\u0947 \u092a\u093e\u0938 \u092c\u0930\u093e\u092c\u0930 \u092c\u093e\u0930 \u0915\u0947 \u0924\u0939\u0924 \u0938\u092e\u0940\u0915\u0930\u0923 \u0915\u093e \u0909\u0924\u094d\u0924\u0930 \u0939\u0948\u0964"
+    },
+    "Now, we need to sum the decades of each number.":{
+    	"fr":"Maintenant, nous avons besoin d'additionner les dizaines de chaque chiffre.",
+    	"es":"Ahora, necesitamos sumar las d\u00E9cadas de cada n\u00FAmero.",
+    	"chi":"\u73b0\u5728\uFF0C\u6211\u4EEC\u9700\u8981\u603b\u7ed3\u6bcf\u4E2A\u6570\u5B57\u7684\u6570\u5341\u5E74\u3002",
+    	"hi":"\u0905\u092c\u002c \u0939\u092e\u0947\u0902 \u092a\u094d\u0930\u0924\u094d\u092f\u0947\u0915 \u0938\u0902\u0916\u094d\u092f\u093e \u0915\u0947 \u0926\u0936\u0915\u094b\u0902 \u0915\u093e \u092f\u094b\u0917 \u0915\u0930\u0928\u0947 \u0915\u0940 \u0906\u0935\u0936\u094d\u092f\u0915\u0924\u093e \u0939\u0948\u0964"
+    },
+    "Next, subtract the right most digits. The result gives %n.":{
+    	"fr":"Ensuite, soustrayez les valeurs les plus \u00E0 droites. Le r\u00E9sultat donne %n.",
+    	"es":"A continuaci\u00F3n, resta los d\u00EDgitos m\u00E1s a la derecha. El resultado da %n.",
+    	"chi":"\u63a5\u4E0B\u6765\uFF0C\u51cf\u53bb\u6700\u53f3\u8fb9\u7684\u6570\u5B57\u3002\u7ed3\u679C\u7ED9\u51FA%n\u3002",
+    	"hi":"\u0905\u0917\u0932\u093e\u002c \u0938\u0939\u0940 \u0905\u0927\u093f\u0915\u093e\u0902\u0936 \u0905\u0902\u0915\u094b\u0902 \u0915\u094b \u0918\u091f\u093e\u090f\u0902\u0964 \u092a\u0930\u093f\u0923\u093e\u092e %n \u0926\u0947\u0924\u093e \u0939\u0948\u0964"
+    },
+    "Because the subtraction of the right most digits gives a result lower than %n, we must borrow a unit from the higher position.":{
+    	"fr":"Puisque la soustraction des valeurs les plus \u00E0 droites donne un r\u00E9sultat inf\u00E9rieur \u00E0 %n, nous devons emprunter une unit\u00E9 de la position sup\u00E9rieure.",
+    	"es":"Debido a que la resta de los d\u00EDgitos m\u00E1s a la derecha da un resultado menor que %n, debemos tomar prestada una unidad de la posici\u00F3n m\u00E1s alta.",
+    	"chi":"\u56e0\u4e3a\u6700\u53f3\u8fb9\u6570\u5B57\u7684\u51cf\u6cd5\u7ED9\u51FA\u7684\u7ed3\u679C\u4F4E\u4E8E%n\uFF0C\u6240\u4ee5\u6211\u4EEC\u5fc5\u987b\u4ece\u8f83\u9ad8\u4F4D\u7f6e\u501f\u4E00\u4E2A\u5355\u4F4D\u3002",
+    	"hi":"\u0915\u094d\u092f\u094b\u0902\u0915\u093f \u0938\u0939\u0940 \u0905\u0927\u093f\u0915\u093e\u0902\u0936 \u0905\u0902\u0915\u094b\u0902 \u0915\u093e \u0918\u091f\u093e\u0935 %n \u0938\u0947 \u0915\u092e \u092a\u0930\u093f\u0923\u093e\u092e \u0926\u0947\u0924\u093e \u0939\u0948\u002c \u0939\u092e\u0947\u0902 \u0909\u091a\u094d\u091a \u0938\u094d\u0925\u093f\u0924\u093f \u0938\u0947 \u090f\u0915 \u0907\u0915\u093e\u0908 \u0909\u0927\u093e\u0930 \u0932\u0947\u0928\u0940 \u091a\u093e\u0939\u093f\u090f"
+    },
+    "Now, do the subtraction of the units by adding the value you took from the decades.":{
+    	"fr":"Maintenant, faites la soustraction des unit\u00E9 en additionnant la valeur que vous avez prise des dizaines.",
+    	"es":"Ahora, haz la resta de las unidades agregando el valor que tomaste de las d\u00E9cadas.",
+    	"chi":"\u73b0\u5728\uFF0C\u901A\u8FC7\u6DFB\u52A0\u60A8\u4ECE\u51E0\u5341\u5E74\u4e2d\u83B7\u5f97\u7684\u503C\u6765\u51cf\u53bb\u5355\u4F4D\u3002",
+    	"hi":"\u0905\u092c\u002c \u0926\u0936\u0915\u094b\u0902 \u0938\u0947 \u0906\u092a\u0915\u0947 \u0926\u094d\u0935\u093e\u0930\u093e \u0932\u093f\u090f \u0917\u090f \u092e\u0942\u0932\u094d\u092f \u0915\u094b \u091c\u094b\u0921\u093c\u0915\u0930 \u0907\u0915\u093e\u0907\u092f\u094b\u0902 \u0915\u093e \u0918\u091f\u093e\u0935 \u0915\u0930\u0947\u0902\u0964"
+    },
+    "Once we are done with the subtraction of the units, we do the subtraction of the decades. Below the equal bar is the answer.":{
+    	"fr":"Maintenant que vous avez finis avec la soustraction des unit\u00E9s, faites la soustraction des dizaines. En dessous de la bar des r\u00E9sultats se trouve la r\u00E9ponse.",
+    	"es":"Una vez que hemos terminado con la resta de las unidades, hacemos la resta de las d\u00E9cadas. Debajo de la barra igual est\u00E1 la respuesta.",
+    	"chi":"\u4E00\u65E6\u6211\u4EEC\u5B8C\u6210\u4E86\u5355\u4F4D\u7684\u51cf\u6cd5\uFF0C\u6211\u4EEC\u5C31\u51cf\u53bb\u4E86\u51E0\u5341\u5E74\u3002\u7B49\u4E8E\u6761\u7684\u4E0B方\u5C31\u662F\u7B54\u6848\u3002",
+    	"hi":"\u090f\u0915 \u092c\u093e\u0930 \u091c\u092c \u0939\u092e \u0907\u0915\u093e\u0907\u092f\u094b\u0902 \u0915\u0947 \u0918\u091f\u093e\u0935 \u0915\u0947 \u0938\u093e\u0925 \u0939\u094b \u091c\u093e\u0924\u0947 \u0939\u0948\u0902\u002c \u0924\u094b \u0939\u092e \u0926\u0936\u0915\u094b\u0902 \u0915\u093e \u0918\u091f\u093e\u0935 \u0915\u0930\u0924\u0947 \u0939\u0948\u0902\u0964 \u092c\u0930\u093e\u092c\u0930 \u092a\u091f\u094d\u091f\u0940 \u0915\u0947 \u0928\u0940\u091a\u0947 \u0909\u0924\u094d\u0924\u0930 \u0939\u0948\u0964"
+    },
+    "We complete the operation by subtracting the decades unit together.":{
+    	"fr":"Nous compl\u00E9tons l'op\u00E9ration en soustrayant les dizaines ensemble.",
+    	"es":"Completamos la operaci\u00F3n restando la unidad de d\u00E9cadas juntas.",
+    	"chi":"\u6211\u4EEC\u901A\u8FC7\u5c06\u51E0\u5341\u5E74\u7684\u5355\u4F4D\u51cf\u53bb\u4E00\u8D77\u6765\u5B8C\u6210\u64cd\u4f5c\u3002",
+    	"hi":"\u0939\u092e \u090f\u0915 \u0938\u093e\u0925 \u0926\u0936\u0915\u094b\u0902 \u0915\u0940 \u092f\u0942\u0928\u093f\u091f \u0915\u094b \u0918\u091f\u093e\u0915\u0930 \u0911\u092a\u0930\u0947\u0936\u0928 \u0915\u094b \u092a\u0942\u0930\u093e \u0915\u0930\u0924\u0947 \u0939\u0948\u0902\u0964"
+    },
+    "First, set the values to be vertically aligned.":{
+    	"fr":"D'abord, alignez les chiffres verticalement.",
+    	"es":"Primero, configure los valores para que est\u00E9n alineados verticalmente.",
+    	"chi":"\u9996\u5148\uFF0C\u5c06\u503C\u8bbe\u7f6e\u4e3a\u5782\u76f4\u5bf9\u9f50\u3002",
+    	"hi":"\u0938\u092c\u0938\u0947 \u092a\u0939\u0932\u0947\u002c \u092e\u093e\u0928\u094b\u0902 \u0915\u094b \u0932\u0902\u092c\u0935\u0924 \u0930\u0942\u092a \u0938\u0947 \u0938\u0902\u0930\u0947\u0916\u093f\u0924 \u0915\u0930\u0928\u0947 \u0915\u0947 \u0932\u093f\u090f \u0938\u0947\u091f \u0915\u0930\u0947\u0902\u0964"
+    },
+    "We multiply the last digit of the first number by the last digit of the second number.":{
+    	"fr":"Nous multiplions la derni\u00E8re valeur du premier chiffre par la derni\u00E8re valeur du deuxi\u00E8me chiffre.",
+    	"es":"Multiplicamos el \u00FAltimo d\u00EDgito del primer n\u00FAmero por el \u00FAltimo d\u00EDgito del segundo n\u00FAmero.",
+    	"chi":"\u6211\u4EEC\u5c06\u7b2c\u4E00\u4E2A\u6570\u5B57\u7684\u6700\u540E\u4E00\u4F4D\u6570\u4E58\u4ee5\u7b2c\u4e8c\u4E2A\u6570\u5B57\u7684\u6700\u540E\u4E00\u4F4D\u6570\u3002",
+    	"hi":"\u0939\u092e \u092a\u0939\u0932\u0940 \u0938\u0902\u0916\u094d\u092f\u093e \u0915\u0947 \u0905\u0902\u0924\u093f\u092e \u0905\u0902\u0915 \u0915\u094b \u0926\u0942\u0938\u0930\u0940 \u0938\u0902\u0916\u094d\u092f\u093e \u0915\u0947 \u0905\u0902\u0924\u093f\u092e \u0905\u0902\u0915 \u0938\u0947 \u0917\u0941\u0923\u093e \u0915\u0930\u0924\u0947 \u0939\u0948\u0902\u0964"
+    },
+    "We need to do %n x %n. This gives us a result of %n. The answer is placed below the equal bar.":{
+    	"fr":"Nous avons besoin de faire %n x %n. Le r\u00E9sultat est %n. La r\u00E9ponse est plac\u00E9e en dessous de la barre de r\u00E9sultats.",
+    	"es":"Necesitamos hacer %n x %n. Esto nos da un resultado de %n. La respuesta se coloca debajo de la barra igual.",
+    	"chi":"\u6211\u4EEC\u73b0\u5728\u5c06\u7b2c\u4E00\u4E2A\u6570\u5B57\u7684\u6700\u540E\u4E00\u4F4D\u4E58\u4ee5\u7b2c\u4e8c\u4E2A\u6570\u5B57\u7684\u7B2C\u4E00\u4E2A\u6570\u5B57\u3002",
+    	"hi":"\u0939\u092e\u0947\u0902 %n \u0078%n \u0915\u0930\u0928\u0947 \u0915\u0940 \u0906\u0935\u0936\u094d\u092f\u0915\u0924\u093e \u0939\u0948\u0964 \u092f\u0939 \u0939\u092e\u0947\u0902 %n \u0915\u093e \u092a\u0930\u093f\u0923\u093e\u092e \u0926\u0947\u0924\u093e \u0939\u0948\u0964 \u0909\u0924\u094d\u0924\u0930 \u0915\u094b \u092c\u0930\u093e\u092c\u0930 \u092c\u093e\u0930 \u0915\u0947 \u0928\u0940\u091a\u0947 \u0930\u0916\u093e \u0917\u092f\u093e \u0939\u0948\u0964"
+    },
+    "We now multiply the last digit of the first number by the first digit of the second number.":{
+    	"fr":"Nous avons maintenant besoin de multiplier la derni\u00E8re valeur du premier chiffre par la premi\u00E8re valeur du deuxi\u00E8me chiffre.",
+    	"es":"Ahora multiplicamos el \u00FAltimo d\u00EDgito del primer n\u00FAmero por el primer d\u00EDgito del segundo n\u00FAmero.",
+    	"chi":"\u6211\u4eec\u73b0\u5728\u5c06\u7b2c\u4e00\u4e2a\u6570\u5b57\u7684\u6700\u540e\u4e00\u4f4d\u4e58\u4ee5\u7b2c\u4e8c\u4e2a\u6570\u5b57\u7684\u7b2c\u4e00\u4e2a\u6570\u5b57\u3002",
+    	"hi":"\u0905\u092c \u0939\u092e \u092a\u0939\u0932\u0940 \u0938\u0902\u0916\u094d\u092f\u093e \u0915\u0947 \u0905\u0902\u0924\u093f\u092e \u0905\u0902\u0915 \u0915\u094b \u0926\u0942\u0938\u0930\u0940 \u0938\u0902\u0916\u094d\u092f\u093e \u0915\u0947 \u092a\u0939\u0932\u0947 \u0905\u0902\u0915 \u0938\u0947 \u0917\u0941\u0923\u093e \u0915\u0930\u0924\u0947 \u0939\u0948\u0902\u0964"
+    },
+    "We need to do %n x %n. This gives us a result of %n.":{
+    	"fr":"Nous avons besoin de faire %n x %n. Cela donne un r\u00E9sultat de %n.",
+    	"es":"Necesitamos hacer %n x %n. Esto nos da un resultado de %n.",
+    	"chi":"\u6211\u4EEC\u9700\u8981\u505a%n x%n\u3002\u8fd9\u7ED9\u4E86\u6211\u4EEC%n\u7684\u7ed3\u679C\u3002",
+    	"hi":"\u0939\u092e\u0947\u0902 %n \u0078%n \u0915\u0930\u0928\u0947 \u0915\u0940 \u0906\u0935\u0936\u094d\u092f\u0915\u0924\u093e \u0939\u0948\u0964 \u092f\u0939 \u0939\u092e\u0947\u0902 %n \u0915\u093e \u092a\u0930\u093f\u0923\u093e\u092e \u0926\u0947\u0924\u093e \u0939\u0948\u0964"
+    },
+    "However, because we are multiplicating by the decade unit of the second operand, we need to multiply our result by %n, and add that to our current result under the equal bar.":{
+    	"fr":"Cependant, parce que nous sommes en train de multiplier avec l'unit\u00E9 des dizaines de la seconde op\u00E9rande, nous avons besoin de multiplier le r\u00E9sultat par %n, et additionner ceci au r\u00E9sultat d\u00E9j\u00E0 pr\u00E9sent en dessous de la barre des r\u00E9sultats.",
+    	"es":"Sin embargo, debido a que estamos multiplicando por la unidad de la d\u00E9cada del segundo operando, necesitamos multiplicar nuestro resultado por %n, y agregarlo a nuestro resultado actual debajo de la barra igual.",
+    	"chi":"\u4F46\u662F\uFF0C\u56e0\u4e3a\u6211\u4EEC\u4E58\u4ee5\u7b2c\u4e8c\u4E2A\u64cd\u4f5c\u6570\u7684\u5341\u8FDB\u5236\u5355\u4F4D\uFF0C\u6211\u4EEC\u9700\u8981\u5c06\u7ed3\u679C\u4E58\u4ee5%n\uFF0C\u5E76\u5c06\u5176\u6dfb\u52A0\u5230\u7B49\u503C\u6761\u4E0B\u7684\u5f53\u524d\u7ed3\u679C\u3002",
+    	"hi":"\u0939\u093e\u0932\u093e\u0901\u0915\u093f\u002c \u0915\u094d\u092f\u094b\u0902\u0915\u093f \u0939\u092e \u0926\u0942\u0938\u0930\u0947 \u0911\u092a\u0930\u0947\u0902\u0921 \u0915\u0940 \u0926\u0936\u0915 \u0907\u0915\u093e\u0908 \u0938\u0947 \u0917\u0941\u0923\u093e \u0915\u0930 \u0930\u0939\u0947 \u0939\u0948\u0902\u002c \u0939\u092e\u0947\u0902 \u0905\u092a\u0928\u093e \u092a\u0930\u093f\u0923\u093e\u092e %n \u0938\u0947 \u0917\u0941\u0923\u093e \u0915\u0930\u0928\u093e \u0939\u094b\u0917\u093e\u002c \u0914\u0930 \u092c\u0930\u093e\u092c\u0930 \u092c\u093e\u0930 \u0915\u0947 \u0924\u0939\u0924 \u0905\u092a\u0928\u0947 \u0935\u0930\u094d\u0924\u092e\u093e\u0928 \u092a\u0930\u093f\u0923\u093e\u092e \u092e\u0947\u0902 \u091c\u094b\u0921\u093c\u0928\u093e \u0939\u094b\u0917\u093e\u0964"
+    },
+    "Now, we have to do multiplications with the decade unit of the first operand. Our results thereon will be multiplied by %n because of that.":{
+    	"fr":"Maintenant, nous devons faire les multiplications avec l'unit\u00E9 des dizaines de la premi\u00E8re op\u00E9rande. Nos r\u00E9sultats seront maintenant multipli\u00E9s par %n pour cette raison.",
+    	"es":"Ahora, tenemos que hacer multiplicaciones con la unidad de la d\u00E9cada del primer operando. Nuestros resultados al respecto se multiplicar\u00E1n por %n debido a eso.",
+    	"chi":"\u73b0\u5728\uFF0C\u6211\u4EEC\u5fc5\u987b\u4f7f\u7528\u7b2c\u4E00\u4E2A\u64cd\u4f5c\u6570\u7684\u5341\u8FDB\u5236\u5355\u4F4D\u8FDB\u884c\u4e58\u6cd5\u8fd0\u7b97\u3002\u56e0\u6b64\uFF0C\u6211\u4EEC\u7684\u7ed3\u679C\u5c06\u4E58\u4ee5%n\u3002",
+    	"hi":"\u0905\u092c\u002c \u0939\u092e\u0947\u0902 \u092a\u0939\u0932\u0947 \u0911\u092a\u0930\u0947\u0902\u0921 \u0915\u0940 \u0926\u0936\u0915 \u0907\u0915\u093e\u0908 \u0915\u0947 \u0938\u093e\u0925 \u0917\u0941\u0923\u093e \u0915\u0930\u0928\u093e \u0939\u094b\u0917\u093e\u0964 \u0939\u092e\u093e\u0930\u0947 \u092a\u0930\u093f\u0923\u093e\u092e \u0909\u0938\u0915\u0947 \u0915\u093e\u0930\u0923 %n \u0938\u0947 \u0915\u0908 \u0917\u0941\u0928\u093e \u0905\u0927\u093f\u0915 \u0939\u094b\u0902\u0917\u0947\u0964"
+    },
+    "We now multiply the first digit of the first operand with the last digit of the second operand.":{
+    	"fr":"Nous multiplions maintenant la premi\u00E8re valeur de la premi\u00E8re op\u00E9rande avec la derni\u00E8re valeur de la seconde op\u00E9rande.",
+    	"es":"Ahora multiplicamos el primer d\u00EDgito del primer operando con el \u00FAltimo d\u00EDgito del segundo operando.",
+    	"chi":"\u6211\u4EEC\u73b0\u5728\u5c06\u7b2c\u4E00\u4E2A\u64cd\u4f5c\u6570\u7684\u7B2C\u4E00\u4E2A\u6570\u5B57\u4E0E\u7b2c\u4e8c\u4E2A\u64cd\u4f5c\u6570\u7684\u6700\u540E\u4E00\u4E2A\u6570\u5B57\u76F8\u4E58\u3002",
+    	"hi":"\u0905\u092c \u0939\u092e \u092a\u0939\u0932\u0947 \u0911\u092a\u0930\u0947\u0902\u0921 \u0915\u0947 \u092a\u0939\u0932\u0947 \u0905\u0902\u0915 \u0915\u094b \u0926\u0942\u0938\u0930\u0947 \u0911\u092a\u0930\u0947\u0902\u0921 \u0915\u0947 \u0905\u0902\u0924\u093f\u092e \u0905\u0902\u0915 \u0938\u0947 \u0917\u0941\u0923\u093e \u0915\u0930\u0924\u0947 \u0939\u0948\u0902\u0964"
+    },
+    "We need to do %n x %n. This gives us a result of %n. We multiply that answer by %n and put it under the equal bar.":{
+    	"fr":"Nous devons faire %n x %n. Cela nous donne le r\u00E9sultat %n. Nous multiplions cette r\u00E9ponse par %n et nous la pla\u00E7ons sous la barre de r\u00E9sultats.",
+    	"es":"Necesitamos hacer %n x %n. Esto nos da un resultado de %n. Multiplicamos esa respuesta por %n y la colocamos bajo la barra igual.",
+    	"chi":"\u6211\u4EEC\u9700\u8981\u505a%n x%n\u3002\u8fd9\u7ED9\u4E86\u6211\u4EEC%n\u7684\u7ed3\u679C\u3002\u6211\u4EEC\u5c06\u8be5\u7B54\u6848\u4E58\u4ee5%n\u5e76\u5c06\u5176\u7f6e\u4E8E\u76f8\u7b49\u7684\u6761\u5f62\u4E0B\u3002",
+    	"hi":"\u0939\u092e\u0947\u0902 %n \u0078%n \u0915\u0930\u0928\u0947 \u0915\u0940 \u0906\u0935\u0936\u094d\u092f\u0915\u0924\u093e \u0939\u0948\u0964 \u092f\u0939 \u0939\u092e\u0947\u0902 %n \u0915\u093e \u092a\u0930\u093f\u0923\u093e\u092e \u0926\u0947\u0924\u093e \u0939\u0948\u0964 \u0939\u092e \u0909\u0938 \u0909\u0924\u094d\u0924\u0930 \u0915\u094b %n \u0938\u0947 \u0917\u0941\u0923\u093e \u0915\u0930\u0924\u0947 \u0939\u0948\u0902 \u0914\u0930 \u092c\u0930\u093e\u092c\u0930 \u092c\u093e\u0930 \u0915\u0947 \u0928\u0940\u091a\u0947 \u0930\u0916\u0924\u0947 \u0939\u0948\u0902\u0964"
+    },
+    "We need to do %n x %n. This gives us a result of %n. We multiply that answer by %n*%n because we are using the decade unit of the first operand and the second operand.":{
+    	"fr":"Nous devons faire %n x %n. Cela nous donne le r\u00E9sultat %n. Nous multiplions cette r\u00E9ponse par %n*%n parce que nous utilisons l'unit\u00E9 des dizaines de la premi\u00E8re et seconde op\u00E9rande.",
+    	"es":"Necesitamos hacer %n x %n. Esto nos da un resultado de %n. Multiplicamos esa respuesta por %n * %n porque estamos usando la unidad de la d\u00E9cada del primer operando y el segundo operando.",
+    	"chi":"\u6211\u4EEC\u9700\u8981\u505a%n x%n\u3002\u8fd9\u7ED9\u4E86\u6211\u4EEC%n\u7684\u7ed3\u679C\u3002\u6211\u4EEC\u5c06\u8be5\u7B54\u6848\u4E58\u4ee5%n *%n\uFF0C\u56e0\u4e3a\u6211\u4EEC\u4f7f\u7528\u7b2c\u4E00\u4E2A\u64cd\u4f5c\u6570\u548c\u7b2c\u4e8c\u4E2A\u64cd\u4f5c\u6570\u7684\u5341\u8FDB\u5236\u5355\u4F4D\u3002",
+    	"hi":"\u0939\u092e\u0947\u0902 %n \u0078%n \u0915\u0930\u0928\u0947 \u0915\u0940 \u0906\u0935\u0936\u094d\u092f\u0915\u0924\u093e \u0939\u0948\u0964 \u092f\u0939 \u0939\u092e\u0947\u0902 %n \u0915\u093e \u092a\u0930\u093f\u0923\u093e\u092e \u0926\u0947\u0924\u093e \u0939\u0948\u0964 \u0939\u092e \u0909\u0938 \u0909\u0924\u094d\u0924\u0930 \u0915\u094b %n \u002a%n \u0938\u0947 \u0917\u0941\u0923\u093e \u0915\u0930\u0924\u0947 \u0939\u0948\u0902 \u0915\u094d\u092f\u094b\u0902\u0915\u093f \u0939\u092e \u092a\u0939\u0932\u0947 \u0911\u092a\u0930\u0947\u0902\u0921 \u0915\u0947 \u0926\u0936\u0915 \u0915\u0940 \u092f\u0942\u0928\u093f\u091f \u0914\u0930 \u0926\u0942\u0938\u0930\u0947 \u0911\u092a\u0930\u0947\u0902\u0921 \u0915\u093e \u0909\u092a\u092f\u094b\u0917 \u0915\u0930 \u0930\u0939\u0947 \u0939\u0948\u0902\u0964"
+    },
+    "We now have our second value under the equal bar. Now we must do the addition.":{
+    	"fr":"Nous avons notre seconde valeur en dessous de la barre de r\u00E9sultats. Nous devons maintenant effectuer l'addition.",
+    	"es":"Ahora tenemos nuestro segundo valor debajo de la barra igual. Ahora debemos hacer la adici\u00F3n.",
+    	"chi":"\u6211\u4EEC\u73b0\u5728\u5728\u5e73\u7b49\u6761\u4ef6\u4E0B\u83B7\u5f97\u7b2c\u4e8c\u4E2A\u503C\u3002\u73b0\u5728\u6211\u4EEC\u5fc5\u987b\u505a\u8865\u5145\u3002",
+    	"hi":"\u0905\u092c \u0939\u092e\u093e\u0930\u0947 \u092a\u093e\u0938 \u092c\u0930\u093e\u092c\u0930 \u092c\u093e\u0930 \u0915\u0947 \u0924\u0939\u0924 \u0939\u092e\u093e\u0930\u093e \u0926\u0942\u0938\u0930\u093e \u092e\u0942\u0932\u094d\u092f \u0939\u0948\u0964 \u0905\u092c \u0939\u092e\u0947\u0902 \u0907\u0938\u0915\u0947 \u0905\u0924\u093f\u0930\u093f\u0915\u094d\u0924 \u0915\u0930\u0928\u093e \u091a\u093e\u0939\u093f\u090f\u0964"
+    },
+    "Remember that multiplications by %n gives %n. That is why we are not stepping through the decade unit multiplication of the first operand. We now have the answer under the equal bar.":{
+    	"fr":"N'oubliez pas que les multiplications par %n donnent %n. C'est pourquoi la simulation ne montre pas la multiplication avec l'unit\u00E9 des dizaines de la premi\u00E8re op\u00E9rande. Nous avons maintenant la r\u00E9ponse en dessous de la barre de r\u00E9sultats.",
+    	"es":"Recuerde que las multiplicaciones por %n dan %n. Es por eso que no estamos pasando por la multiplicaci\u00F3n de unidades de la d\u00E9cada del primer operando. Ahora tenemos la respuesta debajo de la barra igual.",
+    	"chi":"\u8bf7\u8bb0\u4f4f\uFF0C%n\u7684\u4e58\u6cd5\u7ED9\u51FA%n\u3002\u8fd9\u5c31\u662F\u4e3a\u4ec0么\u6211\u4EEC\u6ca1\u6709\u8e29\u8fc7\u7b2c\u4E00\u4E2A\u64cd\u4f5c\u6570\u7684\u5341\u8FDB\u5236\u5355\u4F4D\u4e58\u6cd5\u3002\u6211\u4EEC\u73b0\u5728\u5728\u540c\u7b49\u6761\u4ef6\u4E0B\u5f97\u5230\u7B54\u6848\u3002",
+    	"hi":"\u092f\u093e\u0926 \u0930\u0916\u0947\u0902 \u0915\u093f %n \u0938\u0947 \u0917\u0941\u0923\u0928 %n \u0926\u0947\u0924\u093e \u0939\u0948\u0964 \u092f\u0939\u0940 \u0915\u093e\u0930\u0923 \u0939\u0948 \u0915\u093f \u0939\u092e \u092a\u0939\u0932\u0947 \u0911\u092a\u0930\u0947\u0902\u0921 \u0915\u0947 \u0926\u0936\u0915 \u0907\u0915\u093e\u0908 \u0917\u0941\u0923\u0928 \u0915\u0947 \u092e\u093e\u0927\u094d\u092f\u092e \u0938\u0947 \u0915\u0926\u092e \u0928\u0939\u0940\u0902 \u092c\u0922\u093c\u093e \u0930\u0939\u0947 \u0939\u0948\u0902\u0964 \u0905\u092c \u0939\u092e\u093e\u0930\u0947 \u092a\u093e\u0938 \u092c\u0930\u093e\u092c\u0930 \u092a\u091f\u094d\u091f\u0940 \u0915\u0947 \u0924\u0939\u0924 \u091c\u0935\u093e\u092c \u0939\u0948\u0964"
+    },
+    "First, set the values as shown below.":{
+    	"fr":"D'abord, placez les valeurs comme montr\u00E9 ci-dessous.",
+    	"es":"Primero, establezca los valores como se muestra a continuaci\u00F3n.",
+    	"chi":"\u9996\u5148\uFF0C\u8bbe\u7f6e\u5982\u4E0B\u6240\u793A\u7684\u503C\u3002",
+    	"hi":"\u0938\u092c\u0938\u0947 \u092a\u0939\u0932\u0947\u002c \u0928\u0940\u091a\u0947 \u0926\u093f\u0916\u093e\u090f \u0905\u0928\u0941\u0938\u093e\u0930 \u092e\u093e\u0928 \u0938\u0947\u091f \u0915\u0930\u0947\u0902\u0964"
+    },
+    "Then, look at how many times the dividend goes into the divisor. To do that, we look into each digit of the dividend individually.":{
+    	"fr":"Ensuite, observez combien de fois que le dividende rentre dans le diviseur. Pour faire cela, nous regardons chaque valeur du dividende individuellement.",
+    	"es":"Luego, mira cu\u00E1ntas veces el dividendo va al divisor. Para hacer eso, examinamos cada d\u00EDgito del dividendo individualmente.",
+    	"chi":"\u7136\u540E\uFF0C\u770b\u770b\u80a1\u606f\u8FDB\u5165\u9664\u6570\u7684\u6B21\u6570\u3002\u4e3a\u6b64\uFF0C\u6211\u4EEC\u5206\u522b\u67e5\u770B\u80a1\u606f\u7684\u6bcf\u4E2A\u6570\u5B57\u3002",
+    	"hi":"\u092b\u093f\u0930\u002c \u092f\u0939 \u0926\u0947\u0916\u0947\u0902 \u0915\u093f \u0932\u093e\u092d\u093e\u0902\u0936 \u0915\u093f\u0924\u0928\u0940 \u092c\u093e\u0930 \u0935\u093f\u092d\u093e\u091c\u0915 \u092e\u0947\u0902 \u091c\u093e\u0924\u093e \u0939\u0948\u0964 \u0910\u0938\u093e \u0915\u0930\u0928\u0947 \u0915\u0947 \u0932\u093f\u090f\u002c \u0939\u092e \u0935\u094d\u092f\u0915\u094d\u0924\u093f\u0917\u0924 \u0930\u0942\u092a \u0938\u0947 \u0932\u093e\u092d\u093e\u0902\u0936 \u0915\u0947 \u092a\u094d\u0930\u0924\u094d\u092f\u0947\u0915 \u0905\u0902\u0915 \u0915\u094b \u0926\u0947\u0916\u0924\u0947 \u0939\u0948\u0902\u0964"
+    },
+    "How much times do %n go into %n? It goes %n times, because %n is the closest lower value in multiples of %n to %n.":{
+    	"fr":"Combien de fois %n rentre dans %n? La r\u00E9ponse est %n, parce que %n est la valeur la plus proche. Si on fait les multiples de %n, on r\u00E9alise que c'est la valeur la plus proche de %n.",
+    	"es":"¿Cu\u00E1ntas veces entra %n en %n? Va %n veces, porque %n es el valor inferior m\u00E1s cercano en m\u00FAltiplos de %n a %n.",
+    	"chi":"%n\u8FDB\u5165%n\u7684\u6B21\u6570\u662f\u591a\u5c11\uff1f\u5b83\u4f1a\u8f6c\u6362%n\u6B21\uFF0C\u56e0\u4e3a%n\u662F%n\u5230%n\u7684\u500d\u6570\u4e2d\u6700\u63a5\u8fd1\u7684\u8f83\u4F4E\u503C\u3002",
+    	"hi":"%n \u0915\u093f\u0924\u0928\u0940 \u092c\u093e\u0930 %n \u092e\u0947\u0902 \u091c\u093e\u0924\u093e \u0939\u0948\u003f \u092f\u0939 %n \u092c\u093e\u0930 \u091c\u093e\u0924\u093e \u0939\u0948\u002c \u0915\u094d\u092f\u094b\u0902\u0915\u093f %n\u002c %n \u0938\u0947 %n \u0915\u0947 \u0917\u0941\u0923\u0915 \u092e\u0947\u0902 \u0928\u093f\u0915\u091f\u0924\u092e \u0928\u093f\u091a\u0932\u093e \u092e\u093e\u0928 \u0939\u0948"
+    },
+    "Then, the answer can be found above the dividend. (%n)":{
+    	"fr": "Puis, la r\u00E9 est plac\u00E9e au dessus du dividende. (%n)",
+    	"es":"Entonces, la respuesta se puede encontrar por encima del dividendo. (%n)",
+    	"chi":"\u7136\u540E\uFF0C\u53EF\u4ee5\u5728\u7EA2\u5229\u4E4B\u4E0A\u627E\u5230\u7B54\u6848\u3002 \uFF08%n\uFF09",
+    	"hi":"\u092b\u093f\u0930\u002c \u0909\u0924\u094d\u0924\u0930 \u0932\u093e\u092d\u093e\u0902\u0936 \u0938\u0947 \u090a\u092a\u0930 \u092a\u093e\u092f\u093e \u091c\u093e \u0938\u0915\u0924\u093e \u0939\u0948\u0964 \u0028%n\u0029"
+    },
+    "Because %n divided by %n gives %n, we need to bring down the next digit.":{
+    	"fr":"Puisque %n divis\u00E9 par %n donne %n, nous devons descendre la prochaine valeur.",
+    	"es":"Debido a que %n dividido por %n da %n, debemos bajar el siguiente d\u00EDgito.",
+    	"chi":"\u56e0\u4e3a%n\u9664\u4ee5%n\u7ED9\u51FA%n\uFF0C\u6211\u4EEC\u9700\u8981\u964D\u4F4E\u4E0B\u4E00\u4E2A\u6570\u5B57\u3002",
+    	"hi":"\u0915\u094d\u092f\u094b\u0902\u0915\u093f %n \u0926\u094d\u0935\u093e\u0930\u093e \u0935\u093f\u092d\u093e\u091c\u093f\u0924 %n\u002c %n \u0926\u0947\u0924\u093e \u0939\u0948\u002c \u0939\u092e\u0947\u0902 \u0905\u0917\u0932\u093e \u0905\u0902\u0915 \u0928\u0940\u091a\u0947 \u0932\u093e\u0928\u0947 \u0915\u0940 \u0906\u0935\u0936\u094d\u092f\u0915\u0924\u093e \u0939\u0948"
+    },
+    "Then, bring down the unit digit of the dividend.":{
+    	"fr":"Ensuite, descendez l'unit\u00E9 du dividende.",
+    	"es":"Luego, baja el d\u00EDgito unitario del dividendo.",
+    	"chi":"\u7136\u540E\uFF0C\u964D\u4F4E\u88AB\u9664\u6570\u7684\u5355\u4F4D\u6570\u3002",
+    	"hi":"\u092b\u093f\u0930\u002c \u0932\u093e\u092d\u093e\u0902\u0936 \u0915\u0940 \u0907\u0915\u093e\u0908 \u0905\u0902\u0915 \u0915\u094b \u0928\u0940\u091a\u0947 \u0932\u093e\u090f\u0902\u0964"
+    },
+    "Because the hundred digit is smaller than the divisor, pull down the decade value.":{
+    	"fr":"Puisque l'unit\u00E9 des centaines est plus petite que le diviseur, descendez l'unit\u00E9 des dizaines.",
+    	"es":"Debido a que los cien d\u00EDgitos son m\u00E1s pequeños que el divisor, baje el valor de la d\u00E9cada.",
+    	"chi":"\u56e0\u4e3a\u767E\u4F4D\u6570\u5C0F\u4E8E\u9664\u6570\uFF0C\u6240\u4ee5\u4E0B\u62C9\u5341\u8FDB\u5236\u503C\u3002",
+    	"hi":"\u0915\u094d\u092f\u094b\u0902\u0915\u093f \u0938\u094c \u0905\u0902\u0915 \u092d\u093e\u091c\u0915 \u0938\u0947 \u091b\u094b\u091f\u093e \u0939\u094b\u0924\u093e \u0939\u0948\u002c \u0926\u0936\u0915 \u092e\u093e\u0928 \u0915\u094b \u0928\u0940\u091a\u0947 \u0916\u0940\u0902\u091a\u0924\u0947 \u0939\u0948\u0902\u0964"
+    },
+    "Because %n divided by %n gives a result lower than %n, then we need to bring down the next digit.":{
+    	"fr":"Puisque %n divis\u00E9 par %n donne un r\u00E9sultat plus petit que %n, nous devons descendre la prochaine valeur.",
+    	"es":"Debido a que %n dividido por %n da un resultado menor que %n, entonces necesitamos bajar el siguiente d\u00EDgito.",
+    	"chi":"\u56e0\u4e3a%n\u9664\u4ee5%n\u5f97\u5230\u7684\u7ed3\u679C\u4F4E\u4E8E%n\uFF0C\u6240\u4ee5\u6211\u4EEC\u9700\u8981\u964D\u4F4E\u4E0B\u4E00\u4E2A\u6570\u5B57\u3002",
+    	"hi":"\u0915\u094d\u092f\u094b\u0902\u0915\u093f %n \u0926\u094d\u0935\u093e\u0930\u093e \u0935\u093f\u092d\u093e\u091c\u093f\u0924 %n \u092a\u0930\u093f\u0923\u093e\u092e %n \u0938\u0947 \u0915\u092e \u0926\u0947\u0924\u093e \u0939\u0948\u002c \u0924\u094b \u0939\u092e\u0947\u0902 \u0905\u0917\u0932\u093e \u0905\u0902\u0915 \u0928\u0940\u091a\u0947 \u0932\u093e\u0928\u0947 \u0915\u0940 \u0906\u0935\u0936\u094d\u092f\u0915\u0924\u093e \u0939\u0948\u0964"
+    },
+    
+    
+    "Welcome to Math Rush":{
+    	"fr": "Bienvenue sur Ru\u00E9e de math\u00E9matiques",
+    	"es":"Bienvenido a Carrera de matem\u00E1ticas",
+    	"chi":"\u6B22\u8FCE\u6765\u5230Math Rush",
+    	"hi":"\u092e\u0948\u0925 \u0930\u0936 \u092e\u0947\u0902 \u0906\u092a\u0915\u093e \u0938\u094d\u0935\u093e\u0917\u0924 \u0939\u0948"
+    },
+    "Choose your Math":{
+    	"fr": "Choisissez vos math\u00E9matiques",
+    	"es":"Elige tus matem\u00E1ticas",
+    	"chi":"\u9009\u62E9\u4F60\u7684\u6570\u5B66",
+    	"hi":"\u0905\u092a\u0928\u093e \u092e\u0920 \u091a\u0941\u0928\u0947\u0902"
+    },
+    "Game Completed":{
+    	"fr": "Partie compl\u00E9t\u00E9e",
+    	"es":"Juego completado",
+    	"chi":"\u6E38\u620F\u5B8C\u6210\u4E86",
+    	"hi":"\u0916\u0947\u0932 \u092a\u0942\u0930\u093e \u0939\u0941\u0906"
+    }
+    
+}

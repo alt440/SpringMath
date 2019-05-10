@@ -109,18 +109,22 @@ function simulateAddition(operand1, operand2, isReset){
 	timeouts.push(setTimeout(function(){
 		var rightMostDigitsAddition = operand1%10 + operand2%10;
 		$("#commentSimulation").html("Next, sum the right most digits. The result gives "+rightMostDigitsAddition+". Put the result under the equal bar.");
+		onTextChange($("#commentSimulation"));//from translateOnChange.js
 		$("#answerUnitDigit").html(rightMostDigitsAddition%10);
 		if(rightMostDigitsAddition > 9){
 			timeouts.push(setTimeout(function(){
-				$("#commentSimulation").html("Because the sum of the right most digits is greater than 9, we need to transfer the decade digit to the decade digits' column.");
+				$("#commentSimulation").html("Because the sum of the right most digits is greater than 9, we need to transfer the decade digit of the answer to the decade digits' column.");
+				onTextChange($("#commentSimulation"));//from translateOnChange.js
 				$("#trailingDecades").html(parseInt(rightMostDigitsAddition/10));
 				
 				timeouts.push(setTimeout(function(){
-					$("#commentSimulation").html("Now, we need to calculate the decades of each number. Do not forget the extra decade value you added!");
+					$("#commentSimulation").html("Now, we need to sum the decades of each number. Do not forget the extra decade value you added!");
+					onTextChange($("#commentSimulation"));//from translateOnChange.js
 					$("#answerDecadeDigit").html(parseInt(operand1/10) + parseInt(operand2/10) + parseInt(rightMostDigitsAddition/10));
 					
 					timeouts.push(setTimeout(function(){
 						$("#commentSimulation").html("Finally, we have the answer of the equation under the equal bar.");
+						onTextChange($("#commentSimulation"));//from translateOnChange.js
 					}, timeoutDelay));
 				}, timeoutDelay));
 			}, timeoutDelay));
@@ -128,11 +132,13 @@ function simulateAddition(operand1, operand2, isReset){
 		else{
 			timeouts.push(setTimeout(function(){
 				//get the result
-				$("#commentSimulation").html("Now, we need to calculate the decades of each number.");
+				$("#commentSimulation").html("Now, we need to sum the decades of each number.");
+				onTextChange($("#commentSimulation"));//from translateOnChange.js
 				$("#answerDecadeDigit").html(parseInt(operand1/10) + parseInt(operand2/10));
 				
 				timeouts.push(setTimeout(function(){
 					$("#commentSimulation").html("Finally, we have the answer of the equation under the equal bar.");
+					onTextChange($("#commentSimulation"));//from translateOnChange.js
 				}, timeoutDelay));
 			}, timeoutDelay));
 		}
@@ -150,15 +156,18 @@ function simulateSubtraction(operand1, operand2){
 	timeouts.push(setTimeout(function(){
 		var rightMostDigitsSubtraction = (operand1%10) - (operand2%10);
 		$("#commentSimulation").html("Next, subtract the right most digits. The result gives "+rightMostDigitsSubtraction+".");
+		onTextChange($("#commentSimulation"));//from translateOnChange.js
 		if(rightMostDigitsSubtraction < 0){
 			timeouts.push(setTimeout(function(){
 				$("#commentSimulation").html("Because the subtraction of the right most digits gives a result lower than 0, we must borrow a unit from the higher position.");
+				onTextChange($("#commentSimulation"));//from translateOnChange.js
 				$("#trailingUnits").html("10");
 				operand1-=10;
 				$("#operand1DecadeDigit").html(parseInt(operand1/10));
 				
 				timeouts.push(setTimeout(function(){
 					$("#commentSimulation").html("Now, do the subtraction of the units by adding the value you took from the decades.");
+					onTextChange($("#commentSimulation"));//from translateOnChange.js
 					
 					var answer = (10+(operand1%10)) - (operand2%10);
 					$("#answerUnitDigit").html(answer);
@@ -166,6 +175,7 @@ function simulateSubtraction(operand1, operand2){
 					timeouts.push(setTimeout(function(){
 						//do the decades units here
 						$("#commentSimulation").html("Once we are done with the subtraction of the units, we do the subtraction of the decades. Below the equal bar is the answer.");
+						onTextChange($("#commentSimulation"));//from translateOnChange.js
 						//no need for putting an additional unit from the higher position because max val is 24 right now
 						$("#answerDecadeDigit").html(parseInt(operand1/10) - parseInt(operand2/10));
 					}, timeoutDelay));
@@ -246,6 +256,8 @@ function simulateSubtraction(operand1, operand2){
 			$("#answerUnitDigit").html(rightMostDigitsSubtraction);
 			timeouts.push(setTimeout(function(){
 				$("#commentSimulation").html("We complete the operation by subtracting the decades unit together.");
+				onTextChange($("#commentSimulation"));//from translateOnChange.js
+				
 				$("#answerDecadeDigit").html(parseInt(operand1/10) - parseInt(operand2/10));
 			}, timeoutDelay));
 		}
@@ -260,6 +272,7 @@ function simulateMultiplication(operand1, operand2){
 	$(".simVal").html("");
 	
 	$("#commentSimulation").html("First, set the values to be vertically aligned.");
+	onTextChange($("#commentSimulation"));//from translateOnChange.js
 	
 	$("#operand10DecadeDigit").html(parseInt(operand1/10));
 	$("#operand10UnitDigit").html(operand1%10);
@@ -276,24 +289,30 @@ function simulateMultiplication(operand1, operand2){
 	//attribute to timeout variable so we can cancel this process later
 	timeouts.push(setTimeout(function(){
 		//start multiplying the operand1 last digit with second number. Then, operand1 first digit with second number.
-		$("#commentSimulation").html("First, we multiply the last digit of the first number by the last digit of the second number.");
-		
+		$("#commentSimulation").html("We multiply the last digit of the first number by the last digit of the second number.");
+		onTextChange($("#commentSimulation"));//from translateOnChange.js
 		
 		timeouts.push(setTimeout(function(){
 			var answer = (operand1%10) * (operand2%10);
 			$("#commentSimulation").html("We need to do "+(operand1%10)+" x "+(operand2%10)+". This gives us a result of "+answer+". The answer is placed below the equal bar.");
+			onTextChange($("#commentSimulation"));//from translateOnChange.js
+			
 			$("#operand1UnitDigit").html(answer%10);
 			$("#operand1DecadeDigit").html(parseInt(answer/10));
 			
 			timeouts.push(setTimeout(function(){
 				$("#commentSimulation").html("We now multiply the last digit of the first number by the first digit of the second number.");
+				onTextChange($("#commentSimulation"));//from translateOnChange.js
 				
 				timeouts.push(setTimeout(function(){
 					var answer2 = (operand1%10) * (parseInt(operand2/10));
 					$("#commentSimulation").html("We need to do "+(operand1%10)+" x "+(parseInt(operand2/10))+". This gives us a result of "+answer2+".");
+					onTextChange($("#commentSimulation"));//from translateOnChange.js
 					
 					timeouts.push(setTimeout(function(){
 						$("#commentSimulation").html("However, because we are multiplicating by the decade unit of the second operand, we need to multiply our result by 10, and add that to our current result under the equal bar.");
+						onTextChange($("#commentSimulation"));//from translateOnChange.js
+						
 						//decade unit of answer
 						$("#operand1DecadeDigit").html(parseInt(answer/10)+answer2%10);
 						
@@ -305,13 +324,17 @@ function simulateMultiplication(operand1, operand2){
 							//if the first operand has two digits
 							timeouts.push(setTimeout(function(){
 								$("#commentSimulation").html("Now, we have to do multiplications with the decade unit of the first operand. Our results thereon will be multiplied by 10 because of that.");
+								onTextChange($("#commentSimulation"));//from translateOnChange.js
 								
 								timeouts.push(setTimeout(function(){
 									$("#commentSimulation").html("We now multiply the first digit of the first operand with the last digit of the second operand.");
+									onTextChange($("#commentSimulation"));//from translateOnChange.js
 									
 									timeouts.push(setTimeout(function(){
 										var answer3 = parseInt(operand1/10) * operand2%10;
 										$("#commentSimulation").html("We need to do "+parseInt(operand1/10)+" x "+operand2%10+". This gives us a result of "+answer3+". We multiply that answer by 10 and put it under the equal bar.");
+										onTextChange($("#commentSimulation"));//from translateOnChange.js
+										
 										$("#operand2UnitDigit").html("0");
 										$("#operand2DecadeDigit").html(answer3%10);
 										if(parseInt(answer3/10) !== 0)
@@ -319,15 +342,18 @@ function simulateMultiplication(operand1, operand2){
 										
 										timeouts.push(setTimeout(function(){
 											$("#commentSimulation").html("We now multiply the first digit of the first operand with the last digit of the second operand.");
+											onTextChange($("#commentSimulation"));//from translateOnChange.js
 											
 											timeouts.push(setTimeout(function(){
 												var answer4 = parseInt(operand1/10) * parseInt(operand2/10);
 												$("#commentSimulation").html("We need to do "+parseInt(operand1/10)+" x "+parseInt(operand2/10)+". This gives us a result of "+answer4+". We multiply that answer by 10*10 because we are using the decade unit of the first operand and the second operand.");
+												onTextChange($("#commentSimulation"));//from translateOnChange.js
 												
 												//no need for remainder here
 												$("#operand2HundredDigit").html(answer4);
 												timeouts.push(setTimeout(function(){
 													$("#commentSimulation").html("We now have our second value under the equal bar. Now we must do the addition.");
+													onTextChange($("#commentSimulation"));//from translateOnChange.js
 													
 													timeouts.push(setTimeout(function(){
 														var operand1After = (operand1%10)*operand2;
@@ -347,6 +373,7 @@ function simulateMultiplication(operand1, operand2){
 						else{
 							timeouts.push(setTimeout(function(){
 								$("#commentSimulation").html("Remember that multiplications by 0 gives 0. That is why we are not stepping through the decade unit multiplication of the first operand. We now have the answer under the equal bar.");
+								onTextChange($("#commentSimulation"));//from translateOnChange.js
 							}, timeoutDelay));
 						}
 					}, timeoutDelay));
@@ -369,6 +396,7 @@ function simulateDivision(operand1, operand2){
 	$("#operator2").attr("src","../img/blank.png");
 	
 	$("#commentSimulation").html("First, set the values as shown below.");
+	onTextChange($("#commentSimulation"));//from translateOnChange.js
 	
 	var op1hundredDigit = parseInt(operand1/100);
 	var op1decadeDigit = parseInt(operand1/10)%10;
@@ -396,6 +424,7 @@ function simulateDivision(operand1, operand2){
 	//Now that we have removed all 0s, I start the procedure
 	timeouts.push(setTimeout(function(){
 		$("#commentSimulation").html("Then, look at how many times the dividend goes into the divisor. To do that, we look into each digit of the dividend individually.");
+		onTextChange($("#commentSimulation"));//from translateOnChange.js
 	},timeoutDelay));
 	
 	timeouts.push(setTimeout(function(){
@@ -408,12 +437,14 @@ function simulateDivision(operand1, operand2){
 			var remainder = op1unitDigit - val;
 			$("#firstAnswerUnitDigit").html(remainder);
 			$("#operator1").attr("src","../img/subtract.png");
-			$("#answerBar1").html("----------");
+			$("#answerBar1").html("--------");
 			$("#answerUnitDigit").html(maxNbTimes);
 			$("#commentSimulation").html("How much times do "+op1unitDigit+" go into "+op2UnitDigit+"? It goes "+maxNbTimes+" times, because "+val+" is the closest lower value in multiples of "+op2UnitDigit+" to "+op1unitDigit+".");
+			onTextChange($("#commentSimulation"));//from translateOnChange.js
 			
 			timeouts.push(setTimeout(function(){
 				$("#commentSimulation").html("Then, the answer can be found above the dividend. ("+parseInt(operand1/operand2)+")");
+				onTextChange($("#commentSimulation"));//from translateOnChange.js
 			}, timeoutDelay));
 		}
 		
@@ -424,9 +455,11 @@ function simulateDivision(operand1, operand2){
 			var remainder = op1decadeDigit-val;
 			
 			$("#commentSimulation").html("How much times do "+op1decadeDigit+" go into "+operand2+"? It goes "+maxNbTimes+" times, because "+val+" is the closest lower value in multiples of "+operand2+" to "+op1decadeDigit+".");
+			onTextChange($("#commentSimulation"));//from translateOnChange.js
 			if(val === 0){
 				timeouts.push(setTimeout(function(){
-					$("#commentSimulation").html("Because "+op1decadeDigit+" divided by "+operand2+" gives 0, then we need to bring down the next digit.");
+					$("#commentSimulation").html("Because "+op1decadeDigit+" divided by "+operand2+" gives 0, we need to bring down the next digit.");
+					onTextChange($("#commentSimulation"));//from translateOnChange.js
 					
 					timeouts.push(setTimeout(function(){
 						var operand1Val = op1decadeDigit*10+op1unitDigit;
@@ -437,7 +470,7 @@ function simulateDivision(operand1, operand2){
 						$("#firstValUnitDigit").html(val%10);
 						$("#firstValDecadeDigit").html(parseInt(val/10));
 						$("#operator1").attr("src", "../img/subtract.png");
-						$("#answerBar1").html("----------");
+						$("#answerBar1").html("--------");
 						$("#answerUnitDigit").html(maxNbTimes);
 						
 						$("#firstAnswerUnitDigit").html(remainder%10);
@@ -446,11 +479,13 @@ function simulateDivision(operand1, operand2){
 						}
 						
 						$("#commentSimulation").html("How much times do "+operand1Val+" go into "+operand2+"? It goes "+maxNbTimes+" times, because "+val+" is the closest lower value in multiples of "+operand2+" to "+operand1Val+".");
+						onTextChange($("#commentSimulation"));//from translateOnChange.js
 						
 					}, timeoutDelay));
 					
 					timeouts.push(setTimeout(function(){
 						$("#commentSimulation").html("Then, the answer can be found above the dividend. ("+parseInt(operand1/operand2)+")");
+						onTextChange($("#commentSimulation"));//from translateOnChange.js
 					}, timeoutDelay*2));
 					
 				}, timeoutDelay));
@@ -471,6 +506,7 @@ function simulateDivision(operand1, operand2){
 						//bring down second value
 						$("#firstAnswerUnitDigit").html(op1unitDigit);
 						$("#commentSimulation").html("Then, bring down the unit digit of the dividend.");
+						onTextChange($("#commentSimulation"));//from translateOnChange.js
 						timeouts.push(setTimeout(function(){
 							var decadeVal = remainder%10;
 							var operand1Val = decadeVal*10+op1unitDigit;
@@ -490,9 +526,11 @@ function simulateDivision(operand1, operand2){
 							$("#answerUnitDigit").html(maxNbTimes);
 							
 							$("#commentSimulation").html("How much times do "+operand1Val+" go into "+operand2+"? It goes "+maxNbTimes+" times, because "+val+" is the closest lower value in multiples of "+operand2+" to "+operand1Val+".");
+							onTextChange($("#commentSimulation"));//from translateOnChange.js
 							
 							timeouts.push(setTimeout(function(){
 								$("#commentSimulation").html("The answer can be found above the dividend. ("+parseInt(operand1/operand2)+")");
+								onTextChange($("#commentSimulation"));//from translateOnChange.js
 							},timeoutDelay));
 						}, timeoutDelay));						
 					}, timeoutDelay));
@@ -503,6 +541,7 @@ function simulateDivision(operand1, operand2){
 		else{
 			//assuming the divisor is greater than 1, because numbers above a 100 have greater divisors than 1
 			$("#commentSimulation").html("Because the hundred digit is smaller than the divisor, pull down the decade value.");
+			onTextChange($("#commentSimulation"));//from translateOnChange.js
 			
 			timeouts.push(setTimeout(function(){
 				var operand1Val = op1hundredDigit*10+op1decadeDigit;
@@ -511,9 +550,12 @@ function simulateDivision(operand1, operand2){
 				var remainder = operand1Val-val;
 				
 				$("#commentSimulation").html("How much times do "+operand1Val+" go into "+operand2+"? It goes "+maxNbTimes+" times, because "+val+" is the closest lower value in multiples of "+operand2+" to "+operand1Val+".");
+				onTextChange($("#commentSimulation"));//from translateOnChange.js
+				
 				if(val === 0){
 					timeouts.push(setTimeout(function(){
-						$("#commentSimulation").html("Because "+operand1Val+" divided by "+operand2+" gives 0, then we need to bring down the next digit.");
+						$("#commentSimulation").html("Because "+operand1Val+" divided by "+operand2+" gives a result lower than 1, then we need to bring down the next digit.");
+						onTextChange($("#commentSimulation"));//from translateOnChange.js
 						
 						timeouts.push(setTimeout(function(){
 							var operand1Val = op1decadeDigit*10+op1unitDigit;
@@ -533,11 +575,12 @@ function simulateDivision(operand1, operand2){
 							}
 							
 							$("#commentSimulation").html("How much times do "+operand1Val+" go into "+operand2+"? It goes "+maxNbTimes+" times, because "+val+" is the closest lower value in multiples of "+operand2+" to "+operand1Val+".");
-							
+							onTextChange($("#commentSimulation"));//from translateOnChange.js
 						}, timeoutDelay));
 						
 						timeouts.push(setTimeout(function(){
 							$("#commentSimulation").html("Then, the answer can be found above the dividend. ("+parseInt(operand1/operand2)+")");
+							onTextChange($("#commentSimulation"));//from translateOnChange.js
 						}, timeoutDelay*2));
 						
 					}, timeoutDelay));
@@ -559,6 +602,8 @@ function simulateDivision(operand1, operand2){
 							//bring down second value
 							$("#firstAnswerUnitDigit").html(op1unitDigit);
 							$("#commentSimulation").html("Then, bring down the unit digit of the dividend.");
+							onTextChange($("#commentSimulation"));//from translateOnChange.js
+							
 							timeouts.push(setTimeout(function(){
 								var decadeVal = remainder%10;
 								var operand1Val = decadeVal*10+op1unitDigit;
@@ -578,9 +623,11 @@ function simulateDivision(operand1, operand2){
 								$("#answerUnitDigit").html(maxNbTimes);
 								
 								$("#commentSimulation").html("How much times do "+operand1Val+" go into "+operand2+"? It goes "+maxNbTimes+" times, because "+val+" is the closest lower value in multiples of "+operand2+" to "+operand1Val+".");
+								onTextChange($("#commentSimulation"));//from translateOnChange.js
 								
 								timeouts.push(setTimeout(function(){
 									$("#commentSimulation").html("The answer can be found above the dividend. ("+parseInt(operand1/operand2)+")");
+									onTextChange($("#commentSimulation"));//from translateOnChange.js
 								},timeoutDelay));
 							}, timeoutDelay));						
 						}, timeoutDelay));
@@ -600,6 +647,7 @@ function initSetup(operand1, operand2){
 	$(".simVal").html("");
 	
 	$("#commentSimulation").html("First, set the values to be vertically aligned.");
+	onTextChange($("#commentSimulation"));//from translateOnChange.js
 	
 	$("#operand1DecadeDigit").html(parseInt(operand1/10));
 	$("#operand1UnitDigit").html(operand1%10);

@@ -1,13 +1,120 @@
 <html>
 
 <head>
-	<title>Complete</title>
+	<script src="translationObject.js"></script>
+	<title>Game Completed</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.33, maximum-scale=3">
+	<script src="jquery-3.3.1.min.js"></script>
+	<script src="translateOnChange.js"></script>
+	<link rel="stylesheet" href="css/randomMath.css">
+	<link rel="stylesheet" href="css/done.css">
 </head>
 
 <body>
+	<div id="pageTitle" class="translate">Math Rush</div>
+	<label id="title" class="translate">Game Completed</label>
+	<div id="translateLanguage">
+		<table>
+			<tr>
+				<td><img src="img/united-states-of-america-flag-button-square-small.png" class="translateButtons english" alt="English"></td>
+				<td><img src="img/france-flag-button-square-small.png" class="translateButtons french" alt="French"></td>
+				<td><img src="img/india-flag-button-square-small.png" class="translateButtons hindi" alt="Hindi"></td>
+				<td><img src="img/spain-flag-button-square-small.png" class="translateButtons spanish" alt="Spanish"></td>
+				<td><img src="img/china-flag-button-square-small.png" class="translateButtons mandarin" alt="Mandarin"></td>
+			</tr>
+		</table>
+		<label id="translateText">Translate Page</label>
+	</div>
 	<div th:switch="${correctAnswers}">
 		<p th:case=-1>Hi</p>
-		<p th:case="*">Congratulations! You just completed the game.</p>
+		<p id="message" th:case="*" class="translate">Congratulations! You just completed the game.</p>
 	</div>
+	
+	<div id="informationView">
+		<label id="correctAnswersView" class="translate"></label><br/>
+		<label id="totalAnswersView" class="translate"></label><br/>
+		<label id="percentageView" class="translate"></label><br/>
+	</div>
+	
+	<label id="feedbackMessage" class="translate"></label>
+	
+	<input type="button" id="returnToHomePage" class="translate" value="Return to Home Page"/>
+	
+	
+	<!-- Thymeleaf -->
+	<script th:inline="text">
+		//return to home page button adjustments
+		$("#returnToHomePage").css("position","relative");
+		$("#returnToHomePage").css("top","200px");
+		$("#returnToHomePage").css("left","-5%");
+		
+		if($(window).width()<=800){
+			$("#returnToHomePage").css("font-size", "20px");
+			$("#title").css("font-size","40px");
+			$("#title").css("top","50px");
+		}
+	
+		//give it a lock so it is not called to often
+		var lock = false;
+		$(window).on('resize',function(){
+			if(!lock){
+				lock = true;
+				if($(window).width()<=800){
+					$("#returnToHomePage").css("font-size", "20px");
+					$("#title").css("font-size","40px");
+					$("#title").css("top","50px");
+				} else{
+					$("#returnToHomePage").css("font-size", "40px");
+					$("#title").css("font-size","60px");
+					$("#title").css("top","auto");
+				}
+				lock=false;
+				
+			}
+			
+		})
+		
+		//set events related to changing language of the page
+		setTranslationEvents();
+		
+		$("#returnToHomePage").click(function(){
+			window.location.href="/";
+		});
+	
+		var correctAnswers = 0;
+		[# th:if="${correctAnswers != null}"]
+			correctAnswers = [[${correctAnswers}]];
+		[/]
+		
+		var totalAnswers = 0;
+		[# th:if="${totalAnswers != null}"]
+			totalAnswers = [[${totalAnswers}]];
+		[/]
+		
+		if (totalAnswers!=0){
+			$("#correctAnswersView").html("You answered "+correctAnswers+" questions correctly.");
+			onTextChange($("#correctAnswersView"));
+			$("#totalAnswersView").html("You answered a total of "+totalAnswers+" questions.");
+			onTextChange($("#totalAnswersView"));
+			var result = (correctAnswers/totalAnswers)*100;
+			$("#percentageView").html("Result: "+result+"%");
+			onTextChange($("#percentageView"));
+			
+			if(result>90){
+				$("#feedbackMessage").html("AMAZING!");
+			}else if(result>80){
+				$("#feedbackMessage").html("Splendid!");
+			}else if(result>70){
+				$("#feedbackMessage").html("Could be better");
+			}else if(result>60){
+				$("#feedbackMessage").html("You need more practice");
+			}else{
+				$("#feedbackMessage").html("You are below the passing grade");
+			}
+			onTextChange($("#feedbackMessage"));
+		}
+	
+	</script>
+	<script src="translate.js"></script>
 </body>
 </html>

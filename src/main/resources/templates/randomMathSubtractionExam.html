@@ -2,17 +2,36 @@
 
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.33, maximum-scale=3">
 	<Title>Random Math</Title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="../translationObject.js"></script>
+	<script src="../jquery-3.3.1.min.js"></script>
 	<script src="subtractionAjaxCalls.js"></script>
 	<script src="../getImageOperator.js"></script>
+	<!-- Translate on change needs to be defined before modifyTableStructure -->
+	<script src="../translateOnChange.js"></script>
+	<script src="../modifyTableStructure.js"></script>
 	
 	<link rel="stylesheet" type="text/css" href="../css/randomMath.css">
 	<link rel="stylesheet" type="text/css" href="../css/backgroundImg.css">
 </head>
 
 <body>
-	<div id="pageTitle" class="pageTitle">Math Rush</div>
+	<div id="pageTitle" class="pageTitle translate">Math Rush</div>
+	
+	<div id="translateLanguage">
+		<table>
+			<tr>
+				<td><img src="../img/united-states-of-america-flag-button-square-small.png" class="translateButtons english" alt="English"></td>
+				<td><img src="../img/france-flag-button-square-small.png" class="translateButtons french" alt="French"></td>
+				<td><img src="../img/india-flag-button-square-small.png" class="translateButtons hindi" alt="Hindi"></td>
+				<td><img src="../img/spain-flag-button-square-small.png" class="translateButtons spanish" alt="Spanish"></td>
+				<td><img src="../img/china-flag-button-square-small.png" class="translateButtons mandarin" alt="Mandarin"></td>
+			</tr>
+		</table>
+		<label id="translateText">Translate Page</label>
+	</div>
+	
 	<div id="scoreHandling">
 		<label id="correctAnswers" class="scoreDisplay"></label><br/>
 		<label id="over" class="scoreDisplay">___</label><br/>
@@ -29,31 +48,79 @@
 			<td><label id="var2" class="vars"></label></td>
 			<td><img id="equalSign" src="../img/equalSign.PNG" alt="Equal sign"></td>
 			<td><input type="text" id="answerText"></td>
-			<td><input type="submit" value="Submit" id="submitAnswer"></td>
-		</tr>
-		<tr>
-			<td></td>
+			<td><input type="submit" value="Submit" id="submitAnswer" class="translate"></td>
 		</tr>
 	</table>
 	
-	<label id="feedback"></label>
+	<label id="feedback" class="translate"></label>
 	
 	<script>
 	//to handle the answer response so it does not get modified, you can 
 	//simply give the response ("Nice job!" or "Sorry, wrong answer.")
 	//thus, the answer response has no way of being modified
 		var operator = -1;
+		var srcImg = "../img/add.PNG";
 		var var2 = -1;
 		var var1 = -1;
 		var totalAnswers = 0;
 		var correctAnswers = 0;
 		var output = "";
 		const answerX = false;
+		
+		
+		if($(window).width()<=800){
+			$("#feedback").css("font-size","20px");
+			$("#feedback").css("left","0%");
+			$("#feedback").css("right","20%");
+			$("#tableHBox").css("margin-left","0%");
+			$(".scoreDisplay").css("font-size", "40px");
+			$("#allQuestions").css("top","70px");
+			
+			//change table structure to fit
+			addRows2(srcImg, var1, var2, onClickSubmit);
+			
+		}
+		
+		//give it a lock so it is not called to often
+		var lock = false;
+		$(window).on('resize',function(){
+			if(!lock){
+				lock = true;
+				
+				if($(window).width()<=800){
+					$("#feedback").css("font-size","20px");
+					$("#feedback").css("left","0%");
+					$("#feedback").css("right","20%");
+					$("#tableHBox").css("margin-left","0%");
+					$(".scoreDisplay").css("font-size", "40px");
+					$("#allQuestions").css("top","70px");
+					
+					addRows2(srcImg, var1, var2, onClickSubmit);
+					
+				} else{
+					$("#feedback").css("font-size", "25px");
+					$("#feedback").css("left","40%");
+					$("#tableHBox").css("margin-left","35%");
+					$(".scoreDisplay").css("font-size", "75px");
+					$("#allQuestions").css("top","100px");
+					
+					removeRows2(srcImg, var1, var2, onClickSubmit);
+				}
+				
+				//should I let a delay?
+				lock = false;
+				
+			}
+			
+		})
+		
+		
 		$(document).ready(function(){
 			//get the operator and second operand
 			$.when(getOperator(), getOperand2()).done(function(){
 				//get the first operand next, because we want a whole number as response
 				$.when(getOperand1(var2), getCorrectAnswersValue(), getTotalAnswersValue()).done(function(){
+					srcImg=srcOperatorImage(operator);
 					$('#operator').attr('src', srcOperatorImage(operator));
 					//setting values of labels
 					$('#var1').html(var1);
@@ -67,34 +134,45 @@
 			
 			//same thing as above, but this time this is generated from a click
 			$('#submitAnswer').click(function(){
-				$.when(getAnswer($("#answerText").val())).done(function(){
-						$('#feedback').html(output);
-						
-						//change equation
-						setTimeout(function(){
-							$.when(getOperator(), getOperand2()).done(function(){
-								//get the first operand next, because we want a whole number as response
-								$.when(getOperand1(), getCorrectAnswersValue(), getTotalAnswersValue()).done(function(){
-									$('#operator').attr('src', srcOperatorImage(operator));
-									//setting values of labels
-									$('#var1').html(var1);
-									$('#var2').html(var2);
-									
-									output = "";
-									$('#feedback').html(output);
-									//setting values for score
-									$('#correctAnswers').html(correctAnswers);
-									$('#allQuestions').html(totalAnswers);
-								});
-							});
-						}, 1000);
-				})
-				
+				onClickSubmit();
 			});
 			
+			//set events related to changing language of the page
+			setTranslationEvents();
 		});
 		
-		
+		function onClickSubmit(){
+			$.when(getAnswer($("#answerText").val())).done(function(){
+				$('#feedback').html(output);
+				onTextChange($("#feedback"));
+				
+				//change equation
+				setTimeout(function(){
+					$.when(getOperator(), getOperand2()).done(function(){
+						//get the first operand next, because we want a whole number as response
+						$.when(getOperand1(), getCorrectAnswersValue(), getTotalAnswersValue()).done(function(){
+							
+							if(totalAnswers === 25){
+								//call backend to say it is done and load another page
+								window.location.href = "/subtraction/done";	
+							}
+							
+							$('#operator').attr('src', srcOperatorImage(operator));
+							//setting values of labels
+							$('#var1').html(var1);
+							$('#var2').html(var2);
+							
+							output = "";
+							$('#feedback').html(output);
+							//setting values for score
+							$('#correctAnswers').html(correctAnswers);
+							$('#allQuestions').html(totalAnswers);
+						});
+					});
+				}, 1000);
+		})
+		}
 	</script>
+	<script src="../translate.js"></script>
 </body>
 </html>

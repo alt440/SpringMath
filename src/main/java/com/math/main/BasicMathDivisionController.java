@@ -137,7 +137,7 @@ public class BasicMathDivisionController {
 	    public String sendResults(RedirectAttributes redirect) {
 	    	redirect.addFlashAttribute("correctAnswers", correctAnswers);
 	    	redirect.addFlashAttribute("totalAnswers", totalAnswers);
-	    	if(totalAnswers!=50) {
+	    	if(totalAnswers!=25) {
 	    		return "redirect:/error";
 	    	}
 	    	return "redirect:/done";
