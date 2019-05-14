@@ -1,17 +1,22 @@
 <html>
 
 <head>
-	<script src="translationObject.js"></script>
+	<script src="translationObject.min.js"></script>
 	<title>Game Completed</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.33, maximum-scale=3">
+	<meta property="og:title" content="Congratulations!">
+	<meta property="og:description" content="You just completed the game.">
+	<meta name="Description" content="Congratulations! You just completed the game.">
+<meta name="Keywords" content="Math Rush game completed done score percentage">
 	<script src="jquery-3.3.1.min.js"></script>
-	<script src="translateOnChange.js"></script>
+	<script src="translateOnChange.min.js"></script>
 	<link rel="stylesheet" href="css/randomMath.css">
 	<link rel="stylesheet" href="css/done.css">
 </head>
 
 <body>
 	<div id="pageTitle" class="translate">Math Rush</div>
+	
 	<label id="title" class="translate">Game Completed</label>
 	<div id="translateLanguage">
 		<table>
@@ -39,10 +44,14 @@
 	<label id="feedbackMessage" class="translate"></label>
 	
 	<input type="button" id="returnToHomePage" class="translate" value="Return to Home Page"/>
+	<label class="copyright"></label>
 	
-	
-	<!-- Thymeleaf -->
 	<script th:inline="text">
+		//set copyright
+		//get year
+		var year = new Date().getYear() + 1900;
+		$(".copyright").html("\u00A9 Math Rush "+year);
+	
 		//return to home page button adjustments
 		$("#returnToHomePage").css("position","relative");
 		$("#returnToHomePage").css("top","200px");
@@ -115,6 +124,6 @@
 		}
 	
 	</script>
-	<script src="translate.js"></script>
+	<script src="translate.min.js"></script>
 </body>
 </html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.33, maximum-scale=3">
+<script src="../jquery-3.3.1.min.js"></script>
+<script src="jquery-3.3.1.min.js"></script>
+<meta property="og:title" content="Math Rush Error 404">
+<meta property="og:description" content="We were not able to serve your request.">
+<meta name="Description" content="Math Rush Error 404: We were not able to serve your request.">
+<meta name="Keywords" content="Math Rush error 404 home return">
+<title>Oops! We were not able to serve your request</title>
+<link rel="stylesheet" href="css/selectTime.css">
+<link rel="stylesheet" href="../css/selectTime.css">
+</head>
+<body>
+	<h2 id="title" class="translate">Oops! We were not able to serve your request.</h2>
+	
+	<p id="descriptionPage" class="translate">Did your math just bring you here? Let me help you. A black hole has been generated to break through time and space to redirect you to the home page.</p>
+	<p class="translate">You will be redirected to the home page in 5 seconds.</p>
+	
+	<!-- Muted now required to work with Google Chrome. Playsinline for iPhone? -->
+	<video class="translate" width="960" height="540" controls autoplay loop muted playsinline>
+		<source src="img/blackHole.mp4" type="video/mp4"/>
+		<source src="img/blackHole.ogg" type="video/ogg"/>
+		<source src="../img/blackHole.mp4" type="video/mp4"/>
+		<source src="../img/blackHole.ogg" type="video/ogg"/>
+		Your browser does not support the video formats.
+	</video>
+	<label class="copyright"></label>
+	<script>
+	//set copyright
+	//get year
+	var year = new Date().getYear() + 1900;
+	$(".copyright").html("\u00A9 Math Rush "+year);
+	
+		if($(window).width()<=800){
+			$("video").css("position","relative");
+			$("video").css("height","200px");
+			$("video").css("top","0px");
+			$("video").css("width","100%");
+		}
+	
+		//give it a lock so it is not called to often
+		var lock = false;
+		$(window).on('resize',function(){
+			if(!lock){
+				lock = true;
+				if($(window).width()<=800){
+					$("video").css("position","relative");
+					$("video").css("height","200px");
+					$("video").css("top","0px");
+					$("video").css("width","100%");
+					
+				} else{
+					$("video").css("position","relative");
+					$("video").css("height","540px");
+					$("video").css("top","auto");
+					$("video").css("width","960");
+				}
+				lock=false;
+				
+			}
+			
+		})
+		
+		setTimeout(function(){
+			window.location.href = "/";
+		}, 5000);
+	
+	</script>
+	<script src="translate.js"></script>
+	<script src="../translate.js"></script>
+</body>
+</html>

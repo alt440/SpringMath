@@ -6,6 +6,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.net.URLDecoder;
 import java.util.Scanner;
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,9 +26,24 @@ public class BasicMathController {
 	private int timeBetweenEquations = -1;
 	private int destination = -1;
 	
+	//to get the robots crawling
+	/*@RequestMapping(value = "/robots.txt")
+	public void robots(HttpServletRequest request, HttpServletResponse response) {
+	    try {
+	        response.getWriter().write("User-agent: *\nDisallow: /\n");
+	    } catch (IOException e) {
+	        System.out.println("robots(): "+e.getMessage());
+	    }
+	}*/
+	
 	@GetMapping("/error")
 	public String errorMessage() {
 		return "error";
+	}
+	
+	@GetMapping("/contact")
+	public String contact() {
+		return "contact";
 	}
 	
 	@GetMapping("/")

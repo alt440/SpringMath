@@ -1,0 +1,177 @@
+<html>
+
+<head>
+	<title>Choose your Math</title>
+	<script src="translationObject.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.33, maximum-scale=3">
+	<meta property="og:title" content="Select the Game on Math Rush">
+	<meta property="og:description" content="Select the Game on Math Rush">
+	<meta name="Description" content="Select the Game on Math Rush">
+	<meta name="Keywords" content="Math Rush game select practice exam evaluation timed countdown limited questions">
+	<link rel="stylesheet" type="text/css" href="css/homePage.css">
+	<link rel="stylesheet" type="text/css" href="css/selectTypeGame.css">
+	<script src="jquery-3.3.1.min.js"></script>
+	<script src="animationHandling.js"></script>
+	<!-- Translate on change needs to be defined before modifyTableStructure -->
+	<script src="translateOnChange.js"></script>
+	<script src="modifyTableStructure.js"></script>
+	<script src="initAnimationsAndDestinations.js"></script>
+</head>
+
+<body>
+	<h2 id="pageTitle" class="pageTitle translate">Math Rush</h2>
+	<div id="translateLanguage">
+		<table>
+			<tr>
+				<td><img src="img/united-states-of-america-flag-button-square-small.png" class="translateButtons english" alt="English"></td>
+				<td><img src="img/france-flag-button-square-small.png" class="translateButtons french" alt="French"></td>
+				<td><img src="img/india-flag-button-square-small.png" class="translateButtons hindi" alt="Hindi"></td>
+				<td><img src="img/spain-flag-button-square-small.png" class="translateButtons spanish" alt="Spanish"></td>
+				<td><img src="img/china-flag-button-square-small.png" class="translateButtons mandarin" alt="Mandarin"></td>
+			</tr>
+		</table>
+		<label id="translateText">Translate Page</label>
+	</div>
+	
+	<label id="practiceExplanation" class="typeGameExplanation translate">Practice Mode: You can take all the time you want, and if you get the answer wrong, a step-by-step answer is given.</label><br/><br/>
+	<label id="examExplanation" class="typeGameExplanation translate">Exam Mode: You can take all the time you want, but you will not get a second chance if your answer is wrong.</label><br/><br/>
+	<label id="timedExplanation" class="typeGameExplanation translate">Timed Exam Mode: You have limited time (to your choosing), and you do not get a second chance.</label><br/><br/>
+	<br/>
+	<table id="typeGames">
+		<tr>
+			<td id="practiceTitle" class="titleTypeGame translate">Practice</td>
+			<td id="examTitle" class="titleTypeGame translate">Exam</td>
+			<td id="timedExamTitle" class="titleTypeGame translate">Timed Exam</td>
+		</tr>
+		
+		<tr>
+			<td><input id="additionPractice" class="addition buttonClass translate" type="button" value="Addition"/></td>
+			<td><input id="additionExam" class="addition buttonClass translate" type="button" value="Addition"/></td>
+			<td><input id="additionTimedExam" class="addition timed buttonClass translate" type="button" value="Addition"/></td>
+		</tr>
+			
+		<tr>
+			<td><input id="subtractionPractice" class="subtraction buttonClass translate" type="button" value="Subtraction"/></td>
+			<td><input id="subtractionExam" class="subtraction buttonClass translate" type="button" value="Subtraction"/></td>
+			<td><input id="subtractionTimedExam" class="subtraction timed buttonClass translate" type="button" value="Subtraction"/></td>
+		</tr>
+		
+		<tr>
+			<td><input id="multiplicationPractice" class="multiplication buttonClass translate" type="button" value="Multiplication"/></td>
+			<td><input id="multiplicationExam" class="multiplication buttonClass translate" type="button" value="Multiplication"/></td>
+			<td><input id="multiplicationTimedExam" class="multiplication timed buttonClass translate" type="button" value="Multiplication"/></td>
+		</tr>
+		
+		<tr>
+			<td><input id="divisionPractice" class="division buttonClass translate" type="button" value="Division"/></td>
+			<td><input id="divisionExam" class="division buttonClass translate" type="button" value="Division"/></td>
+			<td><input id="divisionTimedExam" class="division timed buttonClass translate" type="button" value="Division"/></td>
+		</tr>
+	
+	</table>
+	
+	<input type="button" id="returnToHomePage" class="returnToHomePage translate" value="Return to Home Page"/>
+	<label class="copyright"></label>
+	<script>
+	//set copyright
+	//get year
+	var year = new Date().getYear() + 1900;
+	$(".copyright").html("\u00A9 Math Rush "+year);
+		//return to home page button adjustments
+		$("#returnToHomePage").css("position","relative");
+		$("#returnToHomePage").css("top","10px");
+	
+		//managing size
+		//have to create new style when reaches 1200 as well. Starts becoming a weird page
+		if($(window).width()<=800){
+			$("#returnToHomePage").removeClass("returnToHomePage");
+			$("#practiceExplanation").removeClass("typeGameExplanation");
+			$("#examExplanation").removeClass("typeGameExplanation");
+			$("#timedExplanation").removeClass("typeGameExplanation");
+			setTimeout(function(){
+				$("#returnToHomePage").addClass("returnToHomePageSmaller");
+				$("#practiceExplanation").addClass("typeGameExplanationSmaller");
+				$("#examExplanation").addClass("typeGameExplanationSmaller");
+				$("#timedExplanation").addClass("typeGameExplanationSmaller");
+			},1);
+			
+			//change table structure to fit
+			addRows();
+			
+			//set font smaller
+			$(".buttonClass").css("font-size","25px");
+		}
+	
+		//give it a lock so it is not called to often
+		var lock = false;
+		$(window).on('resize',function(){
+			if(!lock){
+				lock = true;
+				if($(window).width()<=800){
+					$("#returnToHomePage").removeClass("returnToHomePage");
+					$("#practiceExplanation").removeClass("typeGameExplanation");
+					$("#examExplanation").removeClass("typeGameExplanation");
+					$("#timedExplanation").removeClass("typeGameExplanation");
+					
+					setTimeout(function(){
+						$("#returnToHomePage").addClass("returnToHomePageSmaller");
+						$("#practiceExplanation").addClass("typeGameExplanationSmaller");
+						$("#examExplanation").addClass("typeGameExplanationSmaller");
+						$("#timedExplanation").addClass("typeGameExplanationSmaller");
+					},1);
+					
+					addRows();
+					init();
+					
+					//set font smaller
+					$(".buttonClass").css("font-size","25px");
+					
+				} else{
+					$("#returnToHomePage").removeClass("returnToHomePageSmaller");
+					$("#practiceExplanation").removeClass("typeGameExplanationSmaller");
+					$("#examExplanation").removeClass("typeGameExplanationSmaller");
+					$("#timedExplanation").removeClass("typeGameExplanationSmaller");
+					
+					setTimeout(function(){
+						$("#returnToHomePage").addClass("returnToHomePage");
+						$("#practiceExplanation").addClass("typeGameExplanation");
+						$("#examExplanation").addClass("typeGameExplanation");
+						$("#timedExplanation").addClass("typeGameExplanation");
+					},1);
+					
+					//return to home page button adjustments
+					$("#returnToHomePage").css("position","relative");
+					$("#returnToHomePage").css("top","10px");
+					
+					removeRows();
+					init();
+					
+					//set font bigger
+					$(".buttonClass").css("font-size","40px");
+				}
+
+				//should I let a delay?
+				lock = false;
+				
+			}
+			
+		})
+	
+		//set events related to changing language of the page
+		setTranslationEvents();
+		
+		$("#returnToHomePage").click(function(){
+			window.location.href = "/";
+		});
+	
+		$(document).ready(function(){
+			init();
+		});
+		
+		
+		
+	
+	</script>
+	<script src="translate.js"></script>
+</body>
+</html>

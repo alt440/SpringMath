@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>How to create the timed game</title>
+</head>
+<body>
+First, you have to set two new get mapping to your controller.
+Here they are:
+@GetMapping("/timed")
+public String examTimed() {
+	return "randomMathAdditionExamTimed";
+}
+
+@GetMapping("/done")
+@ResponseBody
+public String sendResults() {
+	BasicMathController.setCorrectAnswers(correctAnswers);
+	BasicMathController.setTotalAnswers(totalAnswers);
+	return "OK";
+}
+
+You will need to change the return answer of examTimed() as it depends on the name of your file.
+The sendResults() method sends the result to the BasicMathController file. This file will get
+those values and will show its own /done URL based on those values (eventually).
+
+Then, you have to add this to your html inside the scoreHandling div:
+<br/>
+<br/>
+<div id="circleFillUp">
+	<div class='outer-shadow'>
+	</div>
+	<div class='inner-shadow'>
+	</div>
+	<div class='hold left' id="leftPart">
+		<div class='fill' id="fillOne"></div>
+	</div>
+	<div class='hold right' id="rightPart">
+	    <div class='fill' id="fillTwo"></div>
+	</div>
+</div>
+
+This above is the structure of the circle animation that fills up. All the code to do the circle animation is in the randomMath.css file.
+
+Then, some stuff needs to be added to the script:
+//this is a lock that allows only one event at a time to enter submit button
+var lock = false;
+
+//trigger focus on input when going on page
+$("#answerText").focus();
+
+//to press submit on enter
+$("#answerText").keyup(function(event){
+	if (event.which === 13){					
+		$("#submitAnswer").click();
+	} 
+});
+
+//clicks on submit answer when time is up (when right animation has finished)
+//EDIT! Change the class to circleInsider
+$('.right').on('animationend webkitAnimationEnd', function() { 
+    $("#submitAnswer").click();
+});
+
+This needs to be added as the first lines of code after the init of jQuery ( $(document).ready(function(){}))
+The lock is because I did not want both the animation and the user to press submit, thus giving two points instead of 1.
+
+The focus() line is simply to give focus on the input so the user does not lose any time selecting the input.
+The keyup function is to send the user input once the user presses enter.
+
+The next event for .right is because the circleFillUp animation contains two animations: the left and right. The right animation 
+is the last one to get executed. This is why when the right animation ends (this is the event captured), the system triggers a click on submit.
+
+Then you need to add this as the first line of the click function of the submitAnswer click event:
+//pause the animations
+//EDIT! DONT NEED TO PAUSE THE ANIMATIONS
+$(".left").css("-webkit-animation-play-state", "paused");
+$(".right").css("-webkit-animation-play-state", "paused");
+				
+if(lock === false){
+	lock = true;
+	//... the rest of the code
+}
+
+This pauses the two animations, and checks if the lock is in use. There is no "else" condition: everything contained within the submitAnswer click event goes in the if(lock === false)
+condition.
+
+#EDIT! I have changed the animation because it was suitable for changing the duration of the animation.
+This is what is used to reset the animation (Put it in the statement that is not totalAnswers === 50 which is inside of the clause that retrieves the feedback string from backend):
+
+$.when(getOperand1(var2), getCorrectAnswersValue(), getTotalAnswersValue()).done(function(){
+
+...
+
+reset_animation2("circleInsider");
+
+//to indicate the time remaining
+timeRemaining = 6;
+$("#timeLeft").html(timeRemaining);
+
+//remove previous time interval
+window.clearInterval(timeInterval);
+//reset the time interval, because it might not be exact
+timeInterval = setInterval(function(){
+	//decrease time remaining to answer
+	if(timeRemaining !== 0){
+		timeRemaining -=1;
+		$('#timeLeft').html(timeRemaining);
+	}
+	else{
+		$("#submitAnswer").click();
+	}
+}, 1000);
+
+//remove the lock
+lock = false;
+
+
+
+This is what is used for the animation (dont forget to include the circleFill.css file!):
+<div class="circle" id="circleFillUp">
+			<div class="circleInsider" id="circleInsider"></div>
+			<label id="timeLeft"></label>
+		</div>
+
+
+
+Before document.ready, initialize timeLeft
+var timeRemaining = 6; //means 6 second animation
+$("#timeLeft").html(timeRemaining);
+
+Add this to change the duration, and add time left, and other events: (NOTE: put this right after document.ready)
+$(".circleInsider").stop();
+			$(".circleInsider").css("-webkit-animation-play-state", "paused");
+
+			$(".circleInsider").css("animation-duration", timeRemaining+"s");
+			$(".circleInsider").css("-webkit-animation-play-state", "running");
+			//restart animations. BEST WAY TO DO IT!!!
+			$("#circleInsider").removeClass("circleInsider");
+			setTimeout(function(){
+				$("#circleInsider").addClass("circleInsider");
+			},1);
+			
+//This below indicates the time left to answer the question
+//this time interval is for setting the time remaining depending on the actual time remaining to answer the question
+			var timeInterval = setInterval(function(){
+				//decrease time remaining to answer
+				if(timeRemaining !== 0){
+					timeRemaining -=1;
+					$('#timeLeft').html(timeRemaining);
+				}
+				else{
+					$("#submitAnswer").click();
+				}
+			}, 1000);
+			
+			//also add this to init lock
+			var lock=false;
+			
+			//trigger focus on input when going on page
+			$("#answerText").focus();
+			
+			//to press submit on enter
+			$("#answerText").keyup(function(event){
+				if (event.which === 13){					
+					$("#submitAnswer").click();
+				} 
+			});
+			
+			//clicks on submit answer when time is up (when right animation has finished)
+			$('.circle').on('animationend webkitAnimationEnd', function() { 
+			    $("#submitAnswer").click();
+			});
+			
+			
+
+</body>
+</html>

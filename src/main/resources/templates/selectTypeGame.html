@@ -4,19 +4,22 @@
 	<title>Choose your Math</title>
 	<script src="translationObject.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.33, maximum-scale=3">
+	<meta property="og:title" content="Select the Game on Math Rush">
+	<meta property="og:description" content="Select the Game on Math Rush">
+	<meta name="Description" content="Select the Game on Math Rush">
+	<meta name="Keywords" content="Math Rush game select practice exam evaluation timed countdown limited questions">
 	<link rel="stylesheet" type="text/css" href="css/homePage.css">
 	<link rel="stylesheet" type="text/css" href="css/selectTypeGame.css">
 	<script src="jquery-3.3.1.min.js"></script>
-	<script src="animationHandling.js"></script>
+	<script src="animationHandling.min.js"></script>
 	<!-- Translate on change needs to be defined before modifyTableStructure -->
-	<script src="translateOnChange.js"></script>
-	<script src="modifyTableStructure.js"></script>
-	<script src="initAnimationsAndDestinations.js"></script>
+	<script src="translateOnChange.min.js"></script>
+	<script src="modifyTableStructure.min.js"></script>
+	<script src="initAnimationsAndDestinations.min.js"></script>
 </head>
 
 <body>
 	<h2 id="pageTitle" class="pageTitle translate">Math Rush</h2>
-	
 	<div id="translateLanguage">
 		<table>
 			<tr>
@@ -68,8 +71,15 @@
 	</table>
 	
 	<input type="button" id="returnToHomePage" class="returnToHomePage translate" value="Return to Home Page"/>
+	<label class="copyright"></label>
 	<script>
+	$("#pageTitle").css("position","relative");
+	$("#pageTitle").css("top","50px");
 	
+	//set copyright
+	//get year
+	var year = new Date().getYear() + 1900;
+	$(".copyright").html("\u00A9 Math Rush "+year);
 		//return to home page button adjustments
 		$("#returnToHomePage").css("position","relative");
 		$("#returnToHomePage").css("top","10px");
@@ -165,6 +175,6 @@
 		
 	
 	</script>
-	<script src="translate.js"></script>
+	<script src="translate.min.js"></script>
 </body>
 </html>

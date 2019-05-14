@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Notes for variable timed exam</title>
+</head>
+<body>
+To have a variable that allows users to select the time they want to get the answer, I had to use thymeleaf and redirects.
+
+Here is the method added in the basic math controller:
+@GetMapping("/jumpToDestination")
+	public String jumpToDestination(RedirectAttributes redirect) {
+		//redirecting to another controller with the time value
+		redirect.addFlashAttribute("time", timeBetweenEquations);
+		switch(destination) {
+		case 0: return "redirect:/addition/timed";
+		case 1: return "redirect:/subtraction/timed";
+		case 2: return "redirect:/multiplication/timed";
+		case 3: return "redirect:/division/timed";
+		default: return "redirect:/addition/timed";
+		}
+	}
+
+So no matter what page I am redirecting to, the variable time will be sent as well. I used a flash attribute to send the object.
+Notice also that there is a redirect: before the URL is put. This is because this links goes to another page right after and I needed to send the value.
+	
+Cant use static variables because there is 1 unique copy, which would make users be able to see someone else's score I believe.
+Here is the method in some operation controller:
+@GetMapping("/timed")
+	    public String examTimed(@ModelAttribute("time") int time, Model model) {
+	    	//gets the time value from the basic math controller /selectTime
+	    	model.addAttribute("timeVal", time);
+	    	return "randomMathDivisionExamTimed";
+	    }
+
+So here in this second method I am getting the time value from the previous method. The model object is initially not containing any object.
+I add the time value to the model before sending it to the frontend.
+Note that this method will make the page /timed not able to show without the model attribute time. Java Spring will show an error in that case.
+
+Now in the frontend, I got the value with thymeleaf.
+<!-- th:inline allows thymeleaf to recognize this is javascript -->
+	<script th:inline="text">
+
+Have to put th:inline argument for thymeleaf to recognize the method of showing data.
+//thymeleaf instructions
+[# th:if="${timeVal != 0 && timeVal != null}"]
+	timeRemaining = [[${timeVal}]];
+[/]
+This above is an if condition for the timeVal. If the timeVal value is null or 0, then keep the default value (which is 6, because I have set it before the if condition to 6.)
+
+
+</body>
+</html>

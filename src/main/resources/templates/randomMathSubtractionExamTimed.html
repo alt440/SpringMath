@@ -3,15 +3,19 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.33, maximum-scale=3">
+	<meta property="og:title" content="Timed Subtraction Exam on Math Rush">
+	<meta property="og:description" content="Timed Subtraction Exam on Math Rush">
+	<meta name="Description" content="Timed Subtraction Exam on Math Rush">
+	<meta name="Keywords" content="Math Rush subtraction timed exam evaluation countdown limited questions">
 	<Title>Random Math</Title>
-	<script src="../translationObject.js"></script>
+	<script src="../translationObject.min.js"></script>
 	<script src="../jquery-3.3.1.min.js"></script>
-	<script src="subtractionAjaxCalls.js"></script>
-	<script src="../getImageOperator.js"></script>
-	<script src="../animationHandling.js"></script>
+	<script src="subtractionAjaxCalls.min.js"></script>
+	<script src="../getImageOperator.min.js"></script>
+	<script src="../animationHandling.min.js"></script>
 	<!-- Translate on change needs to be defined before modifyTableStructure -->
-	<script src="../translateOnChange.js"></script>
-	<script src="../modifyTableStructure.js"></script>
+	<script src="../translateOnChange.min.js"></script>
+	<script src="../modifyTableStructure.min.js"></script>
 	
 	<link rel="stylesheet" type="text/css" href="../css/randomMath.css">
 	<link rel="stylesheet" type="text/css" href="../css/circleFill.css">
@@ -20,7 +24,7 @@
 
 <body>
 	<div id="pageTitle" class="pageTitle translate">Math Rush</div>
-	
+	<label class="copyright"></label>
 	<div id="translateLanguage">
 		<table>
 			<tr>
@@ -61,8 +65,12 @@
 	
 	<label id="feedback" class="translate"></label>
 	
-	<!-- th:inline allows thymeleaf to recognize this is javascript -->
 	<script th:inline="text">
+	//set copyright
+	//get year
+	var year = new Date().getYear() + 1900;
+	$(".copyright").html("\u00A9 Math Rush "+year);
+	
 	//to handle the answer response so it does not get modified, you can 
 	//simply give the response ("Nice job!" or "Sorry, wrong answer.")
 	//thus, the answer response has no way of being modified
@@ -96,6 +104,8 @@
 			$("#allQuestions").css("top","70px");
 			$("#circleFillUp").css("top","400px");
 			$("#circleFillUp").css("left","35%");
+			$("#pageTitle").hide();
+			$("#translateLanguage").css("left","20px");
 			
 			
 			//change table structure to fit
@@ -116,6 +126,8 @@
 					$("#allQuestions").css("top","70px");
 					$("#circleFillUp").css("top","400px");
 					$("#circleFillUp").css("left","35%");
+					$("#pageTitle").hide();
+					$("#translateLanguage").css("left","20px");
 					
 					addRows2(srcImg, var1, var2, onClickSubmit);
 					
@@ -127,6 +139,9 @@
 					$("#allQuestions").css("top","100px");
 					$("#circleFillUp").css("top","auto");
 					$("#circleFillUp").css("left","45%");
+					$("#pageTitle").show();
+					$("#translateLanguage").css("left","250px");
+					
 					removeRows2(srcImg, var1, var2, onClickSubmit);
 				}
 				
@@ -289,6 +304,6 @@
 		}
 		
 	</script>
-	<script src="../translate.js"></script>
+	<script src="../translate.min.js"></script>
 </body>
 </html>

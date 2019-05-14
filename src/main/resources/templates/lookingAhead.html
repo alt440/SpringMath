@@ -3,9 +3,13 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Looking Ahead</title>
-<script src="translationObject.js"></script>
+<script src="translationObject.min.js"></script>
 <script src="jquery-3.3.1.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.33, maximum-scale=3">
+<meta property="og:title" content="Ideas for Progress">
+<meta property="og:description" content="What to do next after Math Rush">
+<meta name="Description" content="Ideas for Progress: What to do next after Math Rush">
+<meta name="Keywords" content="Math Rush ideas progress next magic square">
 <link rel="stylesheet" href="css/randomMath.css">
 <link rel="stylesheet" href="css/lookingAhead.css">
 </head>
@@ -38,8 +42,21 @@
 	</table>
 	
 	<input type="button" id="returnToHomePage" class="translate" value="Return to Home Page"/>
-	
+	<label class="copyright"></label>
 	<script>
+	$("#pageTitle").css("position","relative");
+	$("#pageTitle").css("top","50px");
+	//setting translation button OK
+	$("#translateText").css("position","relative");
+	$("#translateText").css("top","-10px");
+	$(".translateButtons").css("position","relative");
+	$(".translateButtons").css("top","-25px");
+	$(".translateButtons").css("left","-130px");
+	
+	//set copyright
+	//get year
+	var year = new Date().getYear() + 1900;
+	$(".copyright").html("\u00A9 Math Rush "+year);
 	
 		//return to home page button adjustments
 		$("#returnToHomePage").css("position","absolute");
@@ -77,7 +94,8 @@
 					$("table").css("margin-left","35%");
 					$("#title").css("font-size","60px");
 					$("#title").css("top","auto");
-					$("#useOfPage").css("top","auto");
+					$("#title").css("top","50px");
+					$("#useOfPage").css("top","60px");
 					$("#returnToHomePage").css("font-size","40px");
 					$("#returnToHomePage").css("position","absolute");
 					$("#returnToHomePage").css("bottom","5%");
@@ -96,6 +114,6 @@
 		});
 	
 	</script>
-	<script src="translate.js"></script>
+	<script src="translate.min.js"></script>
 </body>
 </html>

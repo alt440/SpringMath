@@ -5,14 +5,20 @@
 	<title>Welcome to Math Rush</title>
 	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3">
 	<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+	<!-- This below is for FB (og tags mean Open Graph). This determines what appears when you share the link -->
+	<meta property="og:title" content="Welcome to Math Rush">
+	<meta property="og:description" content="Home Page of Math Rush">
+	<meta name="Description" content="Home Page of Math Rush">
+	<meta name="Keywords" content="Math Rush home homepage">
 	<link rel="stylesheet" type="text/css" href="css/homePage.css">
 	<script src="jquery-3.3.1.min.js"></script>
-	<script src="animationHandling.js"></script>
-	<script src="translateOnChange.js"></script>
+	<script src="animationHandling.min.js"></script>
+	<script src="translateOnChange.min.js"></script>
 </head>
 
 <body>
 	<h2 id="pageTitle" class="pageTitle translate">Math Rush</h2>
+	
 	<div id="suggestions">
 		<label id="textSuggestion" class="translate">Game is too easy?</label>
 	</div>
@@ -33,21 +39,41 @@
 		<div id="testDiv" class="movingObj animation-target">
 			<label id="testDivText" class="translate"></label>
 		</div>
-		<input id="playNow" class="playNow translate" type="button" value="Play Now"/>
+		<input id="playNow" class="playNow translate" type="button" value="Play Now"/><br/>
+		<input id="contactMe" class="playNow translate" type="button" value="About Me/ Contact Me"/>
 	</div>
-	
-	<script>	
+	<label class="copyright"></label>
+	<script>
+		//for the suggestions box to keep in place
+		var left = $(window).width()-210;
+		$("#suggestions").css("left",left);
+		//set copyright
+		//get year
+		var year = new Date().getYear() + 1900;
+		$(".copyright").html("\u00A9 Math Rush "+year);
+		//start text purpose at same position as title
+		var xTitle = $("#pageTitle").position().left;
+		$("#purpose").css("left",xTitle+"px");
 		//have to create new style when reaches 1200 as well. Starts becoming a weird page
 		if($(window).width()<=800){
 			$("#pageTitle").removeClass("pageTitle");
 			$("#testDiv").removeClass("movingObj");
 			$("#playNow").removeClass("playNow");
+			$("#contactMe").removeClass("playNow");
 			$("#purpose").css("left", "10%");
 			$("#purpose").css("width", "300px");
+			$("#textSuggestion").css("font-size","20px");
+			$("#suggestions").css("width","100px");
 			setTimeout(function(){
 				$("#pageTitle").addClass("pageTitleSmaller");
 				$("#testDiv").addClass("movingObjSmaller");
 				$("#playNow").addClass("playNowSmaller");
+				$("#contactMe").addClass("playNowSmaller");
+				//for the suggestions box to keep in place
+				var left = $(window).width()-110;
+				$("#suggestions").css("left",left);
+				$("#contactMe").css("font-size","20px");
+				$("#contactMe").css("left","0px");
 			},1);
 		}
 	
@@ -62,23 +88,37 @@
 					$("#playNow").removeClass("playNow");
 					$("#purpose").css("left", "10%");
 					$("#purpose").css("width", "300px");
+					$("#textSuggestion").css("font-size","20px");
+					$("#suggestions").css("width","100px");
 					setTimeout(function(){
 						$("#pageTitle").addClass("pageTitleSmaller");
 						$("#testDiv").addClass("movingObjSmaller");
 						$("#playNow").addClass("playNowSmaller");
+						//for the suggestions box to keep in place
+						var left = $(window).width()-110;
+						$("#suggestions").css("left",left);
+						$("#contactMe").css("font-size","20px");
+						$("#contactMe").css("left","0px");
 					},1);
 					
 				} else{
 					$("#pageTitle").removeClass("pageTitleSmaller");
 					$("#testDiv").removeClass("movingObjSmaller");
 					$("#playNow").removeClass("playNowSmaller");
-					$("#purpose").css("left", "35%");
-					$("#purpose").css("width", "700px");
+					$("#purpose").css("left", xTitle+"px");
+					$("#purpose").css("width", "500px");
 					$("#purpose").css("top","-50px");
+					$("#suggestions").css("width","200px");
+					$("#textSuggestion").css("font-size","30px");
 					setTimeout(function(){
 						$("#pageTitle").addClass("pageTitle");
 						$("#testDiv").addClass("movingObj");
 						$("#playNow").addClass("playNow");
+						//for the suggestions box to keep in place
+						var left = $(window).width()-210;
+						$("#suggestions").css("left",left);
+						$("#contactMe").css("font-size","40px");
+						$("#contactMe").css("left","45%");
 					},1);
 				}
 				lock=false;
@@ -99,6 +139,15 @@
 			$("#playNow").mouseout(function(){
 				$("#playNow").css("background-color", "#ef5d1e");
 				$("#playNow").css("color", "black");
+			});
+			
+			$("#contactMe").mouseover(function(){
+				$("#contactMe").css("background-color", "#ea6831");
+				$("#contactMe").css("color", "#302f2f");
+			});
+			$("#contactMe").mouseout(function(){
+				$("#contactMe").css("background-color", "#ef5d1e");
+				$("#contactMe").css("color", "black");
 			});
 			
 			//set events related to changing language of the page
@@ -128,6 +177,10 @@
 			//put action on button
 			$("#playNow").click(function(){
 				window.location.href = "selectTypeGame";
+			});
+			
+			$("#contactMe").click(function(){
+				window.location.href = "contact";
 			});
 			
 			//duration of animation
@@ -165,7 +218,7 @@
 			
 		});
 	</script>
-	<script src="translate.js"></script>
+	<script src="translate.min.js"></script>
 	
 </body>
 

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+To go at the /done URL when the game is done, you have to add this inside of the submitAnswer click event:
+$.when(getOperand1(var2), getCorrectAnswersValue(), getTotalAnswersValue()).done(function(){
+									
+	if(totalAnswers === 10){
+		//call backend to say it is done and load another page
+		$.ajax({
+			type: "GET",
+			url: "/addition/done",
+			timeout: 10000,
+			success: function(){
+				window.location.href="/done";
+			},
+			error: function(e){
+				
+			}
+		})	
+	}
+	
+	else{
+	//...
+
+Inside the else condition goes the code to renew the page with a new operation appearing on screen.
+The if condition is to tell us that after 10 operations, go to the "done" URL. 
+This contains an AJAX call which sends to the backend that the game is done. The backend uses that URL to
+send the data to the BasicMathController. When we change URL, the BasicMathController gets its page refreshed.
+
+EDIT: I only do window.location.href="/addition/done"; now. That is because of redirection.
+</body>
+</html>
