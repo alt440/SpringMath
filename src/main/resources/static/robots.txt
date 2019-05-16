@@ -1,0 +1,3 @@
+Sitemap: http://www.math-rusher.ca/sitemap.xml
+User-agent: *
+Disallow:
