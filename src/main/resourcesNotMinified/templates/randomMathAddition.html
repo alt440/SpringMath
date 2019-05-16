@@ -19,8 +19,8 @@
 	<script src="../operationSimulator.js"></script>
 	<script src="../modifyTableStructure.js"></script>
 	
-	<link rel="stylesheet" type="text/css" href="../css/randomMath.css">
-	<link rel="stylesheet" type="text/css" href="../css/backgroundImg.css">
+	<link rel="stylesheet" type="text/css" href="../css/randomMath.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/backgroundImg.min.css">
 </head>
 
 <body>
@@ -53,7 +53,7 @@
 			<!--  don't set the source so I do not have a wrong operator displayed first -->
 			<td><img id="operator"></td>
 			<td><label id="var2" class="vars"></label></td>
-			<td><img id="equalSign" src="../img/equalSign.PNG" alt="Equal sign"></td>
+			<td><img id="equalSign" src="../img/equalSign.png" alt="Equal sign"></td>
 			<td><input type="text" id="answerText"></td>
 			<td><input type="submit" value="Submit" id="submitAnswer" class="translate"></td>
 		</tr>
@@ -121,7 +121,7 @@
 	//simply give the response ("Nice job!" or "Sorry, wrong answer.")
 	//thus, the answer response has no way of being modified
 		var operator = -1;
-		var srcImg = "../img/add.PNG";
+		var srcImg = "../img/add.png";
 		var var2 = -1;
 		var var1 = -1;
 		var totalAnswers = 0;

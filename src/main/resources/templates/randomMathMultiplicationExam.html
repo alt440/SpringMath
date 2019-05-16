@@ -15,9 +15,9 @@
 	<!-- Translate on change needs to be defined before modifyTableStructure -->
 	<script src="../translateOnChange.min.js"></script>
 	<script src="../modifyTableStructure.min.js"></script>
-	
-	<link rel="stylesheet" type="text/css" href="../css/randomMath.css">
-	<link rel="stylesheet" type="text/css" href="../css/backgroundImg.css">
+
+	<link rel="stylesheet" type="text/css" href="../css/randomMath.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/backgroundImg.min.css">
 </head>
 
 <body>
@@ -35,48 +35,48 @@
 		</table>
 		<label id="translateText">Translate Page</label>
 	</div>
-	
+
 	<div id="scoreHandling">
 		<label id="correctAnswers" class="scoreDisplay"></label><br/>
 		<label id="over" class="scoreDisplay">___</label><br/>
 		<label id="allQuestions" class="scoreDisplay"></label><br/>
 	</div>
-	
+
 	<div id="opacityBox"></div>
-	
+
 	<table id="tableHBox">
 		<tr>
 			<td><label id="var1" class="vars"></label></td>
 			<!--  don't set the source so I do not have a wrong operator displayed first -->
 			<td><img id="operator"></td>
 			<td><label id="var2" class="vars"></label></td>
-			<td><img id="equalSign" src="../img/equalSign.PNG" alt="Equal sign"></td>
+			<td><img id="equalSign" src="../img/equalSign.png" alt="Equal sign"></td>
 			<td><input type="text" id="answerText"></td>
 			<td><input type="submit" value="Submit" id="submitAnswer" class="translate"></td>
 		</tr>
 	</table>
-	
+
 	<label id="feedback" class="translate"></label>
-	
+
 	<script>
 	//set copyright
 	//get year
 	var year = new Date().getYear() + 1900;
 	$(".copyright").html("\u00A9 Math Rush "+year);
-	
-	//to handle the answer response so it does not get modified, you can 
+
+	//to handle the answer response so it does not get modified, you can
 	//simply give the response ("Nice job!" or "Sorry, wrong answer.")
 	//thus, the answer response has no way of being modified
 		var operator = -1;
-		var srcImg = "../img/add.PNG";
+		var srcImg = "../img/add.png";
 		var var2 = -1;
 		var var1 = -1;
 		var totalAnswers = 0;
 		var correctAnswers = 0;
 		var output = "";
 		const answerX = false;
-		
-		
+
+
 		if($(window).width()<=800){
 			$("#feedback").css("font-size","20px");
 			$("#feedback").css("left","0%");
@@ -86,18 +86,18 @@
 			$("#allQuestions").css("top","70px");
 			$("#pageTitle").hide();
 			$("#translateLanguage").css("left","20px");
-			
+
 			//change table structure to fit
 			addRows2(srcImg, var1, var2, onClickSubmit);
-			
+
 		}
-		
+
 		//give it a lock so it is not called to often
 		var lock = false;
 		$(window).on('resize',function(){
 			if(!lock){
 				lock = true;
-				
+
 				if($(window).width()<=800){
 					$("#feedback").css("font-size","20px");
 					$("#feedback").css("left","0%");
@@ -107,9 +107,9 @@
 					$("#allQuestions").css("top","70px");
 					$("#pageTitle").hide();
 					$("#translateLanguage").css("left","20px");
-					
+
 					addRows2(srcImg, var1, var2, onClickSubmit);
-					
+
 				} else{
 					$("#feedback").css("font-size", "25px");
 					$("#feedback").css("left","40%");
@@ -118,29 +118,29 @@
 					$("#allQuestions").css("top","100px");
 					$("#pageTitle").show();
 					$("#translateLanguage").css("left","250px");
-					
+
 					removeRows2(srcImg, var1, var2, onClickSubmit);
 				}
-				
+
 				//should I let a delay?
 				lock = false;
-				
+
 			}
-			
+
 		})
-		
-		
+
+
 		$(document).ready(function(){
 			//trigger focus on input when going on page
 			$("#answerText").focus();
-			
+
 			//to press submit on enter
 			$("#answerText").keyup(function(event){
-				if (event.which === 13){					
+				if (event.which === 13){
 					$("#submitAnswer").click();
-				} 
+				}
 			});
-			
+
 			//get the operator and second operand
 			$.when(getOperator(), getOperand2()).done(function(){
 				//get the first operand next, because we want a whole number as response
@@ -150,22 +150,22 @@
 					//setting values of labels
 					$('#var1').html(var1);
 					$('#var2').html(var2);
-					
+
 					//setting values for score
 					$('#correctAnswers').html(correctAnswers);
 					$('#allQuestions').html(totalAnswers);
 				});
 			});
-			
+
 			//same thing as above, but this time this is generated from a click
 			$('#submitAnswer').click(function(){
 				onClickSubmit();
 			});
-			
+
 			//set events related to changing language of the page
 			setTranslationEvents();
 		});
-		
+
 		function onClickSubmit(){
 			$.when(getAnswer($("#answerText").val())).done(function(){
 				$('#feedback').html(output);
@@ -175,17 +175,17 @@
 					$.when(getOperator(), getOperand2()).done(function(){
 						//get the first operand next, because we want a whole number as response
 						$.when(getOperand1(var2), getCorrectAnswersValue(), getTotalAnswersValue()).done(function(){
-							
+
 							if(totalAnswers === 25){
 								//call backend to say it is done and load another page
-								window.location.href = "/multiplication/done";	
+								window.location.href = "/multiplication/done";
 							}
-							
+
 							$('#operator').attr('src', srcOperatorImage(operator));
 							//setting values of labels
 							$('#var1').html(var1);
 							$('#var2').html(var2);
-							
+
 							output = "";
 							$('#feedback').html(output);
 							//setting values for score

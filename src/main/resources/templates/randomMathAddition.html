@@ -18,9 +18,9 @@
 	<script src="../translateOnChange.min.js"></script>
 	<script src="../operationSimulator.min.js"></script>
 	<script src="../modifyTableStructure.min.js"></script>
-	
-	<link rel="stylesheet" type="text/css" href="../css/randomMath.css">
-	<link rel="stylesheet" type="text/css" href="../css/backgroundImg.css">
+
+	<link rel="stylesheet" type="text/css" href="../css/randomMath.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/backgroundImg.min.css">
 </head>
 
 <body>
@@ -38,30 +38,30 @@
 		</table>
 		<label id="translateText">Translate Page</label>
 	</div>
-	
+
 	<div id="scoreHandling">
 		<label id="correctAnswers" class="scoreDisplay"></label><br/>
 		<label id="over" class="scoreDisplay">___</label><br/>
 		<label id="allQuestions" class="scoreDisplay"></label><br/>
 	</div>
-	
+
 	<div id="opacityBox"></div>
-	
+
 	<table id="tableHBox">
 		<tr>
 			<td><label id="var1" class="vars"></label></td>
 			<!--  don't set the source so I do not have a wrong operator displayed first -->
 			<td><img id="operator"></td>
 			<td><label id="var2" class="vars"></label></td>
-			<td><img id="equalSign" src="../img/equalSign.PNG" alt="Equal sign"></td>
+			<td><img id="equalSign" src="../img/equalSign.png" alt="Equal sign"></td>
 			<td><input type="text" id="answerText"></td>
 			<td><input type="submit" value="Submit" id="submitAnswer" class="translate"></td>
 		</tr>
 	</table>
-	
+
 	<!-- Shows the feedback message. Says Nice Job! or Sorry, wrong answer -->
 	<label id="feedback" class="translate"></label>
-	
+
 	<!-- Comments explaining the steps -->
 	<table id="explanationTable">
 		<tr>
@@ -71,8 +71,8 @@
 			<td><input type="button" id="restartSimulation" class="translate" value="Restart Addition Simulation"/></td>
 		</tr>
 	</table>
-	
-	
+
+
 	<!-- Shows the formal way of doing the addition -->
 	<table id="simulationTable">
 		<!-- This row handles when a certain column of digits surpasses nine -->
@@ -110,18 +110,18 @@
 			<td class="simVal" id="answerUnitDigit"></td>
 		</tr>
 	</table>
-	
+
 	<script>
 	//set copyright
 	//get year
 	var year = new Date().getYear() + 1900;
 	$(".copyright").html("\u00A9 Math Rush "+year);
-	
-	//to handle the answer response so it does not get modified, you can 
+
+	//to handle the answer response so it does not get modified, you can
 	//simply give the response ("Nice job!" or "Sorry, wrong answer.")
 	//thus, the answer response has no way of being modified
 		var operator = -1;
-		var srcImg = "../img/add.PNG";
+		var srcImg = "../img/add.png";
 		var var2 = -1;
 		var var1 = -1;
 		var totalAnswers = 0;
@@ -129,10 +129,10 @@
 		var output = "";
 		var counterTries = 0;
 		const answerX = false;
-		
+
 		var extensionPage = false;
-		
-		
+
+
 		if($(window).width()<=800){
 			$("#feedback").css("font-size","20px");
 			$("#feedback").css("left","0%");
@@ -148,18 +148,18 @@
 			$("#allQuestions").css("top","70px");
 			$("#pageTitle").hide();
 			$("#translateLanguage").css("left","20px");
-			
+
 			//change table structure to fit
 			addRows2(srcImg, var1, var2, onClickSubmit);
-			
+
 		}
-		
+
 		//give it a lock so it is not called to often
 		var lock = false;
 		$(window).on('resize',function(){
 			if(!lock){
 				lock = true;
-				
+
 				if($(window).width()<=800){
 					$("#feedback").css("font-size","20px");
 					$("#feedback").css("left","0%");
@@ -175,9 +175,9 @@
 					$("#allQuestions").css("top","70px");
 					$("#pageTitle").hide();
 					$("#translateLanguage").css("left","20px");
-					
+
 					addRows2(srcImg, var1, var2, onClickSubmit);
-					
+
 				} else{
 					$("#feedback").css("font-size", "25px");
 					$("#feedback").css("left","40%");
@@ -190,17 +190,17 @@
 					$("#allQuestions").css("top","100px");
 					$("#pageTitle").show();
 					$("#translateLanguage").css("left","250px");
-					
+
 					removeRows2(srcImg, var1, var2, onClickSubmit);
 				}
-				
+
 				//should I let a delay?
 				lock = false;
-				
+
 			}
-			
+
 		})
-		
+
 		$(document).ready(function(){
 			//tells simulator what to operate on click
 			$("#restartSimulation").click(function(){
@@ -209,14 +209,14 @@
 
 			//trigger focus on input when going on page
 			$("#answerText").focus();
-			
+
 			//to press submit on enter
 			$("#answerText").keyup(function(event){
-				if (event.which === 13){					
+				if (event.which === 13){
 					$("#submitAnswer").click();
-				} 
+				}
 			});
-			
+
 			//get the operator and second operand
 			$.when(getOperator(), getOperand2()).done(function(){
 				//get the first operand next, because we want a whole number as response
@@ -226,31 +226,31 @@
 					//setting values of labels
 					$('#var1').html(var1);
 					$('#var2').html(var2);
-					
+
 					//setting values for score
 					$('#correctAnswers').html(correctAnswers);
 					$('#allQuestions').html(totalAnswers);
 				});
 			});
-			
+
 			//same thing as above, but this time this is generated from a click
 			$('#submitAnswer').click(function(){onClickSubmit()});
-			
+
 			//set events related to changing language of the page
 			setTranslationEvents();
-			
+
 		});
-		
+
 		function onClickSubmit(){
 			$.when(getAnswer($("#answerText").val())).done(function(){
-				
+
 				//hide the ball elements if counterTries is 0
 				if(counterTries === 0){
 					$("#simulationTable").hide();
 					$("#explanationTable").hide();
 				}
-				
-				
+
+
 				$('#feedback').html(output);
 				onTextChange($("#feedback"));
 				//increments the tries to the question
@@ -261,22 +261,22 @@
 						$.when(getOperator(), getOperand2()).done(function(){
 							//get the first operand next, because we want a whole number as response
 							$.when(getOperand1(var2), getCorrectAnswersValue(), getTotalAnswersValue()).done(function(){
-								
+
 								$('#operator').attr('src', srcOperatorImage(operator));
 								//setting values of labels
 								$('#var1').html(var1);
 								$('#var2').html(var2);
-								
+
 								output = "";
 								$('#feedback').html(output);
 								$('#feedback').css("left","40%");
 								//setting values for score
 								$('#correctAnswers').html(correctAnswers);
 								$('#allQuestions').html(totalAnswers);
-								
+
 								//hide the ball tables at first
 								$("#ballElements").hide();
-								
+
 							});
 						});
 					}, 1000);
@@ -292,30 +292,30 @@
 						else{
 							$('#feedback').css("left","20%");
 						}
-						
-						
+
+
 						//show the tables
-						setTimeout(function(){									
+						setTimeout(function(){
 							$("#explanationTable").show();
 							$("#commentSimulation").show();
 							$("#simulationTable").show();
 							simulateAddition(var1, var2);
 							$("#restartSimulation").show();
-							
+
 							if(!extensionPage){
 								//change white page coverage. add 100 because 58 is the place the answer takes, and the rest is in case we need more space
 								$("#opacityBox").css("height", $(document).height()+100);
 								extensionPage = true;
 							}
-							
+
 						}, 1000);
 					}, 1000);
-					
-					
+
+
 					//to reset the tries and go to the next question. Good or not?
 					counterTries = 0;
 				}
-					
+
 			})
 		}
 	</script>

@@ -3,16 +3,16 @@ function srcOperatorImage(operatorVal){
 	var srcImg = "";
 	switch(operatorVal){
 	case 0:
-		srcImg = "../img/add.PNG";
+		srcImg = "../img/add.png";
 		break;
 	case 1:
-		srcImg = "../img/subtract.PNG";
+		srcImg = "../img/subtract.png";
 		break;
 	case 2:
-		srcImg = "../img/multiply.PNG";
+		srcImg = "../img/multiply.png";
 		break;
 	case 3:
-		srcImg = "../img/divide.PNG";
+		srcImg = "../img/divide.png";
 		break;
 	}
 	return srcImg;

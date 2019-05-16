@@ -10,15 +10,15 @@
 <meta name="Description" content="Math Rush Error 404: We were not able to serve your request.">
 <meta name="Keywords" content="Math Rush error 404 home return">
 <title>Oops! We were not able to serve your request</title>
-<link rel="stylesheet" href="css/selectTime.css">
-<link rel="stylesheet" href="../css/selectTime.css">
+<link rel="stylesheet" href="css/selectTime.min.css">
+<link rel="stylesheet" href="../css/selectTime.min.css">
 </head>
 <body>
 	<h1 id="title" class="translate">Oops! We were not able to serve your request.</h1>
-	
+
 	<p id="descriptionPage" class="translate">Did your math just bring you here? Let me help you. A black hole has been generated to break through time and space to redirect you to the home page.</p>
 	<p class="translate">You will be redirected to the home page in 5 seconds.</p>
-	
+
 	<!-- Muted now required to work with Google Chrome. Playsinline for iPhone? -->
 	<video class="translate" width="960" height="540" controls autoplay loop muted playsinline>
 		<source src="img/blackHole.mp4" type="video/mp4"/>
@@ -33,14 +33,14 @@
 	//get year
 	var year = new Date().getYear() + 1900;
 	$(".copyright").html("\u00A9 Math Rush "+year);
-	
+
 		if($(window).width()<=800){
 			$("video").css("position","relative");
 			$("video").css("height","200px");
 			$("video").css("top","0px");
 			$("video").css("width","100%");
 		}
-	
+
 		//give it a lock so it is not called to often
 		var lock = false;
 		$(window).on('resize',function(){
@@ -51,7 +51,7 @@
 					$("video").css("height","200px");
 					$("video").css("top","0px");
 					$("video").css("width","100%");
-					
+
 				} else{
 					$("video").css("position","relative");
 					$("video").css("height","540px");
@@ -59,15 +59,15 @@
 					$("video").css("width","960");
 				}
 				lock=false;
-				
+
 			}
-			
+
 		})
-		
+
 		setTimeout(function(){
 			window.location.href = "/";
 		}, 5000);
-	
+
 	</script>
 	<script src="translate.min.js"></script>
 	<script src="../translate.min.js"></script>

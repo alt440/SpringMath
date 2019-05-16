@@ -11,7 +11,7 @@
 	<meta property="og:description" content="Home Page of Math Rush">
 	<meta name="Description" content="Home Page of Math Rush">
 	<meta name="Keywords" content="Math Rush home homepage">
-	<link rel="stylesheet" type="text/css" href="css/homePage.css">
+	<link rel="stylesheet" type="text/css" href="css/homePage.min.css">
 	<script src="jquery-3.3.1.min.js"></script>
 	<script src="animationHandling.min.js"></script>
 	<script src="translateOnChange.min.js"></script>
@@ -19,7 +19,7 @@
 
 <body>
 	<h1 id="pageTitle" class="pageTitle translate">Math Rush</h1>
-	
+
 	<div id="suggestions">
 		<label id="textSuggestion" class="translate">Game is too easy?</label>
 	</div>
@@ -77,7 +77,7 @@
 				$("#contactMe").css("left","0px");
 			},1);
 		}
-	
+
 		//give it a lock so it is not called to often
 		var lock = false;
 		$(window).on('resize',function(){
@@ -101,7 +101,7 @@
 						$("#contactMe").css("font-size","20px");
 						$("#contactMe").css("left","0px");
 					},1);
-					
+
 				} else{
 					$("#pageTitle").removeClass("pageTitleSmaller");
 					$("#testDiv").removeClass("movingObjSmaller");
@@ -123,15 +123,15 @@
 					},1);
 				}
 				lock=false;
-				
+
 			}
-			
+
 		})
-	
+
 		var nextTimeout = 0;
 		//stop the animation after 2 and 1/2 times. Want to see animation
 		$(document).ready(function(){
-			
+
 			//change color of button when hover
 			$("#playNow").mouseover(function(){
 				$("#playNow").css("background-color", "#ea6831");
@@ -141,7 +141,7 @@
 				$("#playNow").css("background-color", "#ef5d1e");
 				$("#playNow").css("color", "black");
 			});
-			
+
 			$("#contactMe").mouseover(function(){
 				$("#contactMe").css("background-color", "#ea6831");
 				$("#contactMe").css("color", "#302f2f");
@@ -150,10 +150,10 @@
 				$("#contactMe").css("background-color", "#ef5d1e");
 				$("#contactMe").css("color", "black");
 			});
-			
+
 			//set events related to changing language of the page
 			setTranslationEvents();
-			
+
 			$("#suggestions").mouseover(function(){
 				//extend bar down
 				//future text position
@@ -162,7 +162,7 @@
 				$("#textSuggestion").stop();
 				$("#textSuggestion").animate({top: '35px'}, 400);
 			});
-			
+
 			$("#suggestions").mouseout(function(){
 				//pull bar up
 				$("#suggestions").stop();
@@ -170,20 +170,20 @@
 				$("#textSuggestion").stop();
 				$("#textSuggestion").animate({top:'10px'}, 1000);
 			});
-			
+
 			$("#suggestions").click(function(){
 				window.location.href = "lookingAhead";
 			})
-			
+
 			//put action on button
 			$("#playNow").click(function(){
 				window.location.href = "selectTypeGame";
 			});
-			
+
 			$("#contactMe").click(function(){
 				window.location.href = "contact";
 			});
-			
+
 			//duration of animation
 			var durationAnimation = 2800;
 			//create five events of the animation.
@@ -192,35 +192,35 @@
 					$("#testDivText").html("FUN");
 					onTextChange($("#testDivText"));
 				}, nextTimeout);
-				
+
 				setTimeout(function(){
 					$("#testDivText").html("EASY");
 					onTextChange($("#testDivText"));
 				}, nextTimeout+durationAnimation);
-				
+
 				setTimeout(function(){
 					$("#testDivText").html("EFFECTIVE");
 					onTextChange($("#testDivText"));
 				}, nextTimeout+ (2*durationAnimation));
-				
+
 				nextTimeout+=7000;
 				setTimeout(function(){
 					$("#testDiv").css("-webkit-animation-play-state", "paused");
 				}, nextTimeout);
-				
+
 				nextTimeout+=5000;
 				if(i !== 2){
 					setTimeout(function(){
 						reset_animation('testDiv');
 					}, nextTimeout);
 				}
-					
+
 			}
-			
+
 		});
 	</script>
 	<script src="translate.min.js"></script>
-	
+
 </body>
 
 </html>

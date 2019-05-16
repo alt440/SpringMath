@@ -103,7 +103,7 @@ function addRows2(srcImg, var1, var2, onClickSubmit){
 		//add a second row
 		$("#tableHBox").append('<tr>'+
 									'<td><label id="var1" class="vars"></label><img id="operator"><label id="var2" class="vars"></label>'+
-									'<img id="equalSign" src="../img/equalSign.PNG" alt="Equal sign"></td>'+
+									'<img id="equalSign" src="../img/equalSign.png" alt="Equal sign"></td>'+
 								'</tr><tr>'+
 									'<td><input type="text" id="answerText"></td>'+
 								'</tr><tr>'+
@@ -138,7 +138,7 @@ function removeRows2(srcImg, var1, var2, onClickSubmit){
 				'<td><label id="var1" class="vars"></label></td>'+
 				'<td><img id="operator"></td>'+
 				'<td><label id="var2" class="vars"></label></td>'+
-				'<td><img id="equalSign" src="../img/equalSign.PNG" alt="Equal sign"></td>'+
+				'<td><img id="equalSign" src="../img/equalSign.png" alt="Equal sign"></td>'+
 				'<td><input type="text" id="answerText"></td>'+
 				'<td><input type="submit" value="Submit" id="submitAnswer"></td>'+
 			'</tr>';

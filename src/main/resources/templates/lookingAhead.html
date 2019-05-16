@@ -10,12 +10,12 @@
 <meta property="og:description" content="What to do next after Math Rush">
 <meta name="Description" content="Ideas for Progress: What to do next after Math Rush">
 <meta name="Keywords" content="Math Rush ideas progress next magic square">
-<link rel="stylesheet" href="css/randomMath.css">
-<link rel="stylesheet" href="css/lookingAhead.css">
+<link rel="stylesheet" href="css/randomMath.min.css">
+<link rel="stylesheet" href="css/lookingAhead.min.css">
 </head>
 <body>
 	<div id="pageTitle" class="translate">Math Rush</div>
-	
+
 	<div id="translateLanguage">
 		<table>
 			<tr>
@@ -28,19 +28,19 @@
 		</table>
 		<label id="translateText">Translate Page</label>
 	</div>
-	
+
 	<h1 id="title" class="translate">Ideas for Progress</h1><br/>
 	<div id="useOfPage" class="translate">This page gives suggestions on what to do next to progress in the field of mathematics.</div>
 	<table>
 		<tr>
 			<td><div class="magicSquareNote">
 					<label class="titleNote translate">Magic Squares</label><br/>
-					<label class="descriptionNote translate">Magic squares are squares filled with numbers in which the sum of any row, column, or diagonal is the same.</label>	
+					<label class="descriptionNote translate">Magic squares are squares filled with numbers in which the sum of any row, column, or diagonal is the same.</label>
 				</div>
 			</td>
 		</tr>
 	</table>
-	
+
 	<input type="button" id="returnToHomePage" class="translate" value="Return to Home Page"/>
 	<label class="copyright"></label>
 	<script>
@@ -52,17 +52,17 @@
 	$(".translateButtons").css("position","relative");
 	$(".translateButtons").css("top","-25px");
 	$(".translateButtons").css("left","-130px");
-	
+
 	//set copyright
 	//get year
 	var year = new Date().getYear() + 1900;
 	$(".copyright").html("\u00A9 Math Rush "+year);
-	
+
 		//return to home page button adjustments
 		$("#returnToHomePage").css("position","absolute");
 		$("#returnToHomePage").css("bottom","5%");
 		$("#returnToHomePage").css("top","auto");
-	
+
 		if($(window).width()<=800){
 			$("table").css("margin-left","0%");
 			$("#title").css("font-size","50px");
@@ -73,12 +73,12 @@
 			$("#returnToHomePage").css("font-size","20px");
 			$("#returnToHomePage").css("top","70px");
 		}
-	
+
 		lock2=false;
 		$(window).on('resize',function(){
 			if(!lock2){
 				lock2 = true;
-				
+
 				if($(window).width()<=800){
 					$("table").css("margin-left","0%");
 					$("#title").css("font-size","50px");
@@ -89,7 +89,7 @@
 					$("#returnToHomePage").css("font-size","20px");
 					$("#returnToHomePage").css("top","70px");
 				}
-				
+
 				else{
 					$("table").css("margin-left","35%");
 					$("#title").css("font-size","60px");
@@ -101,18 +101,18 @@
 					$("#returnToHomePage").css("bottom","5%");
 					$("#returnToHomePage").css("top","auto");
 				}
-				
+
 				lock2=false;
 			}
 		});
-	
+
 		//set events related to changing language of the page
 		setTranslationEvents();
-		
+
 		$("#returnToHomePage").click(function(){
 			window.location.href = "/";
 		});
-	
+
 	</script>
 	<script src="translate.min.js"></script>
 </body>

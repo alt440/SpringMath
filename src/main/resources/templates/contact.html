@@ -10,12 +10,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.33, maximum-scale=3">
 <meta name="Description" content="This page gives information about the webmaster of Math Rush.">
 <meta name="Keywords" content="Alexandre Therrien webmaster contact about linkedin gmail">
-<link rel="stylesheet" href="css/randomMath.css">
-<link rel="stylesheet" href="css/lookingAhead.css">
+<link rel="stylesheet" href="css/randomMath.min.css">
+<link rel="stylesheet" href="css/lookingAhead.min.css">
 </head>
 <body>
 	<div id="pageTitle" class="translate">Math Rush</div>
-	
+
 	<div id="translateLanguage">
 		<table>
 			<tr>
@@ -28,40 +28,40 @@
 		</table>
 		<label id="translateText">Translate Page</label>
 	</div>
-	
+
 	<h1 id="title" class="translate">About Me/ Contact Me</h1><br/>
 	<div id="useOfPage" class="translate">This page gives some information about me.</div>
 	<div id="summaryOfMe" class="translate">
 		<img id="face" src="img/face.png" alt="My face">
 		My name is Alexandre Therrien, and I am the creator of this web site. This web site has been a learning experience for me as this is the first web site I have put online. I am an avid learner and I have always wanted to learn something new. I have done numerous projects in the past to gain experience in different computer science fields. If you want to know more about me, you can look at my profile on LinkedIn: https://ca.linkedin.com/in/alexandre-therrien-it. If you want to contact me, you can do so by emailing me at alexandre.therrien3@gmail.com. Hope you are enjoying this web site!
 	</div>
-	
-	
+
+
 	<input type="button" id="returnToHomePage" class="translate" value="Return to Home Page"/>
 	<label class="copyright"></label>
 	<script>
 	$("#pageTitle").css("position","relative");
 	$("#pageTitle").css("top","50px");
-	
+
 	//setting translation button OK
 	$("#translateText").css("position","relative");
 	$("#translateText").css("top","-10px");
 	$(".translateButtons").css("position","relative");
 	$(".translateButtons").css("top","-25px");
 	$(".translateButtons").css("left","-130px");
-	
+
 	$("#summaryOfMe").css("font-size","20px");
 	$("#summaryOfMe")
 	//set copyright
 	//get year
 	var year = new Date().getYear() + 1900;
 	$(".copyright").html("\u00A9 Math Rush "+year);
-	
+
 		//return to home page button adjustments
 		$("#returnToHomePage").css("position","absolute");
 		$("#returnToHomePage").css("bottom","5%");
 		$("#returnToHomePage").css("top","auto");
-	
+
 		if($(window).width()<=800){
 			$("table").css("margin-left","0%");
 			$("#title").css("font-size","50px");
@@ -72,12 +72,12 @@
 			$("#returnToHomePage").css("font-size","20px");
 			$("#returnToHomePage").css("top","210px");
 		}
-	
+
 		lock2=false;
 		$(window).on('resize',function(){
 			if(!lock2){
 				lock2 = true;
-				
+
 				if($(window).width()<=800){
 					$("table").css("margin-left","0%");
 					$("#title").css("font-size","50px");
@@ -88,7 +88,7 @@
 					$("#returnToHomePage").css("font-size","20px");
 					$("#returnToHomePage").css("top","210px");
 				}
-				
+
 				else{
 					$("table").css("margin-left","35%");
 					$("#title").css("font-size","60px");
@@ -100,18 +100,18 @@
 					$("#returnToHomePage").css("bottom","5%");
 					$("#returnToHomePage").css("top","auto");
 				}
-				
+
 				lock2=false;
 			}
 		});
-	
+
 		//set events related to changing language of the page
 		setTranslationEvents();
-		
+
 		$("#returnToHomePage").click(function(){
 			window.location.href = "/";
 		});
-	
+
 	</script>
 	<script src="translate.min.js"></script>
 </body>

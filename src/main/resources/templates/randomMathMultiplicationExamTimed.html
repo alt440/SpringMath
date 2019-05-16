@@ -16,10 +16,10 @@
 	<!-- Translate on change needs to be defined before modifyTableStructure -->
 	<script src="../translateOnChange.min.js"></script>
 	<script src="../modifyTableStructure.min.js"></script>
-	
-	<link rel="stylesheet" type="text/css" href="../css/randomMath.css">
-	<link rel="stylesheet" type="text/css" href="../css/circleFill.css">
-	<link rel="stylesheet" type="text/css" href="../css/backgroundImg.css">
+
+	<link rel="stylesheet" type="text/css" href="../css/randomMath.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/circleFill.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/backgroundImg.min.css">
 </head>
 
 <body>
@@ -37,64 +37,64 @@
 		</table>
 		<label id="translateText">Translate Page</label>
 	</div>
-	
+
 	<div id="scoreHandling">
 		<label id="correctAnswers" class="scoreDisplay"></label><br/>
 		<label id="over" class="scoreDisplay">___</label><br/>
 		<label id="allQuestions" class="scoreDisplay"></label><br/>
-		
+
 		<div class="circle" id="circleFillUp">
 			<div class="circleInsider" id="circleInsider"></div>
 			<label id="timeLeft"></label>
 		</div>
 	</div>
-	
+
 	<div id="opacityBox"></div>
-	
+
 	<table id="tableHBox">
 		<tr>
 			<td><label id="var1" class="vars"></label></td>
 			<!--  don't set the source so I do not have a wrong operator displayed first -->
 			<td><img id="operator"></td>
 			<td><label id="var2" class="vars"></label></td>
-			<td><img id="equalSign" src="../img/equalSign.PNG" alt="Equal sign"></td>
+			<td><img id="equalSign" src="../img/equalSign.png" alt="Equal sign"></td>
 			<td><input type="text" id="answerText"></td>
 			<td><input type="submit" value="Submit" id="submitAnswer" class="translate"></td>
 		</tr>
 	</table>
-	
+
 	<label id="feedback" class="translate"></label>
-	
+
 	<script th:inline="text">
 	//set copyright
 	//get year
 	var year = new Date().getYear() + 1900;
 	$(".copyright").html("\u00A9 Math Rush "+year);
-	
-	//to handle the answer response so it does not get modified, you can 
+
+	//to handle the answer response so it does not get modified, you can
 	//simply give the response ("Nice job!" or "Sorry, wrong answer.")
 	//thus, the answer response has no way of being modified
 		var operator = -1;
-		var srcImg = "../img/add.PNG";
+		var srcImg = "../img/add.png";
 		var var2 = -1;
 		var var1 = -1;
 		var totalAnswers = 0;
 		var correctAnswers = 0;
 		var output = "";
 		const answerX = false;
-		
+
 		var timeRemaining = 6;
 		//thymeleaf instructions
 		[# th:if="${timeVal != 0 && timeVal != null}"]
 			timeRemaining = [[${timeVal}]];
 		[/]
-		
+
 		$("#timeLeft").html(timeRemaining);
-		
-		
+
+
 		//give it a lock so it is not called to often
 		var lock2 = false;
-		
+
 		//mobile friendly code
 		if($(window).width()<=800){
 			$("#feedback").css("font-size","20px");
@@ -107,16 +107,16 @@
 			$("#circleFillUp").css("left","35%");
 			$("#pageTitle").hide();
 			$("#translateLanguage").css("left","20px");
-			
+
 			//change table structure to fit
 			addRows2(srcImg, var1, var2, onClickSubmit);
-			
+
 		}
-		
+
 		$(window).on('resize',function(){
 			if(!lock2){
 				lock2 = true;
-				
+
 				if($(window).width()<=800){
 					$("#feedback").css("font-size","20px");
 					$("#feedback").css("left","0%");
@@ -128,9 +128,9 @@
 					$("#circleFillUp").css("left","35%");
 					$("#pageTitle").hide();
 					$("#translateLanguage").css("left","20px");
-					
+
 					addRows2(srcImg, var1, var2, onClickSubmit);
-					
+
 				} else{
 					$("#feedback").css("font-size", "25px");
 					$("#feedback").css("left","40%");
@@ -141,23 +141,23 @@
 					$("#circleFillUp").css("left","45%");
 					$("#pageTitle").show();
 					$("#translateLanguage").css("left","250px");
-					
+
 					removeRows2(srcImg, var1, var2, onClickSubmit);
 				}
-				
+
 				//should I let a delay?
 				lock2 = false;
-				
+
 			}
-			
+
 		})
-		
-		
+
+
 		//for the setInterval
 		isPaused = false;
-		
+
 		$(document).ready(function(){
-			
+
 			$(".circleInsider").css("-webkit-animation-play-state", "paused");
 
 			$(".circleInsider").css("animation-duration", timeRemaining+"s");
@@ -168,7 +168,7 @@
 				$("#circleInsider").addClass("circleInsider");
 			},1);//*/
 			//$(".right").css("-webkit-animation-play-state", "paused");
-			
+
 			//this time interval is for setting the time remaining depending on the actual time remaining to answer the question
 			var timeInterval = setInterval(function(){
 				//decrease time remaining to answer
@@ -179,29 +179,29 @@
 					}
 					else{
 						$("#submitAnswer").click();
-						
+
 					}
 				}
 			}, 1000);
-			
+
 			//this is a lock that allows only one event at a time to enter submit button
 			lock = false;
-			
+
 			//trigger focus on input when going on page
 			$("#answerText").focus();
-			
+
 			//to press submit on enter
 			$("#answerText").keyup(function(event){
-				if (event.which === 13){					
+				if (event.which === 13){
 					$("#submitAnswer").click();
-				} 
+				}
 			});
-			
+
 			//clicks on submit answer when time is up (when right animation has finished)
-			$('.circle').on('animationend webkitAnimationEnd', function() { 
+			$('.circle').on('animationend webkitAnimationEnd', function() {
 			    $("#submitAnswer").click();
 			});
-			
+
 			//get the operator and second operand
 			$.when(getOperator(), getOperand2()).done(function(){
 				//get the first operand next, because we want a whole number as response
@@ -211,62 +211,62 @@
 					//setting values of labels
 					$('#var1').html(var1);
 					$('#var2').html(var2);
-					
+
 					//setting values for score
 					$('#correctAnswers').html(correctAnswers);
 					$('#allQuestions').html(totalAnswers);
 				});
 			});
-			
+
 			//same thing as above, but this time this is generated from a click
 			$('#submitAnswer').click(function(){
 				onClickSubmit(timeInterval);
 			});
-			
+
 			//set events related to changing language of the page
 			setTranslationEvents();
 		});
-		
+
 		function onClickSubmit(_timeInterval){
 			//lock allows only one click on submit to pass
 			if(lock === false){
 				lock = true;
 				isPaused = true;
-				
+
 				$.when(getAnswer($("#answerText").val())).done(function(){
 					$('#feedback').html(output);
 					onTextChange($("#feedback"));
-					
+
 					//change equation
 					setTimeout(function(){
 						$.when(getOperator(), getOperand2()).done(function(){
 							//get the first operand next, because we want a whole number as response
 							$.when(getOperand1(var2), getCorrectAnswersValue(), getTotalAnswersValue()).done(function(){
-								
+
 								if(totalAnswers === 25){
 									//call backend to say it is done and load another page
-									window.location.href = "/multiplication/done";	
+									window.location.href = "/multiplication/done";
 								}
-								
+
 								else{
 									$('#operator').attr('src', srcOperatorImage(operator));
 									//setting values of labels
 									$('#var1').html(var1);
 									$('#var2').html(var2);
-									
+
 									output = "";
 									$('#feedback').html(output);
 									//setting values for score
 									$('#correctAnswers').html(correctAnswers);
 									$('#allQuestions').html(totalAnswers);
-									
+
 									//reset the value of the input to ""
 									$("#answerText").val("");
-									
-									
+
+
 									//restart animations. BEST WAY TO DO IT!!!
 									reset_animation2("circleInsider");
-									
+
 									//to indicate the time remaining
 									timeRemaining = 6;
 									//thymeleaf instructions
@@ -274,7 +274,7 @@
 										timeRemaining = [[${timeVal}]];
 									[/]
 									$("#timeLeft").html(timeRemaining);
-									
+
 									//reset the time interval, because it might not be exact
 									/*_timeInterval = setInterval(function(){
 										//decrease time remaining to answer
@@ -284,21 +284,21 @@
 										}
 										else{
 											$("#submitAnswer").click();
-											
+
 										}
 									}, 1000);*/
-									
+
 									//remove the lock
 									lock = false;
 									isPaused = false;
 								}
-								
+
 							});
 						});
 					}, 1000);
-					
+
 				});
-				
+
 			}
 		}
 	</script>
