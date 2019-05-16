@@ -203,6 +203,16 @@
 		
 		
 		$(document).ready(function(){
+			//trigger focus on input when going on page
+			$("#answerText").focus();
+			
+			//to press submit on enter
+			$("#answerText").keyup(function(event){
+				if (event.which === 13){					
+					$("#submitAnswer").click();
+				} 
+			});
+			
 			//tells simulator what to operate on click
 			$("#restartSimulation").click(function(){
 				simulateSubtraction(var1, var2);

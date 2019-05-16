@@ -206,6 +206,16 @@
 			$("#restartSimulation").click(function(){
 				simulateAddition(var1, var2);
 			});
+
+			//trigger focus on input when going on page
+			$("#answerText").focus();
+			
+			//to press submit on enter
+			$("#answerText").keyup(function(event){
+				if (event.which === 13){					
+					$("#submitAnswer").click();
+				} 
+			});
 			
 			//get the operator and second operand
 			$.when(getOperator(), getOperand2()).done(function(){
