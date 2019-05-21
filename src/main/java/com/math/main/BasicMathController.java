@@ -51,6 +51,26 @@ public class BasicMathController {
 		return "homePage";
 	}
 	
+	@GetMapping("/fr")
+	public String homePageFrench() {
+		return "homePageFrench";
+	}
+	
+	@GetMapping("/es")
+	public String homePageSpanish() {
+		return "homePageSpanish";
+	}
+	
+	@GetMapping("/hi")
+	public String homePageHindi() {
+		return "homePageHindi";
+	}
+	
+	@GetMapping("/chi")
+	public String homePageMandarin() {
+		return "homePageMandarin";
+	}
+	
 	@GetMapping("/selectTypeGame")
 	public String selectTypeGame() {
 		return "selectTypeGame";
