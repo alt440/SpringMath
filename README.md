@@ -10,4 +10,5 @@ page. Look into BasicMathController.java for more precisions on the type of
 requests that are accepted.
 
 I used STS Spring for this project. Just copy-paste all the files in a STS
-project and it will work just fine.
+project and it will work just fine. Put the content of the src folder inside 
+the generated folder by STS with the same name.
